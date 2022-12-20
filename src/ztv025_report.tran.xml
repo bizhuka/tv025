@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TRAN" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TSTC>
+    <TCODE>ZTV025_REPORT</TCODE>
+    <CINFO>Ag==</CINFO>
+   </TSTC>
+   <TSTCC>
+    <TCODE>ZTV025_REPORT</TCODE>
+    <S_WEBGUI>1</S_WEBGUI>
+    <S_WIN32>X</S_WIN32>
+    <S_PLATIN>X</S_PLATIN>
+   </TSTCC>
+   <TSTCT>
+    <SPRSL>E</SPRSL>
+    <TCODE>ZTV025_REPORT</TCODE>
+    <TTEXT>Travel admin report</TTEXT>
+   </TSTCT>
+   <TSTCP>
+    <TCODE>ZTV025_REPORT</TCODE>
+    <PARAM>/*OS_APPLICATION CLASS=ZCL_TV025_REPORT;METHOD=START_OF_SELECTION;UPDATE_MODE=U;</PARAM>
+   </TSTCP>
+  </asx:values>
+ </asx:abap>
+</abapGit>

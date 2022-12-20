@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>RFC FMs for data extraction for ERP</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_TV025_ERP_DATA_EXTRTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_TV025_ERP_DATA_EXTR</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFM_TV025_GET_TRANSP_DATA</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Transport Data export</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_DATE_FROM</PARAMETER>
+       <TYP>BEGDA</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_DATE_TO</PARAMETER>
+       <TYP>ENDDA</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ET_TRANSPORT</PARAMETER>
+       <TYP>ZTT_TV025_TRAVEL_EXTRACT_ERP</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_DATE_FROM</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_DATE_TO</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_TRANSPORT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for Transport Data extraction for ERP</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

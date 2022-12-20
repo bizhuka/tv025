@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_TV025_PLAN_ACTIVITY</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>FTPD_PLAN_ACTIVITY</DOMNAME>
+    <HEADLEN>03</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Trip Activity Type</DDTEXT>
+    <REPTEXT>TAP</REPTEXT>
+    <SCRTEXT_S>Activity</SCRTEXT_S>
+    <SCRTEXT_M>Activity Type</SCRTEXT_M>
+    <SCRTEXT_L>Trip Activity Type</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <SHLPNAME>ZSH_TV025_TRIP_ACTIVITY</SHLPNAME>
+    <SHLPFIELD>ACTICITY</SHLPFIELD>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+    <LANGU>R</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Reisetätigkeitsart</DDTEXT>
+     <REPTEXT>RTP</REPTEXT>
+     <SCRTEXT_S>Tätigkeit</SCRTEXT_S>
+     <SCRTEXT_M>Tätigkeitsart</SCRTEXT_M>
+     <SCRTEXT_L>Reisetätigkeitsart</SCRTEXT_L>
+    </item>
+    <item>
+     <DDLANGUAGE>R</DDLANGUAGE>
+     <DDTEXT>Вид деятельности в командировке</DDTEXT>
+     <REPTEXT>ВКД</REPTEXT>
+     <SCRTEXT_S>Деятельн.</SCRTEXT_S>
+     <SCRTEXT_M>ВидДеятельнст</SCRTEXT_M>
+     <SCRTEXT_L>В/деятельн. в ком.</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

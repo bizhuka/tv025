@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TABL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD02V>
+    <TABNAME>ZSS_TV025_EMPL_REQ_POPUP</TABNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <TABCLASS>INTTAB</TABCLASS>
+    <LANGDEP>X</LANGDEP>
+    <DDTEXT>Employee request popup</DDTEXT>
+    <EXCLASS>3</EXCLASS>
+   </DD02V>
+   <DD03P_TABLE>
+    <DD03P>
+     <FIELDNAME>TITLE_NEW_REQUEST</FIELDNAME>
+     <ROLLNAME>TEXT40</ROLLNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <COMPTYPE>E</COMPTYPE>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>.INCLUDE</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <PRECFIELD>ZSS_TV025_TV_TRAVEL_KEY</PRECFIELD>
+     <MASK>      S</MASK>
+     <DDTEXT>Travel Travel Key</DDTEXT>
+     <COMPTYPE>S</COMPTYPE>
+     <GROUPNAME>_NEW</GROUPNAME>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>TITLE_TEMPLATE</FIELDNAME>
+     <ROLLNAME>TEXT40</ROLLNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <COMPTYPE>E</COMPTYPE>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>.INCLU-_TM</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <PRECFIELD>ZSS_TV025_TV_REQUEST_KEY</PRECFIELD>
+     <MASK>      S</MASK>
+     <DDTEXT>Travel Request Key</DDTEXT>
+     <COMPTYPE>S</COMPTYPE>
+     <GROUPNAME>_TEMPLATE</GROUPNAME>
+    </DD03P>
+   </DD03P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

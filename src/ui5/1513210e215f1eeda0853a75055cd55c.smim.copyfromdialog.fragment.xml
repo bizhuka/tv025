@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:form="sap.ui.comp.smartform" xmlns:core="sap.ui.core" xmlns:smartField="sap.ui.comp.smartfield">
+    <!-- xmlns:form="sap.ui.layout.form" -->
+    <Dialog class="sapUiPopupWithPadding" title="Copy table part of" resizable="false" draggable="false" showHeader="false" horizontalScrolling="false">
+        <content>
+            <form:SmartForm id="root_grp" title="Select source request" editable="true">
+                <form:layout>
+                    <form:ColumnLayout columnsM="1" columnsL="1" columnsXL="1" />
+                </form:layout>
+
+                <form:Group label="Template for Flights, Hotels, Trasports:">
+                    <form:GroupElement>
+                        <smartField:SmartField id="pernr" value="{pernr}" contextEditable="false" editable="false" textLabel="Employee / Visitor ID" initialise="_onInitialise('pernr')" />
+                    </form:GroupElement>
+                    <form:GroupElement>
+                        <smartField:SmartField id="reinr" value="{reinr}" contextEditable="true" initialise="_onInitialise('reinr')" valueListChanged="_onTripSelected" />
+                    </form:GroupElement>
+                </form:Group>
+
+                <form:Group label="Options:">
+                    <form:GroupElement>
+                        <CheckBox id="cb_keep_previous" text="Keep previous items" selected="true" />
+                    </form:GroupElement>
+                </form:Group>
+                <form:Group label="Number of items in template:">
+                    <form:GroupElement>
+                        <CheckBox id="cb_flight" text="Flight: 0 items" selected="false" enabled="false" />
+                    </form:GroupElement>
+                    <form:GroupElement>
+                        <CheckBox id="cb_hotel" text="Hotel: 0 items" selected="false" enabled="false" />
+                    </form:GroupElement>
+                    <form:GroupElement>
+                        <CheckBox id="cb_transport" text="Transport: 0 items" selected="false" enabled="false" />
+                    </form:GroupElement>
+                </form:Group>
+            </form:SmartForm>
+        </content>
+        <buttons>
+            <Button text="Ok" type="Emphasized" press="_OnOkPress" />
+            <Button text="Cancel" type="Emphasized" press="_OnCancelPress" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_TV025_WAERS</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>WAERS</DOMNAME>
+    <MEMORYID>FWS</MEMORYID>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>16</HEADLEN>
+    <SCRLEN1>09</SCRLEN1>
+    <SCRLEN2>16</SCRLEN2>
+    <SCRLEN3>16</SCRLEN3>
+    <DDTEXT>Penalty currency</DDTEXT>
+    <REPTEXT>Penalty currency</REPTEXT>
+    <SCRTEXT_S>Pen. Crcy</SCRTEXT_S>
+    <SCRTEXT_M>Penalty Currency</SCRTEXT_M>
+    <SCRTEXT_L>Penalty currency</SCRTEXT_L>
+    <APPLCLASS>FB</APPLCLASS>
+    <DTELMASTER>E</DTELMASTER>
+    <DEFFDNAME>CURRENCY</DEFFDNAME>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+    <LANGU>R</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Währungsschlüssel</DDTEXT>
+     <REPTEXT>Währg</REPTEXT>
+     <SCRTEXT_S>Währung</SCRTEXT_S>
+     <SCRTEXT_M>Währung</SCRTEXT_M>
+     <SCRTEXT_L>Währung</SCRTEXT_L>
+    </item>
+    <item>
+     <DDLANGUAGE>R</DDLANGUAGE>
+     <DDTEXT>Код валюты</DDTEXT>
+     <REPTEXT>Влт</REPTEXT>
+     <SCRTEXT_S>Валюта</SCRTEXT_S>
+     <SCRTEXT_M>Валюта</SCRTEXT_M>
+     <SCRTEXT_L>Валюта</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_TV025_VISITOR_LAND1</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>LAND1</DOMNAME>
+    <MEMORYID>LND</MEMORYID>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>03</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>12</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Country Key</DDTEXT>
+    <REPTEXT>Ctr</REPTEXT>
+    <SCRTEXT_S>Country</SCRTEXT_S>
+    <SCRTEXT_M>Country</SCRTEXT_M>
+    <SCRTEXT_L>Country Key</SCRTEXT_L>
+    <APPLCLASS>FB</APPLCLASS>
+    <DTELMASTER>E</DTELMASTER>
+    <DEFFDNAME>COUNTRY</DEFFDNAME>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+    <LANGU>R</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Länderschlüssel</DDTEXT>
+     <REPTEXT>Lnd</REPTEXT>
+     <SCRTEXT_S>Land</SCRTEXT_S>
+     <SCRTEXT_M>Land</SCRTEXT_M>
+     <SCRTEXT_L>Länderschlüssel</SCRTEXT_L>
+    </item>
+    <item>
+     <DDLANGUAGE>R</DDLANGUAGE>
+     <DDTEXT>Код страны</DDTEXT>
+     <REPTEXT>Ст.</REPTEXT>
+     <SCRTEXT_S>Страна</SCRTEXT_S>
+     <SCRTEXT_M>Страна</SCRTEXT_M>
+     <SCRTEXT_L>Код страны</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

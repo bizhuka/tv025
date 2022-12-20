@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_D_TV025_ROOT_CHILD_CREATE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Fill key fields before save</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_FULL_KEY</CMPNAME>
+     <SCONAME>IO_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Interface to Read Data</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_FULL_KEY</CMPNAME>
+     <SCONAME>IS_CTX</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Context Information for Determinations</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_FULL_KEY</CMPNAME>
+     <SCONAME>IS_KEY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Include Structure for Key Information</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_S_INDEX</CMPNAME>
+     <SCONAME>CO_MESSAGE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Interface of Message Object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_S_INDEX</CMPNAME>
+     <SCONAME>IO_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Interface to Read Data</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_S_INDEX</CMPNAME>
+     <SCONAME>IS_CTX</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Context Information for Determinations</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_SET_S_INDEX</CMPNAME>
+     <SCONAME>IS_KEY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Include Structure for Key Information</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

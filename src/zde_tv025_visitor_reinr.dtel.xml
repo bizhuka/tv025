@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_TV025_VISITOR_REINR</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>REINR</DOMNAME>
+    <HEADLEN>55</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Trip Number</DDTEXT>
+    <REPTEXT>Trip Number</REPTEXT>
+    <SCRTEXT_S>Trip</SCRTEXT_S>
+    <SCRTEXT_M>Trip Number</SCRTEXT_M>
+    <SCRTEXT_L>Trip Number</SCRTEXT_L>
+    <APPLCLASS>PTRA</APPLCLASS>
+    <DTELMASTER>E</DTELMASTER>
+    <DEFFDNAME>TRIPNO</DEFFDNAME>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+    <LANGU>R</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Reisenummer</DDTEXT>
+     <REPTEXT>Reise</REPTEXT>
+     <SCRTEXT_S>Reise</SCRTEXT_S>
+     <SCRTEXT_M>Reisenummer</SCRTEXT_M>
+     <SCRTEXT_L>Reisenummer</SCRTEXT_L>
+    </item>
+    <item>
+     <DDLANGUAGE>R</DDLANGUAGE>
+     <DDTEXT>Номер командировки</DDTEXT>
+     <REPTEXT>Комнд</REPTEXT>
+     <SCRTEXT_S>Комнд</SCRTEXT_S>
+     <SCRTEXT_M>НомерКомндр</SCRTEXT_M>
+     <SCRTEXT_L>Номер командировки</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

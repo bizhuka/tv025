@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZTV_025</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Travel admin</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZTV_025</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Fill out &apos;&amp;1&apos; entry field</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZTV_025</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Start date &amp;1 is greater than end date &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZTV_025</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>&amp;1 passport number should contain only letters and digits</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZTV_025</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>The request &amp;1-&amp;2 by &amp;3 &amp;4</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

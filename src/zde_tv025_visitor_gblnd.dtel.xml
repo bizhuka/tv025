@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_TV025_VISITOR_GBLND</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>LAND1</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>55</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>20</SCRLEN2>
+    <SCRLEN3>40</SCRLEN3>
+    <DDTEXT>Citizenship</DDTEXT>
+    <REPTEXT>Citizenship</REPTEXT>
+    <SCRTEXT_S>Citizenshi</SCRTEXT_S>
+    <SCRTEXT_M>Citizenship</SCRTEXT_M>
+    <SCRTEXT_L>Citizenship</SCRTEXT_L>
+    <APPLCLASS>PINF</APPLCLASS>
+    <DTELMASTER>E</DTELMASTER>
+    <DEFFDNAME>COUNTRY_OF_BIRTH</DEFFDNAME>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+    <LANGU>R</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Geburtsland</DDTEXT>
+     <REPTEXT>GLd</REPTEXT>
+     <SCRTEXT_S>Geb-Land</SCRTEXT_S>
+     <SCRTEXT_M>Geb-Land</SCRTEXT_M>
+     <SCRTEXT_L>Geburtsland</SCRTEXT_L>
+    </item>
+    <item>
+     <DDLANGUAGE>R</DDLANGUAGE>
+     <DDTEXT>Страна рождения</DDTEXT>
+     <REPTEXT>СР</REPTEXT>
+     <SCRTEXT_S>СтранаРожд</SCRTEXT_S>
+     <SCRTEXT_M>СтранаРожд</SCRTEXT_M>
+     <SCRTEXT_L>Страна рождения</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

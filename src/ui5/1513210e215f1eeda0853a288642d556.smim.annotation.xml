@@ -1,0 +1,1307 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/$metadata">
+        <edmx:Include Namespace="ZC_TV025_ROOT_CDS" Alias="SAP" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
+        <edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+        <edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/reinr">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Search help for Copy From" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_F4_Copy_From" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="pernr" />
+                                    <PropertyValue Property="ValueListProperty" String="pernr" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="reinr" />
+                                    <PropertyValue Property="ValueListProperty" String="reinr" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="request_reason" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ename" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="date_beg" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="date_end" />
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterDisplayOnly">
+						<PropertyValue Property="ValueListProperty" String="activity_type"/>
+					</Record> -->
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="activity_name" />
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterDisplayOnly">
+						<PropertyValue Property="ValueListProperty" String="country_end"/>
+					</Record> -->
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="location_end" />
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterDisplayOnly">
+						<PropertyValue Property="ValueListProperty" String="zz_status"/>
+					</Record> -->
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StatusText" />
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterDisplayOnly">
+						<PropertyValue Property="ValueListProperty" String="createdby"/>
+					</Record> -->
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CrtName" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="crdat" />
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterDisplayOnly">
+						<PropertyValue Property="ValueListProperty" String="uname"/>
+					</Record> -->
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChgName" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="chdat" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType/activity_type">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Activity Type" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_ActivityType" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="activity_type" />
+                                    <PropertyValue Property="ValueListProperty" String="Activity" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="activity_name" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType/country_end">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_end" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType/zz_status">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Status" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="zz_status" />
+                                    <PropertyValue Property="ValueListProperty" String="Status" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StatusText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType/createdby">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User info" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="createdby" />
+                                    <PropertyValue Property="ValueListProperty" String="uname" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserName" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType/uname">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User info" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="uname" />
+                                    <PropertyValue Property="ValueListProperty" String="uname" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserName" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/pernr">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Visitor" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_VISITOR" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="pernr" />
+                                    <PropertyValue Property="ValueListProperty" String="pernr" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="birth_date" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ename" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="orgeh_text" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="citizenship" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="passp_number" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="passp_expiry" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/crunm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User info" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="crunm" />
+                                    <PropertyValue Property="ValueListProperty" String="uname" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserName" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/chunm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User info" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="chunm" />
+                                    <PropertyValue Property="ValueListProperty" String="uname" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserName" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_VISITORType/citizenship">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="citizenship" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/activity_type">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Activity Type" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_ActivityType" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="activity_type" />
+                                    <PropertyValue Property="ValueListProperty" String="Activity" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="activity_name" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/zz_status">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Status" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Status" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="zz_status" />
+                                    <PropertyValue Property="ValueListProperty" String="Status" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StatusText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/country_end">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_end" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="spras" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/agency">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Agency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Agency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="agency" />
+                                    <PropertyValue Property="ValueListProperty" String="agency_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="agency_name" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/agency">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Agency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Agency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="agency" />
+                                    <PropertyValue Property="ValueListProperty" String="agency_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="agency_name" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/type">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Flight Type" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_FlightType" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="type" />
+                                    <PropertyValue Property="ValueListProperty" String="Id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FlightType" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/hotel_end">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Hotel catalog" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_HotelCatalog" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="hotel_end" />
+                                    <PropertyValue Property="ValueListProperty" String="hotel_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_class" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="country_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="town_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_name" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_address" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_phone" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_comments" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/approved_by">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Approved By" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_ApprovedBy" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="approved_by" />
+                                    <PropertyValue Property="ValueListProperty" String="id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="text" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/airport_beg">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airport" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Airport" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="airport_beg" />
+                                    <PropertyValue Property="ValueListProperty" String="airport_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="country_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="town" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="iata_code" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="airport_name" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/airport_end">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airport" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Airport" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="airport_end" />
+                                    <PropertyValue Property="ValueListProperty" String="airport_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="country_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="town" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="iata_code" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="airport_name" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/country_id">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/penalty_waers">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="penalty_waers" />
+                                    <PropertyValue Property="ValueListProperty" String="waers" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/waers">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers" />
+                                    <PropertyValue Property="ValueListProperty" String="waers" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/type_car">
+                <Annotation Term="Common.ValueListWithFixedValues" />
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Type car" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_TypeCar" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="type_car" />
+                                    <PropertyValue Property="ValueListProperty" String="id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="text" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/basis">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Basis" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Basis" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="basis" />
+                                    <PropertyValue Property="ValueListProperty" String="basis_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_basis" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_basis_txt" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/waers">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers" />
+                                    <PropertyValue Property="ValueListProperty" String="waers" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/penalty_waers">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="penalty_waers" />
+                                    <PropertyValue Property="ValueListProperty" String="waers" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/transport_waers">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="transport_waers" />
+                                    <PropertyValue Property="ValueListProperty" String="waers" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/country_id">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType/check_point">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Pickup \ Destinations points" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_CheckPoint" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="check_point" />
+                                    <PropertyValue Property="ValueListProperty" String="id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="codegruppe" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="code" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="kurztext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType/arrival">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Pickup \ Destinations points" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_CheckPoint" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="arrival" />
+                                    <PropertyValue Property="ValueListProperty" String="id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="codegruppe" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="code" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="kurztext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType/citizenship">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="citizenship" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- Root tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType">
+<!--  Only for V4
+Org.OData.Capabilities.CreateRestrictions
+     <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+               <PropertyValue Property="Updatable" Bool="false"/>                
+	<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+		<Record Type="Org.OData.Capabilities.InsertRestrictionsType">
+			<PropertyValue Property="Insertable" Bool="false"/>
+		</Record>
+	</Annotation>
+
+
+	<Annotation Term="Capabilities.UpdateRestrictions">
+		<Record Type="Capabilities.UpdateRestrictionsType">
+			<PropertyValue Property="Updatable" Path="phas0"/>
+                        <Record Type="Capabilities.UpdateRestrictionsType"> 
+                            <PropertyValue Property="Updatable"> 
+                                <If>  
+                                    <Eq> 
+                                        <String /> 
+                                        <Path>true</Path> 
+                                    </Eq> 
+                                    <Bool>false</Bool> 
+                                    <Bool>false</Bool> 
+                                </If> 
+                                <Collection>
+                                    <PropertyPath>status</PropertyPath>
+                                    <PropertyPath>zz_status</PropertyPath>
+                                </Collection>
+                            </PropertyValue> 
+                        </Record> 
+		</Record>
+	</Annotation> -->
+
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="TravelHeaderOverallStatus" />
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#StatusData" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Travel Request" />
+                        <PropertyValue Property="TypeNamePlural" String="Travel Requests" />
+                        <!-- Type="Edm.Binary" -->
+                        <PropertyValue Property="ImageUrl" Path="photo_path"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="text_info" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="id_info" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="RequestInfo" />
+                            <PropertyValue Property="Label" String="Request Info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <!--<Record Type="UI.ReferenceFacet">-->
+                                    <!--	<PropertyValue Property="Label" String="Record 3"/>-->
+                                    <!--	<PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>-->
+                                    <!--</Record>-->
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="VisitorIdFacet" />
+                                        <PropertyValue Property="Label" String="Visitor" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VisitorGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Main" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#MainGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Dates" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Dates" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="EmployeeInfo" />
+                            <PropertyValue Property="Label" String="Employee info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <!-- to_Employee/ ? -->
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Employee" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PersonGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Passport" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Passport" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Cost Center / WBS" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CostGroup" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="VisitorInfo" />
+                            <PropertyValue Property="Label" String="Visitor info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Visitor" />
+                                        <PropertyValue Property="Target" AnnotationPath="to_Visitor/@UI.FieldGroup#VisitorGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Passport" />
+                                        <PropertyValue Property="Target" AnnotationPath="to_Visitor/@UI.FieldGroup#Passport" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="FlightInfo" />
+                            <PropertyValue Property="Label" String="Flights" />
+                            <PropertyValue Property="Target" AnnotationPath="to_Flight/@UI.LineItem" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HotelInfo" />
+                            <PropertyValue Property="Label" String="Hotels" />
+                            <PropertyValue Property="Target" AnnotationPath="to_Hotel/@UI.LineItem" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="TransportInfo" />
+                            <PropertyValue Property="Label" String="Transport" />
+                            <PropertyValue Property="Target" AnnotationPath="to_Transport/@UI.LineItem" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="AttachmentInfo" />
+                            <PropertyValue Property="Label" String="Attachments" />
+                            <PropertyValue Property="Target" AnnotationPath="to_Attach/@UI.LineItem" />
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="TechInfo" />
+                            <PropertyValue Property="Label" String="Tech. Info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="techCreated" />
+                                        <PropertyValue Property="Label" String="Created" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechCreated" />
+                                    </Record>
+
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="techChanged" />
+                                        <PropertyValue Property="Label" String="Changed" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechChanged" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="DictInfo" />
+                            <PropertyValue Property="Label" String="Dictionaries" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Visitor" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeVisitor/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Agency" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeAgency/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Hotel catalog" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeHotelCatalog/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Basis" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeBasis/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="Airport" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeAirport/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="CheckPoint" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeCheckPoint/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- Flight tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="FlightInfo" />
+                            <PropertyValue Property="Label" String="Flight Info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Main fields" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Departure" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Departure" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Arrival" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Arrival" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Ticket" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Ticket" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Penalty" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Penalty" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Flight Data" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FlightGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Other" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Other" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- Hotel tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="HotelInfo" />
+                            <PropertyValue Property="Label" String="Hotel Info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Main fields" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Dates" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Dates" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Transport" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Transport" />
+                                    </Record>
+
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Penalty" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Penalty" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Hotel Data" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HotelGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Other" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Other" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- Transport tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="TransportInfo" />
+                            <PropertyValue Property="Label" String="Transport Info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Main fields" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Dates" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Dates" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Status" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Status" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Other" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Other" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- Visitor tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="VisitorInfo" />
+                            <PropertyValue Property="Label" String="Visitor info" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Visitor" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VisitorGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Passport" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Passport" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- Agency tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_AgencyType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="AgencyInfo" />
+                            <PropertyValue Property="Label" String="Agency Info" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!-- Hotel Catalog tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HotelCatalogInfo" />
+                            <PropertyValue Property="Label" String="Hotel catalog" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!-- Basis tab -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_BasisType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="BasisInfo" />
+                            <PropertyValue Property="Label" String="Basis" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!-- Airport -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="AirportInfo" />
+                            <PropertyValue Property="Label" String="Airport" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!-- CheckPoint -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_CheckPointType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="CheckPointInfo" />
+                            <PropertyValue Property="Label" String="CheckPoint" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- Default variant -->
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType">
+                <Annotation Term="com.sap.vocabularies.UI.v1.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="chdat" />
+                                    <PropertyValue Property="Descending" Bool="true" />
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="chtime" />
+                                    <PropertyValue Property="Descending" Bool="true" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/zz_status">
+                <Annotation Term="Common.FilterDefaultValue" String="O" />
+            </Annotations> -->
+            <!-- <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/crunm">
+                <Annotation Term="Common.FilterDefaultValue" String="_USER_NAME_" />
+            </Annotations> -->
+            <!-- <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/chunm">
+                <Annotation Term="Common.FilterDefaultValue" String="_USER_NAME_" />
+            </Annotations> -->
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

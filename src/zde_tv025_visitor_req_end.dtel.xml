@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZDE_TV025_VISITOR_REQ_END</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>RZIELORT</DOMNAME>
+    <HEADLEN>30</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Trip Destination</DDTEXT>
+    <REPTEXT>Trip Destination</REPTEXT>
+    <SCRTEXT_S>Dest.</SCRTEXT_S>
+    <SCRTEXT_M>Destination</SCRTEXT_M>
+    <SCRTEXT_L>Destination</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+    <LANGU>R</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Zielort der Reise</DDTEXT>
+     <REPTEXT>Zielort der Reise</REPTEXT>
+     <SCRTEXT_S>Zielort</SCRTEXT_S>
+     <SCRTEXT_M>Zielort</SCRTEXT_M>
+     <SCRTEXT_L>Zielort</SCRTEXT_L>
+    </item>
+    <item>
+     <DDLANGUAGE>R</DDLANGUAGE>
+     <DDTEXT>Место назначения командировки</DDTEXT>
+     <REPTEXT>Место назначения командировки</REPTEXT>
+     <SCRTEXT_S>МстНазн</SCRTEXT_S>
+     <SCRTEXT_M>МестоНазнач</SCRTEXT_M>
+     <SCRTEXT_L>Место назначения</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
