@@ -4,8 +4,103 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
 
   onInit: function () {
-    // window._List = this     
+    // window._List = this
+
   },
+
+  onAfterRendering: function (oEvent) {
+    this._setMessageParser()
+    this._initCreateDialog()
+    this._initReportMenu()
+    this._initMassEdit()
+    this._initGroupByEmployee()
+  },
+
+  _initGroupByEmployee: function () {
+    const _this = this
+    const _byId = sap.ui.getCore().byId
+    const switchId = this._prefix + 'Employee-Grp'
+    if (_byId(switchId))
+      return
+
+    _byId(this._prefix + 'listReportFilter-btnGo').attachPress(function () {
+      _byId(switchId).setState(false)
+    })
+
+    const switchField = new sap.m.Switch({
+      id: switchId,
+      tooltip: 'Group by Employee / Visitor',
+
+      change: function () {
+        aSorters = [new sap.ui.model.Sorter('chdat', true), new sap.ui.model.Sorter('chtime', true)]
+        if (switchField.getState())
+          aSorters.unshift(new sap.ui.model.Sorter('pernr', false, true))
+        _byId(_this._prefix + 'responsiveTable').getBinding('items').sort(aSorters)
+      }
+    })
+    _byId(this._prefix + 'template::ListReport::TableToolbar').addContent(switchField)
+  },
+
+  _initMassEdit: function () {
+    var oEntitySet = this.getView().getModel().getMetaModel().getODataEntitySet("ZC_TV025_ROOT");
+    oEntitySet["Org.OData.Capabilities.V1.UpdateRestrictions"] = {
+      Updatable: {
+        Bool: true
+      }
+    }
+  },
+
+  _setMessageParser: function () {
+    const _view = this.getView()
+    const model = _view.getModel()
+    sap.ui.require(["ztv025/ext/controller/MessageParser"], function (MessageParser) {
+      const messageParser = new MessageParser(model.sServiceUrl, model.oMetadata, !!model.bPersistTechnicalMessages)
+      model.setMessageParser(messageParser)
+    })
+  },
+
+  _initCreateDialog: function () {
+    const _this = this
+    const _view = _this.getView()
+
+    _view.byId(_this._prefix + 'addEntry').attachPress(function () {
+      const createDialog = _view.byId(_this._prefix + 'CreateWithDialog')
+      if (createDialog && !createDialog.mEventRegistry.afterOpen) createDialog.attachAfterOpen(function () {
+        createDialog.setContentWidth('25em')
+        const _byId = sap.ui.getCore().byId
+        _byId('__form0').setTitle('Create new visitor request')
+        _byId('__field5').setMandatory(true)
+        _byId('__field6').setMandatory(true)
+      })
+    })
+  },
+
+  _initReportMenu: function () {
+    const _this = this
+    const _view = _this.getView()
+
+    const menu = _view.byId(this._prefix + 'listReport-btnExcelExport').getMenu()
+    if (menu.getItems().length === 2)
+      menu.addItem(new sap.m.MenuItem({
+        "text": "Report",
+        "press": function () {
+          const table = _view.byId(_this._prefix + 'responsiveTable')
+          const sUrl =
+            document.location.origin +
+            "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_F4_Copy_From(pernr='00000000',reinr='0000000000')/$value?" +
+            table.getBinding("items").sFilterParams
+          window.open(sUrl)
+        }
+      }))
+  },
+
+  // beforeMultiEditSaveExtension: function (aContextsToBeUpdated) {
+  //   debugger
+  // },
+
+  // beforeSaveExtension: function () {
+  //   debugger
+  // },
 
   onInitSmartFilterBarExtension: function (oEvent) {
     const _this = this
@@ -78,14 +173,6 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
       oBindingParams.filters.push(new sap.ui.model.Filter("pernr", "BT", "90000000", "99999999"))
   },
 
-
-  beforeSaveExtension: function () {
-    debugger
-  },
-
-  onBeforeEditExtension: function () {
-    debugger
-  },
 
   onChildOpenedExtension: function (oEvent) {
     if (window._objectPage)

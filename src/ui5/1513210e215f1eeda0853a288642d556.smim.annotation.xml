@@ -75,7 +75,7 @@
                                     <PropertyValue Property="ValueListProperty" String="StatusText" />
                                 </Record>
                                 <!-- <Record Type="Common.ValueListParameterDisplayOnly">
-						<PropertyValue Property="ValueListProperty" String="createdby"/>
+						<PropertyValue Property="ValueListProperty" String="crunm"/>
 					</Record> -->
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="CrtName" />
@@ -84,7 +84,7 @@
                                     <PropertyValue Property="ValueListProperty" String="crdat" />
                                 </Record>
                                 <!-- <Record Type="Common.ValueListParameterDisplayOnly">
-						<PropertyValue Property="ValueListProperty" String="uname"/>
+						<PropertyValue Property="ValueListProperty" String="chunm"/>
 					</Record> -->
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="ChgName" />
@@ -828,39 +828,12 @@
 
             <!-- Root tab -->
             <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType">
-<!--  Only for V4
-Org.OData.Capabilities.CreateRestrictions
-     <Annotation Term="Capabilities.UpdateRestrictions">
-          <Record Type="Capabilities.UpdateRestrictionsType">
-               <PropertyValue Property="Updatable" Bool="false"/>                
-	<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
-		<Record Type="Org.OData.Capabilities.InsertRestrictionsType">
-			<PropertyValue Property="Insertable" Bool="false"/>
-		</Record>
-	</Annotation>
-
-
-	<Annotation Term="Capabilities.UpdateRestrictions">
-		<Record Type="Capabilities.UpdateRestrictionsType">
-			<PropertyValue Property="Updatable" Path="phas0"/>
-                        <Record Type="Capabilities.UpdateRestrictionsType"> 
-                            <PropertyValue Property="Updatable"> 
-                                <If>  
-                                    <Eq> 
-                                        <String /> 
-                                        <Path>true</Path> 
-                                    </Eq> 
-                                    <Bool>false</Bool> 
-                                    <Bool>false</Bool> 
-                                </If> 
-                                <Collection>
-                                    <PropertyPath>status</PropertyPath>
-                                    <PropertyPath>zz_status</PropertyPath>
-                                </Collection>
-                            </PropertyValue> 
-                        </Record> 
-		</Record>
-	</Annotation> -->
+                <!-- Only for V4 -->
+                <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="true" />
+                    </Record>
+                </Annotation>
 
                 <Annotation Term="SAP__UI.HeaderFacets">
                     <Collection>
@@ -876,7 +849,7 @@ Org.OData.Capabilities.CreateRestrictions
                         <PropertyValue Property="TypeName" String="Travel Request" />
                         <PropertyValue Property="TypeNamePlural" String="Travel Requests" />
                         <!-- Type="Edm.Binary" -->
-                        <PropertyValue Property="ImageUrl" Path="photo_path"/>
+                        <PropertyValue Property="ImageUrl" Path="photo_path" />
                         <PropertyValue Property="Title">
                             <Record Type="UI.DataField">
                                 <PropertyValue Property="Value" Path="text_info" />
@@ -905,6 +878,10 @@ Org.OData.Capabilities.CreateRestrictions
                                         <PropertyValue Property="ID" String="VisitorIdFacet" />
                                         <PropertyValue Property="Label" String="Visitor" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VisitorGroup" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="State" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#State" />
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Main" />
@@ -1286,6 +1263,9 @@ Org.OData.Capabilities.CreateRestrictions
                                 <Record>
                                     <PropertyValue Property="Property" PropertyPath="chtime" />
                                     <PropertyValue Property="Descending" Bool="true" />
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="pernr" />
                                 </Record>
                             </Collection>
                         </PropertyValue>

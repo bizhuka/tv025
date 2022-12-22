@@ -6,7 +6,13 @@ CLASS zcl_tv025_report DEFINITION
   GLOBAL FRIENDS zcl_eui_event_caller .
 
   PUBLIC SECTION.
+
+    METHODS constructor
+      IMPORTING
+        !iv_where TYPE string OPTIONAL .
     METHODS start_of_selection .
+
+    METHODS get_xtt RETURNING VALUE(ro_xtt) TYPE REF TO zif_xtt.
   PROTECTED SECTION.
   PRIVATE SECTION.
 
@@ -21,13 +27,11 @@ CLASS zcl_tv025_report DEFINITION
     TYPES:
       tt_alv TYPE STANDARD TABLE OF ts_alv WITH DEFAULT KEY .
 
-    DATA mt_where TYPE ddshselops .
     DATA mv_where TYPE string .
 
     METHODS _show_alv
       IMPORTING
         !ir_table TYPE REF TO data .
-    METHODS _download .
     METHODS _on_user_command
         FOR EVENT user_command OF cl_gui_alv_grid
       IMPORTING
@@ -39,6 +43,8 @@ CLASS zcl_tv025_report DEFINITION
         !e_row_id
         !e_column_id .
     METHODS _get_headers
+      IMPORTING
+        it_where          TYPE ddshselops
       RETURNING
         VALUE(rt_headers) TYPE REF TO data .
     METHODS _get_flights
@@ -71,6 +77,29 @@ ENDCLASS.
 CLASS ZCL_TV025_REPORT IMPLEMENTATION.
 
 
+  METHOD constructor.
+    mv_where = iv_where.
+  ENDMETHOD.
+
+
+  METHOD get_xtt.
+    TYPES: BEGIN OF ts_root,
+             f    TYPE REF TO data,
+             h    TYPE REF TO data,
+             t    TYPE REF TO data,
+             date TYPE d,
+             time TYPE t,
+           END OF ts_root.
+
+    ro_xtt = NEW zcl_xtt_excel_xlsx( NEW zcl_xtt_file_smw0( 'ZTV_025_REPORT.XLSX' )
+                  )->merge( VALUE ts_root( f    = _get_flights( )
+                                           h    = _get_hotels( )
+                                           t    = _get_transports( )
+                                           date = sy-datum
+                                           time = sy-uzeit ) ).
+  ENDMETHOD.
+
+
   METHOD start_of_selection.
     TYPES: BEGIN OF ts_popup,
              crdat    TYPE RANGE OF ftpt_req_head-zz_crdat,
@@ -98,37 +127,18 @@ CLASS ZCL_TV025_REPORT IMPLEMENTATION.
 
 ********************************************************************************************************************************************
 ********************************************************************************************************************************************
-    mt_where =               VALUE #( FOR ls_crdat  IN lr_popup->crdat[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'CRDAT'  ) ) ls_crdat ) ) ).
-    APPEND LINES OF VALUE ddshselops( FOR ls_pernr  IN lr_popup->pernr[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'PERNR'  ) ) ls_pernr ) ) )  TO mt_where[].
-    APPEND LINES OF VALUE ddshselops( FOR ls_reinr  IN lr_popup->reinr[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'REINR'  ) ) ls_reinr ) ) )  TO mt_where[].
-    APPEND LINES OF VALUE ddshselops( FOR ls_ename  IN lr_popup->ename[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'ENAME'  ) ) ls_ename ) ) )  TO mt_where[].
-    APPEND LINES OF VALUE ddshselops( FOR ls_status IN lr_popup->status[] ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'STATUS' ) ) ls_status ) ) ) TO mt_where[].
-    mv_where = zcl_tv025_model=>as_where( mt_where ).
+    DATA(lt_where) = VALUE ddshselops( FOR ls_crdat  IN lr_popup->crdat[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'CRDAT'  ) ) ls_crdat ) ) ).
+    APPEND  LINES OF VALUE ddshselops( FOR ls_pernr  IN lr_popup->pernr[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'PERNR'  ) ) ls_pernr ) ) )  TO lt_where[].
+    APPEND  LINES OF VALUE ddshselops( FOR ls_reinr  IN lr_popup->reinr[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'REINR'  ) ) ls_reinr ) ) )  TO lt_where[].
+    APPEND  LINES OF VALUE ddshselops( FOR ls_ename  IN lr_popup->ename[]  ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'ENAME'  ) ) ls_ename ) ) )  TO lt_where[].
+    APPEND  LINES OF VALUE ddshselops( FOR ls_status IN lr_popup->status[] ( CORRESPONDING #( BASE ( VALUE #( shlpfield = 'STATUS' ) ) ls_status ) ) ) TO lt_where[].
+    mv_where = zcl_tv025_model=>as_where( lt_where ).
 
     IF lr_popup->show_alv = abap_true.
-      _show_alv( _get_headers( ) ).
+      _show_alv( _get_headers( lt_where ) ).
       RETURN.
     ENDIF.
-    _download( ).
-  ENDMETHOD.
-
-
-  METHOD _download.
-    TYPES: BEGIN OF ts_root,
-             f    TYPE REF TO data,
-             h    TYPE REF TO data,
-             t    TYPE REF TO data,
-             date TYPE d,
-             time TYPE t,
-           END OF ts_root.
-
-    NEW zcl_xtt_excel_xlsx( NEW zcl_xtt_file_smw0( 'ZTV_025_REPORT.XLSX' )
-    )->merge( VALUE ts_root( f    = _get_flights( )
-                             h    = _get_hotels( )
-                             t    = _get_transports( )
-                             date = sy-datum
-                             time = sy-uzeit )
-    )->download( ).
+    get_xtt( )->download( ).
   ENDMETHOD.
 
 
@@ -165,7 +175,7 @@ CLASS ZCL_TV025_REPORT IMPLEMENTATION.
 
 
   METHOD _get_headers.
-    DATA(lr_alv) = NEW tt_alv( CORRESPONDING #( zcl_tv025_model=>get_instance( )->get_request_items( mt_where ) ) ).
+    DATA(lr_alv) = NEW tt_alv( CORRESPONDING #( zcl_tv025_model=>get_instance( )->get_request_items( it_where ) ) ).
     LOOP AT lr_alv->* ASSIGNING FIELD-SYMBOL(<ls_alv>).
       <ls_alv>-flight    = icon_flight.
       <ls_alv>-hotel     = icon_hotel.
@@ -284,7 +294,7 @@ CLASS ZCL_TV025_REPORT IMPLEMENTATION.
   METHOD _on_user_command.
     CASE e_ucomm.
       WHEN 'DOWNLOAD'.
-        _download( ).
+        get_xtt( )->download( ).
     ENDCASE.
   ENDMETHOD.
 

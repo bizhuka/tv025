@@ -4,6 +4,6 @@
             <Switch id="visitorFilter-switch" type="Default">
                 <!-- customTextOff="All" customTextOn="Visitor only" -->
             </Switch>
-        </smartfilterbar:customControl>
-    </smartfilterbar:ControlConfiguration>
+        </smartfilterbar:customControl>        
+    </smartfilterbar:ControlConfiguration>    
 </core:FragmentDefinition>

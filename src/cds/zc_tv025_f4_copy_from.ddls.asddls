@@ -13,6 +13,8 @@
     }
 }
 
+@ZABAP.virtualEntity: 'ZCL_V_TV025_REPORT'
+
 define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
 
   association [1..1] to ZC_TV025_Employee as _Employee on _Employee.pernr = root.pernr
@@ -83,7 +85,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     //@Consumption.valueHelp: '_UserInfoCrt'
     @ObjectModel.text.element: ['CrtName']
     //@UI.hidden: true
-    createdby,
+    createdby as crunm,
     @EndUserText.label: 'Created By' 
     _UserInfoCrt.UserName as CrtName,
     
@@ -94,7 +96,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     //@Consumption.valueHelp: '_UserInfoChg'
     @ObjectModel.text.element: ['ChgName']
     //@UI.hidden: true
-    uname,
+    uname as chunm,
     @EndUserText.label: 'Changed By'
     _UserInfoChg.UserName as ChgName,
     

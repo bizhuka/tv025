@@ -362,7 +362,7 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
       DATA(lv_content) = _get_employee_photo( ).
       io_srv_runtime->set_header(
            VALUE #( name  = 'Content-Disposition'
-                    value = |inline; filename="ok.jpg"| ) ).
+                    value = |outline; filename="ok.jpg"| ) ).
     ELSE.
       read( IMPORTING et_attach_alv = DATA(lt_alv) ).
       " Get full info about file

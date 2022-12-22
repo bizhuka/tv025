@@ -20,18 +20,14 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 
 	_doInit: function () {
 		this._setIcons()
-		this._prepare_attach();
+		this._prepare_attach()		
 		this._check_lock_before_press()
 		this._screen_before_otput()
 	},
 
-	beforeSaveExtension: function () {
-		debugger
-	},
-
-	onBeforeEditExtension: function () {
-		debugger
-	},
+	// beforeSaveExtension: function () {
+	// 	debugger
+	// },
 
 	afterOpen: function (oEvent) {
 		this._doInit()
@@ -93,7 +89,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 
 				// Fix called 2 times?
 				if (window._prev_lock_press && window._prev_lock_press.button === button && (new Date().getTime() - window._prev_lock_press.time) < 1000) {
-					oEvent.stopPropagation();
+					throw 'Cancel edit event' // oEvent.cancelBubble() preventDefault()
 				}
 				window._prev_lock_press = {
 					button: button,
@@ -124,12 +120,9 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 					error: function (oError) {
 						console.log(oError)
 					}
-				});
+				})
 
-				// oEvent.cancelBubble()
-				// oEvent.preventDefault()
-				// oEvent.stopImmediatePropagation(); just through an error
-				oEvent.stopPropagation();
+				throw 'Cancel edit event'
 			});
 
 			modifyButton.attachPress(modifyButton._std_fm.fFunction, modifyButton._std_fm.oListener)

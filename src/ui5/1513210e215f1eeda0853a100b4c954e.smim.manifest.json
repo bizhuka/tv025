@@ -181,7 +181,27 @@
                 "useDateRange": true
               }
             },
-                    											 "dataLoadSettings": {  "loadDataOnAppLaunch": "never" }
+                    											 "dataLoadSettings": {  "loadDataOnAppLaunch": "never" },
+
+                                           
+                                           "tableSettings": {
+                                            "multiSelect": true,
+                                            "createWithParameterDialog" : {
+                                              "fields" : {
+                                                  "pernr":{"path": "pernr"},
+                                                  "activity_type":{"path": "activity_type"},
+                                                  "country_end":{"path": "country_end"},
+                                                  "location_end":{"path": "location_end"},
+                                                  "request_reason":{"path": "request_reason"},
+                                                  "date_beg":{"path": "date_beg"},
+                                                  "date_end":{"path": "date_end"}
+                                              }
+                                            },
+                                            "multiEdit": {
+                                              "enabled" : true,
+                                              "annotationPath": "com.sap.vocabularies.UI.v1.FieldGroup#State"
+                                             }          
+                                            }
           }
         },
         "pages": {

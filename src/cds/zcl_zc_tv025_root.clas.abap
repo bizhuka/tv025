@@ -1,19 +1,20 @@
-CLASS zcl_zc_tv025_root DEFINITION
-  PUBLIC
-  INHERITING FROM cl_sadl_gtk_exposure_mpc
-  FINAL
-  CREATE PUBLIC .
+class ZCL_ZC_TV025_ROOT definition
+  public
+  inheriting from CL_SADL_GTK_EXPOSURE_MPC
+  final
+  create public .
 
-  PUBLIC SECTION.
-    METHODS define
-        REDEFINITION .
-  PROTECTED SECTION.
+public section.
 
-    METHODS get_paths
-        REDEFINITION .
-    METHODS get_timestamp
-        REDEFINITION .
-  PRIVATE SECTION.
+  methods DEFINE
+    redefinition .
+protected section.
+
+  methods GET_PATHS
+    redefinition .
+  methods GET_TIMESTAMP
+    redefinition .
+private section.
 ENDCLASS.
 
 
@@ -21,20 +22,20 @@ ENDCLASS.
 CLASS ZCL_ZC_TV025_ROOT IMPLEMENTATION.
 
 
-  METHOD define.
-    super->define( ).
-    zcl_tv025_odata_model=>define_model( model ).
-  ENDMETHOD.
+METHOD define.
+  super->define( ).
+  zcl_tv025_odata_model=>define_model( model ).
+ENDMETHOD.
 
 
-  METHOD get_paths.
-    et_paths = VALUE #(
-    ( `CDS~ZC_TV025_ROOT` )
-    ).
-  ENDMETHOD.
+  method GET_PATHS.
+et_paths = VALUE #(
+( `CDS~ZC_TV025_ROOT` )
+).
+  endmethod.
 
 
-  METHOD get_timestamp.
-    rv_timestamp = 20221220021038.
-  ENDMETHOD.
+  method GET_TIMESTAMP.
+RV_TIMESTAMP = 20221222030903.
+  endmethod.
 ENDCLASS.

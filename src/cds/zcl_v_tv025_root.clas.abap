@@ -1,29 +1,29 @@
-CLASS zcl_v_tv025_root DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_V_TV025_ROOT definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    INTERFACES zif_sadl_exit .
-    INTERFACES zif_sadl_read_runtime .
+  interfaces ZIF_SADL_EXIT .
+  interfaces ZIF_SADL_READ_RUNTIME .
 
-    TYPES:
-      BEGIN OF ts_passport,
+  types:
+    BEGIN OF ts_passport,
         " Importing
         pernr        TYPE pernr-pernr,
         reinr        TYPE reinr,
         " Exporting
         passp_expiry TYPE ptk99-zz_passp_expiry,
         passp_number TYPE ptk99-zz_passp_number,
-      END OF ts_passport,
-
-      BEGIN OF ts_image,
+      END OF ts_passport .
+  types:
+    BEGIN OF ts_image,
         pernr      TYPE pernr-pernr,
         photo_path TYPE text255,
-      END OF ts_image.
-    TYPES:
-      tt_passport TYPE STANDARD TABLE OF ts_passport WITH DEFAULT KEY .
+      END OF ts_image .
+  types:
+    tt_passport TYPE STANDARD TABLE OF ts_passport WITH DEFAULT KEY .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.

@@ -43,6 +43,11 @@ CLASS ZCL_TV025_ODATA_MODEL IMPLEMENTATION.
     io_model->get_entity_type( 'ZC_TV025_AttachType' )->get_property( 'pernr' )->set_as_content_type( ).
     io_model->get_entity_type( 'ZC_TV025_AttachType' )->get_property( 'reinr' )->set_as_content_type( ).
     io_model->get_entity_type( 'ZC_TV025_AttachType' )->get_property( 'doc_id' )->set_as_content_type( ).
+
+    io_model->get_entity_type( 'ZC_TV025_ROOTType' )->set_updatable( abap_true ).
+
+    io_model->get_entity_type( 'ZC_TV025_F4_Copy_FromType' )->set_is_media( abap_true ).
+    io_model->get_entity_type( 'ZC_TV025_F4_Copy_FromType' )->get_property( 'pernr' )->set_as_content_type( ).
   ENDMETHOD.
 
 

@@ -17,6 +17,7 @@
 //    draftEnabled: true
 }
 
+
 @UI: {
     headerInfo: {
         typeName: 'Travel Request',
@@ -124,7 +125,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     @UI.selectionField: [{ position: 100 }]
 //    @Consumption.valueHelp: '_Status' 
     @ObjectModel.text.element: ['StatusText']
-    @UI.fieldGroup: [{ qualifier: 'MainGroup', position: 10 }] 
+    @UI.fieldGroup: [{ qualifier: 'State', position: 10 }] 
     root.zz_status,
     
     @ObjectModel:{ readOnly: true }
