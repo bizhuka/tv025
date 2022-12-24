@@ -79,6 +79,7 @@ CLASS ZCL_TV025_REPORT IMPLEMENTATION.
 
   METHOD constructor.
     mv_where = iv_where.
+    REPLACE ALL OCCURRENCES OF 'DATE_' IN mv_where WITH `t~DATE_`.
   ENDMETHOD.
 
 

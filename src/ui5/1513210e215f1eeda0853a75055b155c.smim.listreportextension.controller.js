@@ -1,12 +1,26 @@
 sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
-
+  _template: 'ztv025::sap.suite.ui.generic.template.',
   _prefix: 'ztv025::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_TV025_ROOT--',
+  _prefix_obj: 'ztv025::sap.suite.ui.generic.template.ObjectPage.view.Details::ZC_TV025_ROOT--',
 
 
   onInit: function () {
-    // window._List = this
+    const _this = this
+    window._listPage = _this
 
+    _this.getView().byId(_this._prefix + 'responsiveTable').attachItemPress(function (oEvent) {
+      const currContext = oEvent.getParameters().listItem.getBindingContext()
+      _this.setTabs(currContext.getObject().pernr[0] === '9')
+
+      debugger
+      if (window._objectPage)
+        window._objectPage.check_ui_state(currContext)
+    })
   },
+
+  // onChildOpenedExtension: function (oEvent) {
+  //   if (window._objectPage) window._objectPage.afterOpen(oEvent)
+  // },
 
   onAfterRendering: function (oEvent) {
     this._setMessageParser()
@@ -14,6 +28,45 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
     this._initReportMenu()
     this._initMassEdit()
     this._initGroupByEmployee()
+
+    this.setTabs(
+      window.location.href.indexOf("pernr='9") !== -1,
+      window.location.href.indexOf("/ZC_TV025_ROOT(-)") !== -1 || window.location.href.indexOf("/ZC_TV025_ROOT('id-") !== -1)
+  },
+
+  setTabs: function (isVisitor = false, createMode = false) {
+    this._createMode = createMode
+    this._visitor = isVisitor
+
+    const ids = {}
+    ids[this._prefix_obj + 'com.sap.vocabularies.UI.v1.FieldGroup::CostGroup::FormGroup'] = {
+      visible: !createMode && !isVisitor
+    }
+    ids[this._prefix_obj + 'objectPage-anchBar-' + this._prefix_obj + 'EmployeeInfo::Section-anchor'] = {
+      text: isVisitor ? 'Visitor info' : 'Employee info'
+    }
+    // ids[this._prefix_obj + "objectPage-anchBar-" + this._prefix_obj + "TechInfo::Section-anchor"] = { visible: !createMode }
+    // ids[this._prefix_obj + "objectPage-anchBar-" + this._prefix_obj + "DictInfo::Section-anchor"] = { visible: !createMode }
+    // ids[this._prefix_obj + "VisitorIdFacet::FormGroup"] = { visible: createMode }
+    // ids[this._prefix_obj + "action::bt_copy_from"] = { visible:  !createMode }
+
+    const _byId = sap.ui.getCore().byId
+    for (id in ids) {
+      const field = _byId(id)
+      if (!field) continue
+
+      if (ids[id].visible !== undefined) field.setVisible(ids[id].visible)
+      if (ids[id].text !== undefined) field.setText(ids[id].text)
+    }
+
+    // const firsstButton = _byId(this._prefix_obj + "objectPage-anchBar-" + this._prefix_obj + "RequestInfo::Section-anchor")
+    // if (firsstButton) {
+    //   _byId(this._prefix_obj + 'objectPage-anchBar').setSelectedButton(firsstButton)
+    //   firsstButton.firePress()
+    // }
+
+    if (window._objectPage)
+      window._objectPage.setIcons()
   },
 
   _initGroupByEmployee: function () {
@@ -79,19 +132,30 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
     const _this = this
     const _view = _this.getView()
 
-    const menu = _view.byId(this._prefix + 'listReport-btnExcelExport').getMenu()
-    if (menu.getItems().length === 2)
-      menu.addItem(new sap.m.MenuItem({
-        "text": "Report",
-        "press": function () {
-          const table = _view.byId(_this._prefix + 'responsiveTable')
-          const sUrl =
-            document.location.origin +
-            "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_F4_Copy_From(pernr='00000000',reinr='0000000000')/$value?" +
-            table.getBinding("items").sFilterParams
-          window.open(sUrl)
-        }
-      }))
+    const menuId = _this._prefix + 'report-xlsx'
+    if (_view.byId(menuId))
+      return
+
+    const params = {
+      id: menuId,
+      text: "Report",
+      icon: "sap-icon://excel-attachment",
+
+      press: function () {
+        const table = _view.byId(_this._prefix + 'responsiveTable')
+        const sUrl =
+          document.location.origin +
+          "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_F4_Copy_From(pernr='00000000',reinr='0000000000')/$value?" +
+          table.getBinding("items").sFilterParams
+        window.open(sUrl)
+      }
+    }
+
+    const baseMenu = _view.byId(this._prefix + 'listReport-btnExcelExport')
+    if (baseMenu)
+      baseMenu.getMenu().addItem(new sap.m.MenuItem(params))
+    else  // For sapui5 1.71
+      _view.byId(_this._prefix + 'template::ListReport::TableToolbar').addContent(new sap.m.Button(params))
   },
 
   // beforeMultiEditSaveExtension: function (aContextsToBeUpdated) {
@@ -115,19 +179,14 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
       const filterData = _filterBar.getFilterData()
 
-      // Change created & changed filter
-      const userFields = ['crunm'] // , 'chunm'
-      userFields.forEach(userField => {
-        filterData[userField] = {
-          "ranges": [{
-            "exclude": false,
-            "operation": "EQ",
-            "keyField": userField,
-            "value1": currentUser.name
-          }]
-        }
-      })
-
+      filterData.crunm = {
+        "ranges": [{
+          "exclude": false,
+          "operation": "EQ",
+          "keyField": "crunm",
+          "value1": currentUser.name
+        }]
+      }
       filterData.chdat = {
         "ranges": [{
           "exclude": false,
@@ -141,6 +200,14 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
       _filterBar.fireSearch()
 
+      _view.getModel().read("/ZC_TV025_UserInfo('" + currentUser.name + "')", {
+        success: function (userInfo) {
+          const userInfoText = userInfo.UserName  //+ " (" + currentUser.name + ")"
+          const token = _view.byId(_this._prefix + 'listReportFilter-filterItemControl_BASIC-crunm').getTokens()[0]
+          token.setText(userInfoText)
+          token.setTooltip(userInfoText)
+        }
+      })
       // Main title
       _view.byId(_this._prefix + 'template::PageVariant-text').setText('Travel request:')
     });
@@ -171,11 +238,5 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
     if (oCustomControl.getState())
       oBindingParams.filters.push(new sap.ui.model.Filter("pernr", "BT", "90000000", "99999999"))
-  },
-
-
-  onChildOpenedExtension: function (oEvent) {
-    if (window._objectPage)
-      window._objectPage.afterOpen(oEvent)
-  },
+  }
 });

@@ -23,7 +23,6 @@ sap.ui.define([
                 _this.dialog = sap.ui.xmlfragment("copyFrom", "ztv025.ext.fragment.CopyFromDialog", _this);
                 _this.owner.getView().addDependent(_this.dialog);
             }
-            console.log(this.currentRoot)
         },
 
         _onInitialise: function (field) {

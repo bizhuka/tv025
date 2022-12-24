@@ -899,34 +899,19 @@
                             <PropertyValue Property="Label" String="Employee info" />
                             <PropertyValue Property="Facets">
                                 <Collection>
-                                    <!-- to_Employee/ ? -->
+                                    <!-- to_Employee/ to_Visitor -->
                                     <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Employee" />
+                                        <PropertyValue Property="Label" String="Personal Data" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PersonGroup" />
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Passport" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Passport" />
                                     </Record>
+
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Cost Center / WBS" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CostGroup" />
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                        <Record Type="UI.CollectionFacet">
-                            <PropertyValue Property="ID" String="VisitorInfo" />
-                            <PropertyValue Property="Label" String="Visitor info" />
-                            <PropertyValue Property="Facets">
-                                <Collection>
-                                    <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Visitor" />
-                                        <PropertyValue Property="Target" AnnotationPath="to_Visitor/@UI.FieldGroup#VisitorGroup" />
-                                    </Record>
-                                    <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Passport" />
-                                        <PropertyValue Property="Target" AnnotationPath="to_Visitor/@UI.FieldGroup#Passport" />
                                     </Record>
                                 </Collection>
                             </PropertyValue>

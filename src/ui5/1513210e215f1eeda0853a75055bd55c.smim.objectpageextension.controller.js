@@ -1,53 +1,82 @@
 sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
-	_template: 'ztv025::sap.suite.ui.generic.template.',
 	_details: 'ztv025::sap.suite.ui.generic.template.ObjectPage.view.Details::',
 	_prefix: 'ztv025::sap.suite.ui.generic.template.ObjectPage.view.Details::ZC_TV025_ROOT--',
 	_table: '::com.sap.vocabularies.UI.v1.LineItem::Table',
 
 	onInit: function () {
 		window._objectPage = this
+
 		const _view = this.getView()
 		const objectPage = _view.byId(this._prefix + "objectPage")
 		if (objectPage)
 			objectPage.setUseIconTabBar(true)
-
-		this._doInit()
 	},
 
 	onAfterRendering: function () {
-		this._doInit()
+		this.check_ui_state()
 	},
 
-	_doInit: function () {
-		this._setIcons()
-		this._prepare_attach()		
+	check_ui_state: function (currContext) {
+		if (currContext)
+			this._currContext = currContext
+
+		this.setIcons()
+		this._prepare_attach()
 		this._check_lock_before_press()
-		this._screen_before_otput()
+
+		this._set_mandatory_editable()
+		this._check_lock_before_press()
+		this._toggle_by_checkbox()
 	},
 
-	// beforeSaveExtension: function () {
-	// 	debugger
-	// },
+	_set_mandatory_editable: function () {
+		const _this = this
+		const _byId = sap.ui.getCore().byId
+		for (const id of [
+			'ListReport.view.ListReport::ZC_TV025_ROOT--addEntry',
+			'ObjectPage.view.Details::ZC_TV025_ROOT--edit',
 
-	afterOpen: function (oEvent) {
-		this._doInit()
+			'ObjectPage.view.Details::ZC_TV025_FLIGHT--edit',
+			'ObjectPage.view.Details::ZC_TV025_ROOT--FlightInfo::addEntry',
 
-		if (!oEvent || !oEvent.path)
-			return
+			'ObjectPage.view.Details::ZC_TV025_HOTEL--edit',
+			'ObjectPage.view.Details::ZC_TV025_ROOT--HotelInfo::addEntry',
 
-		this._createMode = oEvent.path.indexOf("/ZC_TV025_ROOT(-)") !== -1
-		this._visitor = oEvent.path.indexOf("pernr='9") !== -1
+			'ObjectPage.view.Details::ZC_TV025_TRANSPORT--edit',
+			'ObjectPage.view.Details::ZC_TV025_ROOT--TransportInfo::addEntry',
+		]) {
 
-		if (!this.getView().byId(this._prefix + "TechInfo::Section"))
-			return
-		this.getView().byId(this._prefix + "VisitorIdFacet::FormGroup").setVisible(this._createMode)
-		this.getView().byId(this._prefix + "TechInfo::Section").setVisible(!this._createMode)
-		this.getView().byId(this._prefix + "DictInfo::Section").setVisible(!this._createMode)
-		this.getView().byId(this._prefix + "action::bt_copy_from").setVisible(!this._createMode)
+			const editButton = _byId(_this._template + id)
+			if (!editButton || editButton._pbo_set) continue
+			editButton._pbo_set = true
 
-		this.getView().byId(this._prefix + "EmployeeInfo::Section").setVisible(!this._createMode && !this._visitor)
-		this.getView().byId(this._prefix + "VisitorInfo::Section").setVisible(!this._createMode && this._visitor)
-		this._setIcons()
+			editButton.attachPress(function (oEvent) {
+				debugger
+				const buttonInfo = oEvent.getSource().getId().split('::')[2].split('--')
+
+				const entityName = buttonInfo[0]
+				const pref2 = _this._template + 'ObjectPage.view.Details::' + entityName + '--com.sap.vocabularies.UI.v1.FieldGroup::'
+
+				let field_grp_beg = 'Dates'
+				let field_grp_end = 'Dates'
+				switch (entityName) {
+					case "ZC_TV025_FLIGHT":
+						field_grp_beg = 'Departure'
+						field_grp_end = 'Arrival'
+						break
+					case "ZC_TV025_ROOT":
+						if (buttonInfo[1] === 'addEntry')
+							_this.setTabs(true, true)
+						const editable = _this._createMode || _this._visitor
+						for (let field of ['MainGroup::activity_type', 'MainGroup::country_end', 'MainGroup::location_end', 'MainGroup::request_reason', 'Dates::date_beg', 'Dates::date_end'])
+							_byId(pref2 + field + '::Field').setEditable(editable)
+						break
+				}
+
+				_byId(pref2 + field_grp_beg + '::date_beg::Field').setMandatory(true)
+				_byId(pref2 + field_grp_end + '::date_end::Field').setMandatory(true)
+			})
+		}
 	},
 
 	_check_lock_before_press: function () {
@@ -81,6 +110,12 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			modifyButton.detachPress(modifyButton._std_fm.fFunction, modifyButton._std_fm.oListener)
 
 			modifyButton.attachPress(function (oEvent) {
+				if (_this._currContext && (_this._currContext.getObject().zz_status === 'A' || _this._currContext.getObject().zz_status === 'C')) {
+					sap.m.MessageToast.show('Only requests with "Open" status can be editable', { duration: 3500 });
+					$(".sapMMessageToast").css("background", "#cc1919");
+					throw 'Cancel edit event' // oEvent.cancelBubble() preventDefault()
+				}
+
 				const button = oEvent.getSource()
 				if (button._go_on) {
 					button._go_on = null
@@ -89,7 +124,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 
 				// Fix called 2 times?
 				if (window._prev_lock_press && window._prev_lock_press.button === button && (new Date().getTime() - window._prev_lock_press.time) < 1000) {
-					throw 'Cancel edit event' // oEvent.cancelBubble() preventDefault()
+					throw 'Cancel edit event'
 				}
 				window._prev_lock_press = {
 					button: button,
@@ -129,56 +164,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 		}
 	},
 
-	_screen_before_otput: function () {
-		const _this = this
-		const _byId = sap.ui.getCore().byId
-		for (const id of [
-			'ListReport.view.ListReport::ZC_TV025_ROOT--addEntry',
-			'ObjectPage.view.Details::ZC_TV025_ROOT--edit',
-
-			'ObjectPage.view.Details::ZC_TV025_FLIGHT--edit',
-			'ObjectPage.view.Details::ZC_TV025_ROOT--FlightInfo::addEntry',
-
-			'ObjectPage.view.Details::ZC_TV025_HOTEL--edit',
-			'ObjectPage.view.Details::ZC_TV025_ROOT--HotelInfo::addEntry',
-
-			'ObjectPage.view.Details::ZC_TV025_TRANSPORT--edit',
-			'ObjectPage.view.Details::ZC_TV025_ROOT--TransportInfo::addEntry',
-		]) {
-
-			const editButton = _byId(_this._template + id)
-			if (!editButton || editButton._pbo_set) continue
-			editButton._pbo_set = true
-
-			editButton.attachPress(function (oEvent) {
-				const buttonInfo = oEvent.getSource().getId().split('::')[2].split('--')
-
-				const entityName = buttonInfo[0]
-				const pref2 = _this._template + 'ObjectPage.view.Details::' + entityName + '--com.sap.vocabularies.UI.v1.FieldGroup::'
-
-				let field_grp_beg = 'Dates'
-				let field_grp_end = 'Dates'
-				switch (entityName) {
-					case "ZC_TV025_FLIGHT":
-						field_grp_beg = 'Departure'
-						field_grp_end = 'Arrival'
-						break
-					case "ZC_TV025_ROOT":
-						const editable = _this._createMode || _this._visitor || buttonInfo[1] === 'addEntry'
-						for (let field of ['MainGroup::activity_type', 'MainGroup::country_end', 'MainGroup::location_end', 'MainGroup::request_reason', 'Dates::date_beg', 'Dates::date_end'])
-							_byId(pref2 + field + '::Field').setEditable(editable)
-						break
-				}
-
-				_byId(pref2 + field_grp_beg + '::date_beg::Field').setMandatory(true)
-				_byId(pref2 + field_grp_end + '::date_end::Field').setMandatory(true)
-
-				_this._toggle_by_checkbox(entityName)
-			})
-		}
-	},
-
-	_toggle_by_checkbox: function (entityName) {
+	_toggle_by_checkbox: function () {
 		const toggleList = [
 			{
 				entity: 'ZC_TV025_FLIGHT',
@@ -201,44 +187,48 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 
 		const _this = this
 		const _byId = sap.ui.getCore().byId
-		for (let toggle of toggleList)
-			if (toggle.entity === entityName) {
-				function _set_field_enabled(item, isChecked) {
-					for (let field of item.fields) {
-						const input = _byId(_this._details + item.entity + '--com.sap.vocabularies.UI.v1.FieldGroup::' + field.name)
-						if (!input)
-							continue
-						input.setEditable(isChecked)
+		for (let toggle of toggleList) {
+			function _set_field_enabled(item, isChecked) {
+				for (let field of item.fields) {
+					const input = _byId(_this._details + item.entity + '--com.sap.vocabularies.UI.v1.FieldGroup::' + field.name)
+					if (!input)
+						continue
+					input.setEditable(isChecked)
 
-						if (!isChecked)
-							input.setValue(field.nullValue)
-					}
-				}
-				const checkBox = _byId(_this._details + toggle.entity + '--com.sap.vocabularies.UI.v1.FieldGroup::' + toggle.checkBox + '::Field')
-				_set_field_enabled(toggle, checkBox.getValue())
-
-				if (!checkBox._toggle) {
-					checkBox._toggle = toggle
-					checkBox.attachChange(function (oEvent) {
-						_set_field_enabled(oEvent.getSource()._toggle, oEvent.mParameters.newValue)
-					})
+					if (!isChecked)
+						input.setValue(field.nullValue)
 				}
 			}
+			const checkBox = _byId(_this._details + toggle.entity + '--com.sap.vocabularies.UI.v1.FieldGroup::' + toggle.checkBox + '::Field')
+			if (!checkBox) continue
+			
+			let isChecked = checkBox.getValue()
+			if(isChecked === null) isChecked = false
+
+			_set_field_enabled(toggle, isChecked)
+
+			if (!checkBox._toggle) {
+				checkBox._toggle = toggle
+				checkBox.attachChange(function (oEvent) {
+					_set_field_enabled(oEvent.getSource()._toggle, oEvent.mParameters.newValue)
+				})
+			}
+
+		}
 	},
 
-	_setIcons: function () {
+	setIcons: function () {
 		const _this = this
 		const pref1 = '::Section-anchor'
 		const allIcons = {}
 
 		allIcons['RequestInfo' + pref1] = 'sap-icon://travel-request'
-		allIcons['EmployeeInfo' + pref1] = 'sap-icon://employee'
-		allIcons['VisitorInfo' + pref1] = 'sap-icon://visits'
+		allIcons['EmployeeInfo' + pref1] = 'sap-icon://employee' // 'sap-icon://visits'
 		allIcons['FlightInfo' + pref1] = 'sap-icon://flight'
 		allIcons['HotelInfo' + pref1] = 'sap-icon://customer-and-supplier'
 		allIcons['TransportInfo' + pref1] = 'sap-icon://taxi'
 		allIcons['AttachmentInfo' + pref1] = 'sap-icon://attachment'
-		allIcons['TechInfo' + pref1] = 'sap-icon://information'
+		allIcons['TechInfo' + pref1] = 'sap-icon://message-information'
 		allIcons['DictInfo' + pref1 + '-internalSplitBtn-textButton'] = 'sap-icon://course-book'
 		for (const id in allIcons) {
 			const button = _this.getView().byId(_this._prefix + 'objectPage-anchBar-' + _this._prefix + id)

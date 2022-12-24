@@ -49,7 +49,7 @@ CLASS lcl_editor IMPLEMENTATION.
     super->_get_status( ).
     rs_status-prog    = sy-repid.
     rs_status-name    = 'STAT_REQUEST'.
-    rs_status-title   = COND #( WHEN zss_tv025_head IS INITIAL THEN 'Travel Requests'(trt)
+    rs_status-title   = COND #( WHEN zss_tv025_head IS INITIAL THEN 'Attention! Deprecated version!'(trt)
                                 WHEN locked IS NOT INITIAL     THEN 'Travel Requests - View'(trv)
                                                                ELSE 'Travel Requests - Edit'(tre) ).
     rs_status-exclude = COND #( WHEN go_model->is_changed( ) <> abap_true THEN VALUE syucomm_t( ( mc_pai_cmd-save ) ) ).

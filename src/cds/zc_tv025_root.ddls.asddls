@@ -142,11 +142,13 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
 ///////////////////////////////////////////////////////////////
     @UI.lineItem: [{ position: 40 }]
     @UI.fieldGroup: [{ qualifier: 'Dates', position: 40 }]
+    @Consumption.filter: { selectionType: #INTERVAL, multipleSelections: false }
 //    @ObjectModel: { mandatory: true }
     date_beg,
     
     @UI.lineItem: [{ position: 50 }]
     @UI.fieldGroup: [{ qualifier: 'Dates', position: 50 }]
+    @Consumption.filter: { selectionType: #INTERVAL, multipleSelections: false }
 //    @ObjectModel: { mandatory: true }
     date_end,
     
@@ -234,6 +236,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     @ObjectModel:{ readOnly: true }    
     @EndUserText.label: 'Created On'
     @UI.fieldGroup: [{ qualifier: 'TechCreated', position: 20 }]
+    @Consumption.filter: { selectionType: #INTERVAL, multipleSelections: false }
     case when zz_crdat = '00000000' then dates else zz_crdat end as crdat,
     @ObjectModel:{ readOnly: true }    
     @EndUserText.label: 'Created at'

@@ -30,12 +30,12 @@ CLASS ZCL_V_TV025_REPORT IMPLEMENTATION.
 
     io_srv_runtime->set_header(
          VALUE #( name  = 'Content-Disposition'
-                  value = |outline; filename="ZTV_025_REPORT.XLSX"| ) ).
+                  value = |attachment; filename="ZTV_025_REPORT.XLSX"| ) ).
 
     " Any binary file
     er_stream = NEW /iwbep/cl_mgw_abs_data=>ty_s_media_resource(
       value     = lo_xtt->get_raw( )
-      mime_type = 'application/binary' ).
+      mime_type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ).
 
 
 
