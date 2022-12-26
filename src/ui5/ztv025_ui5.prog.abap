@@ -14,7 +14,8 @@ CLASS lcl_main IMPLEMENTATION.
     cl_http_ext_webapp=>create_url_for_bsp_application(
      EXPORTING bsp_application      = '/sap/ztv025/webapp/index.html'
                bsp_start_page       = ''
-               bsp_start_parameters = VALUE #( ( name = 'uname' value = sy-uname )  )
+               bsp_start_parameters = VALUE #( ( name = 'uname'      value = sy-uname )
+                                               ( name = 'sap-client' value = sy-mandt )  )
      IMPORTING abs_url              = DATA(lv_url) ).
 
     " Call the BSP Application in the default Browser

@@ -102,7 +102,7 @@ CLASS ZCL_V_TV025_ROOT IMPLEMENTATION.
 
       DATA(ls_photo) = CORRESPONDING ts_image( <ls_row> ).
       ls_photo-photo_path = |{ lv_protocol }://{ lv_host }:{ lv_port }/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_Attach(pernr='{
-         ls_photo-pernr }',reinr='0000000000',doc_id='EMPLOYEE_PHOTO')/$value?sap-client=300|. " TODO mandt
+         ls_photo-pernr }',reinr='0000000000',doc_id='EMPLOYEE_PHOTO')/$value?sap-client={ sy-mandt }|.
 
       MOVE-CORRESPONDING: ls_passport TO <ls_row>,
                           ls_photo    TO <ls_row>.

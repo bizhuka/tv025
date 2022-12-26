@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://happ01kd6.kio.kz:44312/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_TV025_ROOT_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_TV025_ActivityTypeType" sap:label="Activity Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Activity"/>
+                </Key>
+                <Property Name="Activity" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="activity_name" sap:label="Trip Activity Type"/>
+                <Property Name="activity_name" Type="Edm.String" MaxLength="30" sap:label="Description"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_ApprovedByType" sap:label="Approved By" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="id"/>
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="text" sap:label="Approved By"/>
+                <Property Name="text" Type="Edm.String" MaxLength="60" sap:label="Text"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_AttachType" m:HasStream="true" sap:label="Attachments" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="pernr"/>
+                    <PropertyRef Name="reinr"/>
+                    <PropertyRef Name="doc_id"/>
+                </Key>
+                <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="reinr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Trip Number"/>
+                <Property Name="doc_id" Type="Edm.String" Nullable="false" MaxLength="42" sap:display-format="UpperCase" sap:label="Document ID"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255" sap:label="File name"/>
+                <Property Name="s_index" Type="Edm.Int32" sap:label="№"/>
+                <Property Name="doc_url" Type="Edm.String" sap:label="String"/>
+                <Property Name="created_at_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created at date"/>
+                <Property Name="created_at_time" Type="Edm.Time" Precision="0" sap:label="Created at time"/>
+                <Property Name="created_by" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by"/>
+                <Property Name="created_by_txt" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
+                <Property Name="file_size" Type="Edm.String" MaxLength="15" sap:label="File size"/>
+                <Property Name="class" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document class"/>
+                <Property Name="objid" Type="Edm.String" MaxLength="32" sap:display-format="UpperCase" sap:label="Object ID"/>
+                <Property Name="message" Type="Edm.String" sap:label="String"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_BasisType" sap:label="Basis" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="basis_id"/>
+                </Key>
+                <Property Name="basis_id" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Basis Id"/>
+                <Property Name="hotel_basis" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Hotel Basis"/>
+                <Property Name="hotel_basis_txt" Type="Edm.String" MaxLength="40" sap:label="Basis text"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_CheckPointType" sap:label="Pickup \ Destinations points" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="id"/>
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Check point"/>
+                <Property Name="codegruppe" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Code group"/>
+                <Property Name="code" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Code"/>
+                <Property Name="kurztext" Type="Edm.String" MaxLength="40" sap:label="Pickup text"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_CurrencyType" sap:label="Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="waers"/>
+                </Key>
+                <Property Name="waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="ltext" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:label="Long Text"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_EmployeeType" sap:label="Employee" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="pernr"/>
+                </Key>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name"/>
+                <Property Name="passp_number" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Number"/>
+                <Property Name="passp_expiry" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Expiry Date"/>
+                <Property Name="begda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="endda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/>
+                <Property Name="sprps" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Lock indicator"/>
+                <Property Name="orgeh" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Organizational unit"/>
+                <Property Name="ansvh" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Work contract"/>
+                <Property Name="datum" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="ename" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name"/>
+                <Property Name="birth_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Birth" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="orgeh_text" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Organization text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="citizenship" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Ctizenship"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_F4_Copy_FromType" m:HasStream="true" sap:label="Search help for Copy From" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="pernr"/>
+                    <PropertyRef Name="reinr"/>
+                </Key>
+                <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="ename" sap:label="Personnel Number"/>
+                <Property Name="reinr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:text="request_reason" sap:label="Trip Number"/>
+                <Property Name="EmpName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name"/>
+                <Property Name="VisName" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Visitor/appl.name"/>
+                <Property Name="request_reason" Type="Edm.String" MaxLength="59" sap:label="Reason"/>
+                <Property Name="ename" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Full name"/>
+                <Property Name="date_beg" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Begins On"/>
+                <Property Name="date_end" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ends On"/>
+                <Property Name="activity_type" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="activity_name" sap:label="Trip Activity Type"/>
+                <Property Name="activity_name" Type="Edm.String" MaxLength="30" sap:label="Activity Type"/>
+                <Property Name="country_end" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Country Key"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Country"/>
+                <Property Name="location_end" Type="Edm.String" MaxLength="59" sap:label="City"/>
+                <Property Name="zz_status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="StatusText" sap:label="Status"/>
+                <Property Name="StatusText" Type="Edm.String" MaxLength="60" sap:label="Status"/>
+                <Property Name="crunm" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CrtName" sap:label="Created By"/>
+                <Property Name="CrtName" Type="Edm.String" MaxLength="80" sap:label="Created By"/>
+                <Property Name="crdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
+                <Property Name="chunm" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="ChgName" sap:label="Changed By"/>
+                <Property Name="ChgName" Type="Edm.String" MaxLength="80" sap:label="Changed By"/>
+                <Property Name="chdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_FakeVisitorType" sap:label="Fake Visitor" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="pernr"/>
+                </Key>
+                <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="ename" sap:label="Visitor ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="birth_date" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Date of birth"/>
+                <Property Name="ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Visitor/appl.name"/>
+                <Property Name="orgeh_text" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Organization text"/>
+                <Property Name="citizenship" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Citizenship" sap:value-list="standard"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="passp_number" Type="Edm.String" Nullable="false" MaxLength="25" sap:display-format="UpperCase" sap:label="Passport Number"/>
+                <Property Name="passp_expiry" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Expiration Date"/>
+                <NavigationProperty Name="to_Country" Relationship="ZC_TV025_ROOT_CDS.assoc_B226B78AD26DC34EC38DD444803D9F40" FromRole="FromRole_assoc_B226B78AD26DC34EC38DD444803D9F40" ToRole="ToRole_assoc_B226B78AD26DC34EC38DD444803D9F40"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_FLIGHTType" sap:label="Flight consuption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="employee_number"/>
+                    <PropertyRef Name="trip_number"/>
+                    <PropertyRef Name="s_index"/>
+                </Key>
+                <Property Name="employee_number" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="trip_number" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Trip Number"/>
+                <Property Name="s_index" Type="Edm.Int32" Nullable="false" sap:label="Index of the invalid record"/>
+                <Property Name="type" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="FlightType" sap:label="Flight type" sap:value-list="standard"/>
+                <Property Name="FlightType" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="cancelled" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cancelled"/>
+                <Property Name="agency" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="agency_name" sap:label="Agency"/>
+                <Property Name="agency_name" Type="Edm.String" MaxLength="40" sap:label="Agency name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="airport_beg" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="AirportNameBeg" sap:label="Departure" sap:value-list="standard"/>
+                <Property Name="AirportNameBeg" Type="Edm.String" MaxLength="40" sap:label="Airport name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="date_beg" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Begins On"/>
+                <Property Name="time_beg" Type="Edm.Time" Precision="0" sap:label="Start Time"/>
+                <Property Name="airport_end" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="AirportNameEnd" sap:label="Arrival" sap:value-list="standard"/>
+                <Property Name="AirportNameEnd" Type="Edm.String" MaxLength="40" sap:label="Airport name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="date_end" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ends On"/>
+                <Property Name="time_end" Type="Edm.Time" Precision="0" sap:label="Ends At"/>
+                <Property Name="comment1" Type="Edm.String" MaxLength="255" sap:label="Comment"/>
+                <Property Name="penalty_box" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Penalty"/>
+                <Property Name="penalty" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="penalty_waers" sap:label="Penalty"/>
+                <Property Name="penalty_waers" Type="Edm.String" MaxLength="5" sap:label="Penalty currency" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="ticket" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Ticket"/>
+                <Property Name="transport" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Transport"/>
+                <Property Name="price" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unit="waers" sap:label="Amount"/>
+                <Property Name="waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="approved_by" Type="Edm.String" MaxLength="2" sap:text="ApprovedByText" sap:label="Approved by" sap:value-list="standard"/>
+                <Property Name="ApprovedByText" Type="Edm.String" MaxLength="60" sap:label="Text" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_AirportBeg" Relationship="ZC_TV025_ROOT_CDS.assoc_2D3B21A36D18643A3D95D6C835416115" FromRole="FromRole_assoc_2D3B21A36D18643A3D95D6C835416115" ToRole="ToRole_assoc_2D3B21A36D18643A3D95D6C835416115"/>
+                <NavigationProperty Name="to_AirportEnd" Relationship="ZC_TV025_ROOT_CDS.assoc_4F07480DC6FE831E35C35D1584A3DF91" FromRole="FromRole_assoc_4F07480DC6FE831E35C35D1584A3DF91" ToRole="ToRole_assoc_4F07480DC6FE831E35C35D1584A3DF91"/>
+                <NavigationProperty Name="to_ApprovedBy" Relationship="ZC_TV025_ROOT_CDS.assoc_8CDE1B1E3F926958481BA298EB0FD836" FromRole="FromRole_assoc_8CDE1B1E3F926958481BA298EB0FD836" ToRole="ToRole_assoc_8CDE1B1E3F926958481BA298EB0FD836"/>
+                <NavigationProperty Name="to_Currency" Relationship="ZC_TV025_ROOT_CDS.assoc_C8653746D71929F9C71440E555FCE489" FromRole="FromRole_assoc_C8653746D71929F9C71440E555FCE489" ToRole="ToRole_assoc_C8653746D71929F9C71440E555FCE489"/>
+                <NavigationProperty Name="to_CurrencyPen" Relationship="ZC_TV025_ROOT_CDS.assoc_200CD38B17BF816A7619A01A7E0C71E7" FromRole="FromRole_assoc_200CD38B17BF816A7619A01A7E0C71E7" ToRole="ToRole_assoc_200CD38B17BF816A7619A01A7E0C71E7"/>
+                <NavigationProperty Name="to_FlightType" Relationship="ZC_TV025_ROOT_CDS.assoc_2BB25EB9A0689EAA3F0490CE0B13A646" FromRole="FromRole_assoc_2BB25EB9A0689EAA3F0490CE0B13A646" ToRole="ToRole_assoc_2BB25EB9A0689EAA3F0490CE0B13A646"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_AgencyType" sap:label="Agency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="agency_id"/>
+                </Key>
+                <Property Name="agency_id" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="agency_name" sap:label="Agency Id"/>
+                <Property Name="agency_name" Type="Edm.String" MaxLength="40" sap:label="Agency name"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_FlightTypeType" sap:label="Flight Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="FlightType" sap:label="Flight Type"/>
+                <Property Name="FlightType" Type="Edm.String" MaxLength="60" sap:label="Short Descript."/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_HOTELType" sap:label="Hotel" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="employee_number"/>
+                    <PropertyRef Name="trip_number"/>
+                    <PropertyRef Name="s_index"/>
+                </Key>
+                <Property Name="agency_name" Type="Edm.String" MaxLength="40" sap:label="Agency name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="basis" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="hotel_basis_txt" sap:label="Basis" sap:value-list="standard"/>
+                <Property Name="hotel_basis_txt" Type="Edm.String" MaxLength="40" sap:label="Basis text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="penalty_check" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Penalty"/>
+                <Property Name="penalty" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="penalty_waers" sap:label="Penalty"/>
+                <Property Name="penalty_waers" Type="Edm.String" MaxLength="5" sap:label="Penalty currency" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="comment1" Type="Edm.String" MaxLength="255" sap:label="Comment"/>
+                <Property Name="employee_number" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="trip_number" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Trip Number"/>
+                <Property Name="s_index" Type="Edm.Int32" Nullable="false" sap:label="Index of the invalid record"/>
+                <Property Name="hotel_end" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="hotel_name" sap:label="Hotel ID" sap:value-list="standard"/>
+                <Property Name="hotel_name" Type="Edm.String" MaxLength="40" sap:label="Hotel name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="price" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unit="waers" sap:label="Price"/>
+                <Property Name="waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="date_beg" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Begins On"/>
+                <Property Name="date_end" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Ends On"/>
+                <Property Name="booked_nights" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Booked nights"/>
+                <Property Name="early_check_in" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Early check in"/>
+                <Property Name="later_check_out" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Early check out"/>
+                <Property Name="assigned_car" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Assigned car"/>
+                <Property Name="type_car" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="TypeCarText" sap:label="Type of car" sap:value-list="standard"/>
+                <Property Name="TypeCarText" Type="Edm.String" MaxLength="60" sap:label="Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="transport_airport" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Transport airp-hotel"/>
+                <Property Name="transport_hotel" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Transport hotel-airp"/>
+                <Property Name="transport_price" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="transport_waers" sap:label="Transport Amount"/>
+                <Property Name="transport_waers" Type="Edm.String" MaxLength="5" sap:label="Car price currency" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="agency" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="agency_name" sap:label="Agency" sap:value-list="standard"/>
+                <NavigationProperty Name="to_Agency" Relationship="ZC_TV025_ROOT_CDS.assoc_752106EDF787D74B1165CCAE575BBA6B" FromRole="FromRole_assoc_752106EDF787D74B1165CCAE575BBA6B" ToRole="ToRole_assoc_752106EDF787D74B1165CCAE575BBA6B"/>
+                <NavigationProperty Name="to_Basis" Relationship="ZC_TV025_ROOT_CDS.assoc_17508D9B29C2EA88E69C54FBE3B9ADAC" FromRole="FromRole_assoc_17508D9B29C2EA88E69C54FBE3B9ADAC" ToRole="ToRole_assoc_17508D9B29C2EA88E69C54FBE3B9ADAC"/>
+                <NavigationProperty Name="to_Currency" Relationship="ZC_TV025_ROOT_CDS.assoc_17414FC4B497114B7D349F44B0B2F711" FromRole="FromRole_assoc_17414FC4B497114B7D349F44B0B2F711" ToRole="ToRole_assoc_17414FC4B497114B7D349F44B0B2F711"/>
+                <NavigationProperty Name="to_CurrencyPen" Relationship="ZC_TV025_ROOT_CDS.assoc_31A3D16AAE714F59773886C22633D256" FromRole="FromRole_assoc_31A3D16AAE714F59773886C22633D256" ToRole="ToRole_assoc_31A3D16AAE714F59773886C22633D256"/>
+                <NavigationProperty Name="to_CurrencyTrans" Relationship="ZC_TV025_ROOT_CDS.assoc_8002FC0260142D7A0469B98746BE164D" FromRole="FromRole_assoc_8002FC0260142D7A0469B98746BE164D" ToRole="ToRole_assoc_8002FC0260142D7A0469B98746BE164D"/>
+                <NavigationProperty Name="to_HotelCatalog" Relationship="ZC_TV025_ROOT_CDS.assoc_93F81AA993557B0C6E08CE434E541216" FromRole="FromRole_assoc_93F81AA993557B0C6E08CE434E541216" ToRole="ToRole_assoc_93F81AA993557B0C6E08CE434E541216"/>
+                <NavigationProperty Name="to_TypeCar" Relationship="ZC_TV025_ROOT_CDS.assoc_6B837F82602069A16A7E34B78317BB64" FromRole="FromRole_assoc_6B837F82602069A16A7E34B78317BB64" ToRole="ToRole_assoc_6B837F82602069A16A7E34B78317BB64"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_HotelCatalogType" sap:label="Hotel catalog" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="hotel_id"/>
+                </Key>
+                <Property Name="hotel_id" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Hotel ID"/>
+                <Property Name="hotel_class" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Hotel class"/>
+                <Property Name="country_id" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Country Key" sap:value-list="standard"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="town_id" Type="Edm.String" MaxLength="40" sap:label="Town ID"/>
+                <Property Name="hotel_name" Type="Edm.String" MaxLength="40" sap:label="Hotel name"/>
+                <Property Name="hotel_address" Type="Edm.String" MaxLength="40" sap:label="Hotel address"/>
+                <Property Name="hotel_phone" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Hotel phone"/>
+                <Property Name="hotel_comments" Type="Edm.String" MaxLength="40" sap:label="Hotel comments"/>
+                <NavigationProperty Name="to_Country" Relationship="ZC_TV025_ROOT_CDS.assoc_333DB1F3EA8A6284FC97EFE04D6860B2" FromRole="FromRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2" ToRole="ToRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_TypeCarType" sap:label="Type car" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="id"/>
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="text" sap:label="Car type"/>
+                <Property Name="text" Type="Edm.String" MaxLength="60" sap:label="Text"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_AirportType" sap:label="Airport" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="airport_id"/>
+                </Key>
+                <Property Name="airport_id" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Airport ID"/>
+                <Property Name="country_id" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Country Key" sap:value-list="standard"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name"/>
+                <Property Name="town" Type="Edm.String" MaxLength="40" sap:label="Town ID"/>
+                <Property Name="iata_code" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Iata code"/>
+                <Property Name="airport_name" Type="Edm.String" MaxLength="40" sap:label="Airport name"/>
+                <NavigationProperty Name="to_Country" Relationship="ZC_TV025_ROOT_CDS.assoc_D66CEA19743549216E0483A7A341CEC0" FromRole="FromRole_assoc_D66CEA19743549216E0483A7A341CEC0" ToRole="ToRole_assoc_D66CEA19743549216E0483A7A341CEC0"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_ROOTType" sap:label="Request ROOT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="pernr"/>
+                    <PropertyRef Name="reinr"/>
+                    <PropertyRef Name="requestvrs"/>
+                    <PropertyRef Name="plan_request"/>
+                </Key>
+                <Property Name="Copy_from_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lock_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="ename" sap:label="Visitor ID" sap:value-list="standard"/>
+                <Property Name="reinr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:text="request_reason" sap:label="Trip Number"/>
+                <Property Name="requestvrs" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:label="Version number"/>
+                <Property Name="plan_request" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Plan Request ID"/>
+                <Property Name="EmpName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VisName" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Visitor/appl.name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ename" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="id_info" Type="Edm.String" MaxLength="19" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="text_info" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="activity_type" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="activity_name" sap:label="Trip Activity Type"/>
+                <Property Name="activity_name" Type="Edm.String" MaxLength="30" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="zz_status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="StatusText" sap:label="Status"/>
+                <Property Name="StatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="StatusCriticality" Type="Edm.Byte" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="date_beg" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Begins On"/>
+                <Property Name="date_end" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Ends On"/>
+                <Property Name="country_end" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Country Key"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="location_end" Type="Edm.String" Nullable="false" MaxLength="59" sap:label="Destination"/>
+                <Property Name="request_reason" Type="Edm.String" Nullable="false" MaxLength="59" sap:label="Reason"/>
+                <Property Name="birth_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Birth" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="orgeh_text" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Organization text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="citizenship" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CtzCountryText" sap:label="Citizenship" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CtzCountryText" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="passp_number" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="passp_expiry" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Expiration Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="kostl" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ltext" Type="Edm.String" MaxLength="40" sap:label="Cost Center Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="posid" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="post1" Type="Edm.String" MaxLength="40" sap:label="WBS Element Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="crunm_full" Type="Edm.String" MaxLength="95" sap:display-format="UpperCase" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="crunm" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:value-list="standard"/>
+                <Property Name="crdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="crtime" Type="Edm.Time" Precision="0" sap:label="Created at" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="chunm_full" Type="Edm.String" MaxLength="95" sap:display-format="UpperCase" sap:label="Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="chunm" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:value-list="standard"/>
+                <Property Name="chdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="chtime" Type="Edm.Time" Precision="0" sap:label="Changed at" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="photo_path" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="error_message" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="zz_etag" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"/>
+                <Property Name="zz_etag_usr" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="fake_visitor" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase"/>
+                <Property Name="fake_agency" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase"/>
+                <Property Name="fake_hotel_id" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase"/>
+                <Property Name="fake_basis_id" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase"/>
+                <Property Name="fake_airport_id" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase"/>
+                <Property Name="fake_ch_id" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_ActivityType" Relationship="ZC_TV025_ROOT_CDS.assoc_9AC8F4EDD7066E53700DF4991528CA58" FromRole="FromRole_assoc_9AC8F4EDD7066E53700DF4991528CA58" ToRole="ToRole_assoc_9AC8F4EDD7066E53700DF4991528CA58"/>
+                <NavigationProperty Name="to_Attach" Relationship="ZC_TV025_ROOT_CDS.assoc_3401ADC712EBF1316237AAABBD328BD2" FromRole="FromRole_assoc_3401ADC712EBF1316237AAABBD328BD2" ToRole="ToRole_assoc_3401ADC712EBF1316237AAABBD328BD2"/>
+                <NavigationProperty Name="to_CopyFrom" Relationship="ZC_TV025_ROOT_CDS.assoc_6EF05D9422769AD6E69F57C5A88E95E5" FromRole="FromRole_assoc_6EF05D9422769AD6E69F57C5A88E95E5" ToRole="ToRole_assoc_6EF05D9422769AD6E69F57C5A88E95E5"/>
+                <NavigationProperty Name="to_Country" Relationship="ZC_TV025_ROOT_CDS.assoc_C35901D5D35395A090D0696DD5382246" FromRole="FromRole_assoc_C35901D5D35395A090D0696DD5382246" ToRole="ToRole_assoc_C35901D5D35395A090D0696DD5382246"/>
+                <NavigationProperty Name="to_Employee" Relationship="ZC_TV025_ROOT_CDS.assoc_DF86D375A50B263B7FE6666D10286C87" FromRole="FromRole_assoc_DF86D375A50B263B7FE6666D10286C87" ToRole="ToRole_assoc_DF86D375A50B263B7FE6666D10286C87"/>
+                <NavigationProperty Name="to_FakeAgency" Relationship="ZC_TV025_ROOT_CDS.assoc_3562255D2B651503F004F5F3D59D29AA" FromRole="FromRole_assoc_3562255D2B651503F004F5F3D59D29AA" ToRole="ToRole_assoc_3562255D2B651503F004F5F3D59D29AA"/>
+                <NavigationProperty Name="to_FakeAirport" Relationship="ZC_TV025_ROOT_CDS.assoc_2A5F14F404DFBB9AE1932ECB669D3333" FromRole="FromRole_assoc_2A5F14F404DFBB9AE1932ECB669D3333" ToRole="ToRole_assoc_2A5F14F404DFBB9AE1932ECB669D3333"/>
+                <NavigationProperty Name="to_FakeBasis" Relationship="ZC_TV025_ROOT_CDS.assoc_33A85D76430BDAA76887CCE82E9EADB1" FromRole="FromRole_assoc_33A85D76430BDAA76887CCE82E9EADB1" ToRole="ToRole_assoc_33A85D76430BDAA76887CCE82E9EADB1"/>
+                <NavigationProperty Name="to_FakeCheckPoint" Relationship="ZC_TV025_ROOT_CDS.assoc_A92F6CC9EA220421399B7B1EA22C9625" FromRole="FromRole_assoc_A92F6CC9EA220421399B7B1EA22C9625" ToRole="ToRole_assoc_A92F6CC9EA220421399B7B1EA22C9625"/>
+                <NavigationProperty Name="to_FakeHotelCatalog" Relationship="ZC_TV025_ROOT_CDS.assoc_0F6013B2200094435125C48D2F6B34F9" FromRole="FromRole_assoc_0F6013B2200094435125C48D2F6B34F9" ToRole="ToRole_assoc_0F6013B2200094435125C48D2F6B34F9"/>
+                <NavigationProperty Name="to_FakeVisitor" Relationship="ZC_TV025_ROOT_CDS.assoc_A4FD7BCDD127E54FF6E5A110F8585CAE" FromRole="FromRole_assoc_A4FD7BCDD127E54FF6E5A110F8585CAE" ToRole="ToRole_assoc_A4FD7BCDD127E54FF6E5A110F8585CAE"/>
+                <NavigationProperty Name="to_Flight" Relationship="ZC_TV025_ROOT_CDS.assoc_BCE84369724BA3914DCDA0A30CBF3C58" FromRole="FromRole_assoc_BCE84369724BA3914DCDA0A30CBF3C58" ToRole="ToRole_assoc_BCE84369724BA3914DCDA0A30CBF3C58"/>
+                <NavigationProperty Name="to_Hotel" Relationship="ZC_TV025_ROOT_CDS.assoc_33184692576C7F869F07D67513BF2F5D" FromRole="FromRole_assoc_33184692576C7F869F07D67513BF2F5D" ToRole="ToRole_assoc_33184692576C7F869F07D67513BF2F5D"/>
+                <NavigationProperty Name="to_Status" Relationship="ZC_TV025_ROOT_CDS.assoc_F1609A1DDBB0ED1AEFAD00E003045B55" FromRole="FromRole_assoc_F1609A1DDBB0ED1AEFAD00E003045B55" ToRole="ToRole_assoc_F1609A1DDBB0ED1AEFAD00E003045B55"/>
+                <NavigationProperty Name="to_Transport" Relationship="ZC_TV025_ROOT_CDS.assoc_90E037C22C68A51993F661062A557279" FromRole="FromRole_assoc_90E037C22C68A51993F661062A557279" ToRole="ToRole_assoc_90E037C22C68A51993F661062A557279"/>
+                <NavigationProperty Name="to_UserInfoChg" Relationship="ZC_TV025_ROOT_CDS.assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" FromRole="FromRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" ToRole="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+                <NavigationProperty Name="to_UserInfoCrt" Relationship="ZC_TV025_ROOT_CDS.assoc_241D266DEF753E60CFD0933BAB14EB14" FromRole="FromRole_assoc_241D266DEF753E60CFD0933BAB14EB14" ToRole="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+                <NavigationProperty Name="to_Visitor" Relationship="ZC_TV025_ROOT_CDS.assoc_254C4473E3754AF37D173EA6B7306251" FromRole="FromRole_assoc_254C4473E3754AF37D173EA6B7306251" ToRole="ToRole_assoc_254C4473E3754AF37D173EA6B7306251"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_StatusType" sap:label="Status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Status"/>
+                </Key>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="StatusText" sap:label="Status ID"/>
+                <Property Name="StatusText" Type="Edm.String" MaxLength="60" sap:label="Short Descript."/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_TransportType" sap:label="Transport" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="employee_number"/>
+                    <PropertyRef Name="trip_number"/>
+                    <PropertyRef Name="s_index"/>
+                </Key>
+                <Property Name="employee_number" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="trip_number" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Trip Number"/>
+                <Property Name="s_index" Type="Edm.Int32" Nullable="false" sap:label="Index of the invalid record"/>
+                <Property Name="check_point" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="ChkText" sap:label="Check point" sap:value-list="standard"/>
+                <Property Name="ChkText" Type="Edm.String" MaxLength="40" sap:label="Pickup text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="arrival" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="ArrText" sap:label="Arrrival" sap:value-list="standard"/>
+                <Property Name="ArrText" Type="Edm.String" MaxLength="40" sap:label="Pickup text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="date_beg" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="time_beg" Type="Edm.Time" Precision="0" sap:label="Start time"/>
+                <Property Name="date_end" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/>
+                <Property Name="time_end" Type="Edm.Time" Precision="0" sap:label="End time"/>
+                <Property Name="comment1" Type="Edm.String" MaxLength="255" sap:label="Comment"/>
+                <Property Name="not_required" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Transp. not required"/>
+                <Property Name="vip" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="VIP person"/>
+                <NavigationProperty Name="to_Arrrival" Relationship="ZC_TV025_ROOT_CDS.assoc_0C3648FC4DE9C2D260ED4FAD264D97B4" FromRole="FromRole_assoc_0C3648FC4DE9C2D260ED4FAD264D97B4" ToRole="ToRole_assoc_0C3648FC4DE9C2D260ED4FAD264D97B4"/>
+                <NavigationProperty Name="to_CheckPoint" Relationship="ZC_TV025_ROOT_CDS.assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" FromRole="FromRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" ToRole="ToRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_CountryType" sap:label="Country" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="land1"/>
+                </Key>
+                <Property Name="land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Country"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_UserInfoType" sap:label="User info" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="uname"/>
+                </Key>
+                <Property Name="uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserName" sap:label="User"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
+            </EntityType>
+            <EntityType Name="ZC_TV025_VISITORType" sap:label="Visitor" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="pernr"/>
+                </Key>
+                <Property Name="pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="ename" sap:label="Visitor ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="birth_date" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Date of birth"/>
+                <Property Name="ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Visitor/appl.name"/>
+                <Property Name="orgeh_text" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Organization text"/>
+                <Property Name="citizenship" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Citizenship" sap:value-list="standard"/>
+                <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name"/>
+                <Property Name="passp_number" Type="Edm.String" Nullable="false" MaxLength="25" sap:display-format="UpperCase" sap:label="Passport Number"/>
+                <Property Name="passp_expiry" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Expiration Date"/>
+                <NavigationProperty Name="to_Country" Relationship="ZC_TV025_ROOT_CDS.assoc_F54A3C214B29A220CB836EE9B004BAA0" FromRole="FromRole_assoc_F54A3C214B29A220CB836EE9B004BAA0" ToRole="ToRole_assoc_F54A3C214B29A220CB836EE9B004BAA0"/>
+            </EntityType>
+            <Association Name="assoc_F54A3C214B29A220CB836EE9B004BAA0" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_VISITORType" Multiplicity="1" Role="FromRole_assoc_F54A3C214B29A220CB836EE9B004BAA0"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" Multiplicity="0..1" Role="ToRole_assoc_F54A3C214B29A220CB836EE9B004BAA0"/>
+            </Association>
+            <Association Name="assoc_D66CEA19743549216E0483A7A341CEC0" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType" Multiplicity="1" Role="FromRole_assoc_D66CEA19743549216E0483A7A341CEC0"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" Multiplicity="0..1" Role="ToRole_assoc_D66CEA19743549216E0483A7A341CEC0"/>
+            </Association>
+            <Association Name="assoc_9AC8F4EDD7066E53700DF4991528CA58" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_9AC8F4EDD7066E53700DF4991528CA58"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ActivityTypeType" Multiplicity="0..1" Role="ToRole_assoc_9AC8F4EDD7066E53700DF4991528CA58"/>
+            </Association>
+            <Association Name="assoc_3401ADC712EBF1316237AAABBD328BD2" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_3401ADC712EBF1316237AAABBD328BD2"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AttachType" Multiplicity="*" Role="ToRole_assoc_3401ADC712EBF1316237AAABBD328BD2"/>
+            </Association>
+            <Association Name="assoc_6EF05D9422769AD6E69F57C5A88E95E5" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_6EF05D9422769AD6E69F57C5A88E95E5"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType" Multiplicity="*" Role="ToRole_assoc_6EF05D9422769AD6E69F57C5A88E95E5"/>
+            </Association>
+            <Association Name="assoc_C35901D5D35395A090D0696DD5382246" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_C35901D5D35395A090D0696DD5382246"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" Multiplicity="0..1" Role="ToRole_assoc_C35901D5D35395A090D0696DD5382246"/>
+            </Association>
+            <Association Name="assoc_DF86D375A50B263B7FE6666D10286C87" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_DF86D375A50B263B7FE6666D10286C87"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_EmployeeType" Multiplicity="1" Role="ToRole_assoc_DF86D375A50B263B7FE6666D10286C87"/>
+            </Association>
+            <Association Name="assoc_3562255D2B651503F004F5F3D59D29AA" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_3562255D2B651503F004F5F3D59D29AA"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AgencyType" Multiplicity="*" Role="ToRole_assoc_3562255D2B651503F004F5F3D59D29AA"/>
+            </Association>
+            <Association Name="assoc_2A5F14F404DFBB9AE1932ECB669D3333" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_2A5F14F404DFBB9AE1932ECB669D3333"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType" Multiplicity="*" Role="ToRole_assoc_2A5F14F404DFBB9AE1932ECB669D3333"/>
+            </Association>
+            <Association Name="assoc_33A85D76430BDAA76887CCE82E9EADB1" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_33A85D76430BDAA76887CCE82E9EADB1"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_BasisType" Multiplicity="*" Role="ToRole_assoc_33A85D76430BDAA76887CCE82E9EADB1"/>
+            </Association>
+            <Association Name="assoc_A92F6CC9EA220421399B7B1EA22C9625" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_A92F6CC9EA220421399B7B1EA22C9625"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CheckPointType" Multiplicity="*" Role="ToRole_assoc_A92F6CC9EA220421399B7B1EA22C9625"/>
+            </Association>
+            <Association Name="assoc_0F6013B2200094435125C48D2F6B34F9" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_0F6013B2200094435125C48D2F6B34F9"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType" Multiplicity="*" Role="ToRole_assoc_0F6013B2200094435125C48D2F6B34F9"/>
+            </Association>
+            <Association Name="assoc_A4FD7BCDD127E54FF6E5A110F8585CAE" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_A4FD7BCDD127E54FF6E5A110F8585CAE"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType" Multiplicity="*" Role="ToRole_assoc_A4FD7BCDD127E54FF6E5A110F8585CAE"/>
+            </Association>
+            <Association Name="assoc_BCE84369724BA3914DCDA0A30CBF3C58" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_BCE84369724BA3914DCDA0A30CBF3C58"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="*" Role="ToRole_assoc_BCE84369724BA3914DCDA0A30CBF3C58"/>
+            </Association>
+            <Association Name="assoc_33184692576C7F869F07D67513BF2F5D" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_33184692576C7F869F07D67513BF2F5D"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="*" Role="ToRole_assoc_33184692576C7F869F07D67513BF2F5D"/>
+            </Association>
+            <Association Name="assoc_F1609A1DDBB0ED1AEFAD00E003045B55" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_F1609A1DDBB0ED1AEFAD00E003045B55"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_StatusType" Multiplicity="0..1" Role="ToRole_assoc_F1609A1DDBB0ED1AEFAD00E003045B55"/>
+            </Association>
+            <Association Name="assoc_90E037C22C68A51993F661062A557279" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_90E037C22C68A51993F661062A557279"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType" Multiplicity="*" Role="ToRole_assoc_90E037C22C68A51993F661062A557279"/>
+            </Association>
+            <Association Name="assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_UserInfoType" Multiplicity="0..1" Role="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+            </Association>
+            <Association Name="assoc_241D266DEF753E60CFD0933BAB14EB14" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_UserInfoType" Multiplicity="0..1" Role="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+            </Association>
+            <Association Name="assoc_254C4473E3754AF37D173EA6B7306251" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_254C4473E3754AF37D173EA6B7306251"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_VISITORType" Multiplicity="1" Role="ToRole_assoc_254C4473E3754AF37D173EA6B7306251"/>
+            </Association>
+            <Association Name="assoc_752106EDF787D74B1165CCAE575BBA6B" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_752106EDF787D74B1165CCAE575BBA6B"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AgencyType" Multiplicity="0..1" Role="ToRole_assoc_752106EDF787D74B1165CCAE575BBA6B"/>
+            </Association>
+            <Association Name="assoc_17508D9B29C2EA88E69C54FBE3B9ADAC" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_17508D9B29C2EA88E69C54FBE3B9ADAC"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_BasisType" Multiplicity="0..1" Role="ToRole_assoc_17508D9B29C2EA88E69C54FBE3B9ADAC"/>
+            </Association>
+            <Association Name="assoc_17414FC4B497114B7D349F44B0B2F711" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_17414FC4B497114B7D349F44B0B2F711"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_17414FC4B497114B7D349F44B0B2F711"/>
+            </Association>
+            <Association Name="assoc_31A3D16AAE714F59773886C22633D256" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_31A3D16AAE714F59773886C22633D256"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_31A3D16AAE714F59773886C22633D256"/>
+            </Association>
+            <Association Name="assoc_8002FC0260142D7A0469B98746BE164D" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_8002FC0260142D7A0469B98746BE164D"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_8002FC0260142D7A0469B98746BE164D"/>
+            </Association>
+            <Association Name="assoc_93F81AA993557B0C6E08CE434E541216" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_93F81AA993557B0C6E08CE434E541216"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType" Multiplicity="0..1" Role="ToRole_assoc_93F81AA993557B0C6E08CE434E541216"/>
+            </Association>
+            <Association Name="assoc_6B837F82602069A16A7E34B78317BB64" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" Multiplicity="1" Role="FromRole_assoc_6B837F82602069A16A7E34B78317BB64"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_TypeCarType" Multiplicity="0..1" Role="ToRole_assoc_6B837F82602069A16A7E34B78317BB64"/>
+            </Association>
+            <Association Name="assoc_2D3B21A36D18643A3D95D6C835416115" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="1" Role="FromRole_assoc_2D3B21A36D18643A3D95D6C835416115"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType" Multiplicity="0..1" Role="ToRole_assoc_2D3B21A36D18643A3D95D6C835416115"/>
+            </Association>
+            <Association Name="assoc_4F07480DC6FE831E35C35D1584A3DF91" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="1" Role="FromRole_assoc_4F07480DC6FE831E35C35D1584A3DF91"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType" Multiplicity="0..1" Role="ToRole_assoc_4F07480DC6FE831E35C35D1584A3DF91"/>
+            </Association>
+            <Association Name="assoc_8CDE1B1E3F926958481BA298EB0FD836" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="1" Role="FromRole_assoc_8CDE1B1E3F926958481BA298EB0FD836"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ApprovedByType" Multiplicity="0..1" Role="ToRole_assoc_8CDE1B1E3F926958481BA298EB0FD836"/>
+            </Association>
+            <Association Name="assoc_C8653746D71929F9C71440E555FCE489" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="1" Role="FromRole_assoc_C8653746D71929F9C71440E555FCE489"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_C8653746D71929F9C71440E555FCE489"/>
+            </Association>
+            <Association Name="assoc_200CD38B17BF816A7619A01A7E0C71E7" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="1" Role="FromRole_assoc_200CD38B17BF816A7619A01A7E0C71E7"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_200CD38B17BF816A7619A01A7E0C71E7"/>
+            </Association>
+            <Association Name="assoc_2BB25EB9A0689EAA3F0490CE0B13A646" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" Multiplicity="1" Role="FromRole_assoc_2BB25EB9A0689EAA3F0490CE0B13A646"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FlightTypeType" Multiplicity="0..1" Role="ToRole_assoc_2BB25EB9A0689EAA3F0490CE0B13A646"/>
+            </Association>
+            <Association Name="assoc_333DB1F3EA8A6284FC97EFE04D6860B2" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType" Multiplicity="1" Role="FromRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" Multiplicity="0..1" Role="ToRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2"/>
+            </Association>
+            <Association Name="assoc_B226B78AD26DC34EC38DD444803D9F40" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType" Multiplicity="1" Role="FromRole_assoc_B226B78AD26DC34EC38DD444803D9F40"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" Multiplicity="0..1" Role="ToRole_assoc_B226B78AD26DC34EC38DD444803D9F40"/>
+            </Association>
+            <Association Name="assoc_0C3648FC4DE9C2D260ED4FAD264D97B4" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType" Multiplicity="1" Role="FromRole_assoc_0C3648FC4DE9C2D260ED4FAD264D97B4"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CheckPointType" Multiplicity="0..1" Role="ToRole_assoc_0C3648FC4DE9C2D260ED4FAD264D97B4"/>
+            </Association>
+            <Association Name="assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" sap:content-version="1">
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType" Multiplicity="1" Role="FromRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_CheckPointType" Multiplicity="0..1" Role="ToRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF"/>
+            </Association>
+            <EntityContainer Name="ZC_TV025_ROOT_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_TV025_ActivityType" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_ActivityTypeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_ApprovedBy" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_ApprovedByType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Attach" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_AttachType" sap:creatable="false" sap:updatable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Basis" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_BasisType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_CheckPoint" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_CheckPointType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Currency" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Employee" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_EmployeeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_F4_Copy_From" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_F4_Copy_FromType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_FakeVisitor" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_FLIGHT" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Agency" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_AgencyType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_FlightType" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_FlightTypeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_HOTEL" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_HotelCatalog" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_TypeCar" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_TypeCarType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Airport" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_ROOT" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Status" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_StatusType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Transport" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_Country" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_UserInfo" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_UserInfoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_TV025_VISITOR" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_VISITORType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" Association="ZC_TV025_ROOT_CDS.assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_Transport" Role="FromRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF"/>
+                    <End EntitySet="ZC_TV025_CheckPoint" Role="ToRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DF86D375A50B263B7FE6666D10286C87" Association="ZC_TV025_ROOT_CDS.assoc_DF86D375A50B263B7FE6666D10286C87" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_DF86D375A50B263B7FE6666D10286C87"/>
+                    <End EntitySet="ZC_TV025_Employee" Role="ToRole_assoc_DF86D375A50B263B7FE6666D10286C87"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_90E037C22C68A51993F661062A557279" Association="ZC_TV025_ROOT_CDS.assoc_90E037C22C68A51993F661062A557279" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_90E037C22C68A51993F661062A557279"/>
+                    <End EntitySet="ZC_TV025_Transport" Role="ToRole_assoc_90E037C22C68A51993F661062A557279"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F54A3C214B29A220CB836EE9B004BAA0" Association="ZC_TV025_ROOT_CDS.assoc_F54A3C214B29A220CB836EE9B004BAA0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_VISITOR" Role="FromRole_assoc_F54A3C214B29A220CB836EE9B004BAA0"/>
+                    <End EntitySet="ZC_TV025_Country" Role="ToRole_assoc_F54A3C214B29A220CB836EE9B004BAA0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9AC8F4EDD7066E53700DF4991528CA58" Association="ZC_TV025_ROOT_CDS.assoc_9AC8F4EDD7066E53700DF4991528CA58" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_9AC8F4EDD7066E53700DF4991528CA58"/>
+                    <End EntitySet="ZC_TV025_ActivityType" Role="ToRole_assoc_9AC8F4EDD7066E53700DF4991528CA58"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0F6013B2200094435125C48D2F6B34F9" Association="ZC_TV025_ROOT_CDS.assoc_0F6013B2200094435125C48D2F6B34F9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_0F6013B2200094435125C48D2F6B34F9"/>
+                    <End EntitySet="ZC_TV025_HotelCatalog" Role="ToRole_assoc_0F6013B2200094435125C48D2F6B34F9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0C3648FC4DE9C2D260ED4FAD264D97B4" Association="ZC_TV025_ROOT_CDS.assoc_0C3648FC4DE9C2D260ED4FAD264D97B4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_Transport" Role="FromRole_assoc_0C3648FC4DE9C2D260ED4FAD264D97B4"/>
+                    <End EntitySet="ZC_TV025_CheckPoint" Role="ToRole_assoc_0C3648FC4DE9C2D260ED4FAD264D97B4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_241D266DEF753E60CFD0933BAB14EB14" Association="ZC_TV025_ROOT_CDS.assoc_241D266DEF753E60CFD0933BAB14EB14" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+                    <End EntitySet="ZC_TV025_UserInfo" Role="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_333DB1F3EA8A6284FC97EFE04D6860B2" Association="ZC_TV025_ROOT_CDS.assoc_333DB1F3EA8A6284FC97EFE04D6860B2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HotelCatalog" Role="FromRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2"/>
+                    <End EntitySet="ZC_TV025_Country" Role="ToRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6EF05D9422769AD6E69F57C5A88E95E5" Association="ZC_TV025_ROOT_CDS.assoc_6EF05D9422769AD6E69F57C5A88E95E5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_6EF05D9422769AD6E69F57C5A88E95E5"/>
+                    <End EntitySet="ZC_TV025_F4_Copy_From" Role="ToRole_assoc_6EF05D9422769AD6E69F57C5A88E95E5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_93F81AA993557B0C6E08CE434E541216" Association="ZC_TV025_ROOT_CDS.assoc_93F81AA993557B0C6E08CE434E541216" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_93F81AA993557B0C6E08CE434E541216"/>
+                    <End EntitySet="ZC_TV025_HotelCatalog" Role="ToRole_assoc_93F81AA993557B0C6E08CE434E541216"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_33184692576C7F869F07D67513BF2F5D" Association="ZC_TV025_ROOT_CDS.assoc_33184692576C7F869F07D67513BF2F5D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_33184692576C7F869F07D67513BF2F5D"/>
+                    <End EntitySet="ZC_TV025_HOTEL" Role="ToRole_assoc_33184692576C7F869F07D67513BF2F5D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D66CEA19743549216E0483A7A341CEC0" Association="ZC_TV025_ROOT_CDS.assoc_D66CEA19743549216E0483A7A341CEC0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_Airport" Role="FromRole_assoc_D66CEA19743549216E0483A7A341CEC0"/>
+                    <End EntitySet="ZC_TV025_Country" Role="ToRole_assoc_D66CEA19743549216E0483A7A341CEC0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A92F6CC9EA220421399B7B1EA22C9625" Association="ZC_TV025_ROOT_CDS.assoc_A92F6CC9EA220421399B7B1EA22C9625" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_A92F6CC9EA220421399B7B1EA22C9625"/>
+                    <End EntitySet="ZC_TV025_CheckPoint" Role="ToRole_assoc_A92F6CC9EA220421399B7B1EA22C9625"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8CDE1B1E3F926958481BA298EB0FD836" Association="ZC_TV025_ROOT_CDS.assoc_8CDE1B1E3F926958481BA298EB0FD836" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="FromRole_assoc_8CDE1B1E3F926958481BA298EB0FD836"/>
+                    <End EntitySet="ZC_TV025_ApprovedBy" Role="ToRole_assoc_8CDE1B1E3F926958481BA298EB0FD836"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3562255D2B651503F004F5F3D59D29AA" Association="ZC_TV025_ROOT_CDS.assoc_3562255D2B651503F004F5F3D59D29AA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_3562255D2B651503F004F5F3D59D29AA"/>
+                    <End EntitySet="ZC_TV025_Agency" Role="ToRole_assoc_3562255D2B651503F004F5F3D59D29AA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C8653746D71929F9C71440E555FCE489" Association="ZC_TV025_ROOT_CDS.assoc_C8653746D71929F9C71440E555FCE489" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="FromRole_assoc_C8653746D71929F9C71440E555FCE489"/>
+                    <End EntitySet="ZC_TV025_Currency" Role="ToRole_assoc_C8653746D71929F9C71440E555FCE489"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" Association="ZC_TV025_ROOT_CDS.assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+                    <End EntitySet="ZC_TV025_UserInfo" Role="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8002FC0260142D7A0469B98746BE164D" Association="ZC_TV025_ROOT_CDS.assoc_8002FC0260142D7A0469B98746BE164D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_8002FC0260142D7A0469B98746BE164D"/>
+                    <End EntitySet="ZC_TV025_Currency" Role="ToRole_assoc_8002FC0260142D7A0469B98746BE164D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A4FD7BCDD127E54FF6E5A110F8585CAE" Association="ZC_TV025_ROOT_CDS.assoc_A4FD7BCDD127E54FF6E5A110F8585CAE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_A4FD7BCDD127E54FF6E5A110F8585CAE"/>
+                    <End EntitySet="ZC_TV025_FakeVisitor" Role="ToRole_assoc_A4FD7BCDD127E54FF6E5A110F8585CAE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_4F07480DC6FE831E35C35D1584A3DF91" Association="ZC_TV025_ROOT_CDS.assoc_4F07480DC6FE831E35C35D1584A3DF91" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="FromRole_assoc_4F07480DC6FE831E35C35D1584A3DF91"/>
+                    <End EntitySet="ZC_TV025_Airport" Role="ToRole_assoc_4F07480DC6FE831E35C35D1584A3DF91"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B226B78AD26DC34EC38DD444803D9F40" Association="ZC_TV025_ROOT_CDS.assoc_B226B78AD26DC34EC38DD444803D9F40" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FakeVisitor" Role="FromRole_assoc_B226B78AD26DC34EC38DD444803D9F40"/>
+                    <End EntitySet="ZC_TV025_Country" Role="ToRole_assoc_B226B78AD26DC34EC38DD444803D9F40"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_200CD38B17BF816A7619A01A7E0C71E7" Association="ZC_TV025_ROOT_CDS.assoc_200CD38B17BF816A7619A01A7E0C71E7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="FromRole_assoc_200CD38B17BF816A7619A01A7E0C71E7"/>
+                    <End EntitySet="ZC_TV025_Currency" Role="ToRole_assoc_200CD38B17BF816A7619A01A7E0C71E7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2A5F14F404DFBB9AE1932ECB669D3333" Association="ZC_TV025_ROOT_CDS.assoc_2A5F14F404DFBB9AE1932ECB669D3333" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_2A5F14F404DFBB9AE1932ECB669D3333"/>
+                    <End EntitySet="ZC_TV025_Airport" Role="ToRole_assoc_2A5F14F404DFBB9AE1932ECB669D3333"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_17414FC4B497114B7D349F44B0B2F711" Association="ZC_TV025_ROOT_CDS.assoc_17414FC4B497114B7D349F44B0B2F711" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_17414FC4B497114B7D349F44B0B2F711"/>
+                    <End EntitySet="ZC_TV025_Currency" Role="ToRole_assoc_17414FC4B497114B7D349F44B0B2F711"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_33A85D76430BDAA76887CCE82E9EADB1" Association="ZC_TV025_ROOT_CDS.assoc_33A85D76430BDAA76887CCE82E9EADB1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_33A85D76430BDAA76887CCE82E9EADB1"/>
+                    <End EntitySet="ZC_TV025_Basis" Role="ToRole_assoc_33A85D76430BDAA76887CCE82E9EADB1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_17508D9B29C2EA88E69C54FBE3B9ADAC" Association="ZC_TV025_ROOT_CDS.assoc_17508D9B29C2EA88E69C54FBE3B9ADAC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_17508D9B29C2EA88E69C54FBE3B9ADAC"/>
+                    <End EntitySet="ZC_TV025_Basis" Role="ToRole_assoc_17508D9B29C2EA88E69C54FBE3B9ADAC"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BCE84369724BA3914DCDA0A30CBF3C58" Association="ZC_TV025_ROOT_CDS.assoc_BCE84369724BA3914DCDA0A30CBF3C58" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_BCE84369724BA3914DCDA0A30CBF3C58"/>
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="ToRole_assoc_BCE84369724BA3914DCDA0A30CBF3C58"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_254C4473E3754AF37D173EA6B7306251" Association="ZC_TV025_ROOT_CDS.assoc_254C4473E3754AF37D173EA6B7306251" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_254C4473E3754AF37D173EA6B7306251"/>
+                    <End EntitySet="ZC_TV025_VISITOR" Role="ToRole_assoc_254C4473E3754AF37D173EA6B7306251"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2D3B21A36D18643A3D95D6C835416115" Association="ZC_TV025_ROOT_CDS.assoc_2D3B21A36D18643A3D95D6C835416115" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="FromRole_assoc_2D3B21A36D18643A3D95D6C835416115"/>
+                    <End EntitySet="ZC_TV025_Airport" Role="ToRole_assoc_2D3B21A36D18643A3D95D6C835416115"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_31A3D16AAE714F59773886C22633D256" Association="ZC_TV025_ROOT_CDS.assoc_31A3D16AAE714F59773886C22633D256" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_31A3D16AAE714F59773886C22633D256"/>
+                    <End EntitySet="ZC_TV025_Currency" Role="ToRole_assoc_31A3D16AAE714F59773886C22633D256"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F1609A1DDBB0ED1AEFAD00E003045B55" Association="ZC_TV025_ROOT_CDS.assoc_F1609A1DDBB0ED1AEFAD00E003045B55" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_F1609A1DDBB0ED1AEFAD00E003045B55"/>
+                    <End EntitySet="ZC_TV025_Status" Role="ToRole_assoc_F1609A1DDBB0ED1AEFAD00E003045B55"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_752106EDF787D74B1165CCAE575BBA6B" Association="ZC_TV025_ROOT_CDS.assoc_752106EDF787D74B1165CCAE575BBA6B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_752106EDF787D74B1165CCAE575BBA6B"/>
+                    <End EntitySet="ZC_TV025_Agency" Role="ToRole_assoc_752106EDF787D74B1165CCAE575BBA6B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C35901D5D35395A090D0696DD5382246" Association="ZC_TV025_ROOT_CDS.assoc_C35901D5D35395A090D0696DD5382246" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_C35901D5D35395A090D0696DD5382246"/>
+                    <End EntitySet="ZC_TV025_Country" Role="ToRole_assoc_C35901D5D35395A090D0696DD5382246"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6B837F82602069A16A7E34B78317BB64" Association="ZC_TV025_ROOT_CDS.assoc_6B837F82602069A16A7E34B78317BB64" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_6B837F82602069A16A7E34B78317BB64"/>
+                    <End EntitySet="ZC_TV025_TypeCar" Role="ToRole_assoc_6B837F82602069A16A7E34B78317BB64"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2BB25EB9A0689EAA3F0490CE0B13A646" Association="ZC_TV025_ROOT_CDS.assoc_2BB25EB9A0689EAA3F0490CE0B13A646" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_FLIGHT" Role="FromRole_assoc_2BB25EB9A0689EAA3F0490CE0B13A646"/>
+                    <End EntitySet="ZC_TV025_FlightType" Role="ToRole_assoc_2BB25EB9A0689EAA3F0490CE0B13A646"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3401ADC712EBF1316237AAABBD328BD2" Association="ZC_TV025_ROOT_CDS.assoc_3401ADC712EBF1316237AAABBD328BD2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_3401ADC712EBF1316237AAABBD328BD2"/>
+                    <End EntitySet="ZC_TV025_Attach" Role="ToRole_assoc_3401ADC712EBF1316237AAABBD328BD2"/>
+                </AssociationSet>
+                <FunctionImport Name="ZC_TV025_ROOTCopy_from" ReturnType="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" EntitySet="ZC_TV025_ROOT" m:HttpMethod="POST" sap:action-for="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" sap:applicable-path="Copy_from_ac">
+                    <Parameter Name="SrcPernr" Type="Edm.String" Mode="In" MaxLength="8" sap:label="Personnel Number"/>
+                    <Parameter Name="SrcReinr" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Trip Number"/>
+                    <Parameter Name="KeepPrevious" Type="Edm.Boolean" Mode="In" sap:label="Boolean"/>
+                    <Parameter Name="CopyFlight" Type="Edm.Boolean" Mode="In" sap:label="Boolean"/>
+                    <Parameter Name="CopyHotel" Type="Edm.Boolean" Mode="In" sap:label="Boolean"/>
+                    <Parameter Name="CopyTransport" Type="Edm.Boolean" Mode="In" sap:label="Boolean"/>
+                    <Parameter Name="pernr" Type="Edm.String" Mode="In" MaxLength="8" sap:label="Personnel Number"/>
+                    <Parameter Name="reinr" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Trip Number"/>
+                    <Parameter Name="requestvrs" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Version number"/>
+                    <Parameter Name="plan_request" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Plan Request ID"/>
+                </FunctionImport>
+                <FunctionImport Name="ZC_TV025_ROOTLock" ReturnType="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" EntitySet="ZC_TV025_ROOT" m:HttpMethod="POST" sap:action-for="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" sap:applicable-path="Lock_ac">
+                    <Parameter Name="pernr" Type="Edm.String" Mode="In" MaxLength="8" sap:label="Personnel Number"/>
+                    <Parameter Name="reinr" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Trip Number"/>
+                    <Parameter Name="requestvrs" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Version number"/>
+                    <Parameter Name="plan_request" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Plan Request ID"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType/citizenship" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="citizenship"/>
+                                    <PropertyValue Property="ValueListProperty" String="land1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Flight Type"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_FlightType"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="type"/>
+                                    <PropertyValue Property="ValueListProperty" String="Id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FlightType"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/airport_beg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airport"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Airport"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="airport_beg"/>
+                                    <PropertyValue Property="ValueListProperty" String="airport_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="country_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="town"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="iata_code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="airport_name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/airport_end" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airport"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Airport"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="airport_end"/>
+                                    <PropertyValue Property="ValueListProperty" String="airport_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="country_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="town"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="iata_code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="airport_name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/penalty_waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="penalty_waers"/>
+                                    <PropertyValue Property="ValueListProperty" String="waers"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers"/>
+                                    <PropertyValue Property="ValueListProperty" String="waers"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType/approved_by" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Approved By"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_ApprovedBy"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="approved_by"/>
+                                    <PropertyValue Property="ValueListProperty" String="id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/basis" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Basis"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Basis"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="basis"/>
+                                    <PropertyValue Property="ValueListProperty" String="basis_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_basis"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_basis_txt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/penalty_waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="penalty_waers"/>
+                                    <PropertyValue Property="ValueListProperty" String="waers"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/hotel_end" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Hotel catalog"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_HotelCatalog"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="hotel_end"/>
+                                    <PropertyValue Property="ValueListProperty" String="hotel_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_class"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="country_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="town_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_address"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_phone"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_comments"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers"/>
+                                    <PropertyValue Property="ValueListProperty" String="waers"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/type_car" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Type car"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_TypeCar"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="type_car"/>
+                                    <PropertyValue Property="ValueListProperty" String="id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/transport_waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="transport_waers"/>
+                                    <PropertyValue Property="ValueListProperty" String="waers"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType/agency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Agency"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Agency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="agency"/>
+                                    <PropertyValue Property="ValueListProperty" String="agency_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="agency_name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/country_id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id"/>
+                                    <PropertyValue Property="ValueListProperty" String="land1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/country_id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id"/>
+                                    <PropertyValue Property="ValueListProperty" String="land1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/pernr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Visitor"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_VISITOR"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="pernr"/>
+                                    <PropertyValue Property="ValueListProperty" String="pernr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="birth_date"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ename"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="orgeh_text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="citizenship"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="passp_number"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="passp_expiry"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/crunm" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User info"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="crunm"/>
+                                    <PropertyValue Property="ValueListProperty" String="uname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/chunm" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User info"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="chunm"/>
+                                    <PropertyValue Property="ValueListProperty" String="uname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType/check_point" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Pickup \ Destinations points"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_CheckPoint"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="check_point"/>
+                                    <PropertyValue Property="ValueListProperty" String="id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="codegruppe"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="kurztext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType/arrival" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Pickup \ Destinations points"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_CheckPoint"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="arrival"/>
+                                    <PropertyValue Property="ValueListProperty" String="id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="codegruppe"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="kurztext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_VISITORType/citizenship" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="citizenship"/>
+                                    <PropertyValue Property="ValueListProperty" String="land1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FakeVisitorType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>pernr</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_FLIGHTType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>employee_number</PropertyPath>
+                        <PropertyPath>trip_number</PropertyPath>
+                        <PropertyPath>s_index</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_AgencyType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>agency_id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HOTELType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>employee_number</PropertyPath>
+                        <PropertyPath>trip_number</PropertyPath>
+                        <PropertyPath>s_index</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>hotel_id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>airport_id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>pernr</PropertyPath>
+                        <PropertyPath>reinr</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_BasisType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>basis_id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>employee_number</PropertyPath>
+                        <PropertyPath>trip_number</PropertyPath>
+                        <PropertyPath>s_index</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_CheckPointType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://happ01kd6.kio.kz:44312/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://happ01kd6.kio.kz:44312/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
