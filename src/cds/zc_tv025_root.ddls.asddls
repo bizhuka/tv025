@@ -269,10 +269,10 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     cast( ' ' as abap.char( 255 ) ) as error_message,    
     
 ///////////////////////////////////////////////////////////////
-    /* Locks */    
-    zz_etag,
-    zz_etag_usr,
-    
+//    /* Locks */    
+//    zz_etag,
+//    zz_etag_usr,
+//    
            
 ///////////////////////////////////////////////////////////////
     /* Associations */

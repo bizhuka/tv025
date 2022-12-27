@@ -71,8 +71,6 @@ CLASS zcl_tv025_model DEFINITION
         canceled TYPE zss_tv025_head-zz_status VALUE 'C',
       END OF mc_status .
     DATA ms_cache TYPE ts_cache .
-    DATA mt_status_name TYPE tt_domain_text READ-ONLY .
-    DATA mt_country TYPE tt_country READ-ONLY .
 
     CLASS-METHODS get_instance
       RETURNING
@@ -149,10 +147,16 @@ CLASS zcl_tv025_model DEFINITION
         !it_select      TYPE ddshselops
       RETURNING
         VALUE(rv_where) TYPE string .
+    METHODS get_country_text IMPORTING iv_land1       TYPE t005t-land1
+                             RETURNING VALUE(rv_text) TYPE t005t-landx.
+    METHODS get_status_text IMPORTING iv_key         TYPE csequence
+                            RETURNING VALUE(rv_text) TYPE ts_domain_text-text.
   PROTECTED SECTION.
   PRIVATE SECTION.
 
     CLASS-DATA _instance TYPE REF TO zcl_tv025_model .
+    DATA _mt_status_name TYPE tt_domain_text.
+    DATA _mt_country TYPE tt_country.
 
     METHODS _set_index
       IMPORTING
@@ -251,6 +255,19 @@ CLASS ZCL_TV025_MODEL IMPLEMENTATION.
   ENDMETHOD.
 
 
+  METHOD get_country_text.
+    IF _mt_country[] IS INITIAL.
+      SELECT land1 landx INTO TABLE _mt_country
+      FROM t005t
+      WHERE spras EQ sy-langu.
+    ENDIF.
+
+    ASSIGN _mt_country[ land1 = iv_land1 ] TO FIELD-SYMBOL(<ls_country>).
+    CHECK sy-subrc = 0.
+    rv_text = <ls_country>-landx.
+  ENDMETHOD.
+
+
   METHOD get_domain_texts.
     DATA lt_table TYPE STANDARD TABLE OF dd07v WITH DEFAULT KEY.
     CALL FUNCTION 'DD_DOMVALUES_GET'
@@ -296,12 +313,6 @@ CLASS ZCL_TV025_MODEL IMPLEMENTATION.
   METHOD get_instance.
     IF _instance IS INITIAL.
       _instance = NEW #( ).
-
-      SELECT land1 landx INTO TABLE _instance->mt_country
-      FROM t005t
-      WHERE spras EQ sy-langu.
-
-      _instance->mt_status_name = _instance->get_domain_texts( 'ZTV_022_STATUS' ).
     ENDIF.
 
     ro_model = _instance.
@@ -330,17 +341,24 @@ CLASS ZCL_TV025_MODEL IMPLEMENTATION.
       INTO CORRESPONDING FIELDS OF TABLE @rt_travels UP TO @iv_count ROWS.
 
     " Based on ZDTV025_HEAD fields
-    LOOP AT rt_travels ASSIGNING FIELD-SYMBOL(<fs_travels>).
-      ASSIGN mt_status_name[ key = <fs_travels>-zz_status ] TO FIELD-SYMBOL(<ls_status>).
-      IF sy-subrc = 0.
-        <fs_travels>-status_name = <ls_status>-text.
-      ENDIF.
-
-      <fs_travels>-crname = get_user_ename( <fs_travels>-crunm ).
-      <fs_travels>-chname = get_user_ename( <fs_travels>-chunm ).
+    LOOP AT rt_travels ASSIGNING FIELD-SYMBOL(<ls_travels>).
+      <ls_travels>-status_name = get_status_text( <ls_travels>-zz_status ).
+      <ls_travels>-crname      = get_user_ename( <ls_travels>-crunm ).
+      <ls_travels>-chname      = get_user_ename( <ls_travels>-chunm ).
     ENDLOOP.
 
     SORT rt_travels BY pernr reinr.
+  ENDMETHOD.
+
+
+  METHOD get_status_text.
+    IF _mt_status_name[] IS NOT INITIAL.
+      _mt_status_name = _instance->get_domain_texts( 'ZTV_022_STATUS' ).
+    ENDIF.
+
+    ASSIGN _mt_status_name[ key = iv_key ] TO FIELD-SYMBOL(<ls_status>).
+    CHECK sy-subrc = 0.
+    rv_text = <ls_status>-text.
   ENDMETHOD.
 
 
@@ -382,10 +400,11 @@ CLASS ZCL_TV025_MODEL IMPLEMENTATION.
     ELSE.
       CALL FUNCTION 'ENQUEUE_EZDTV025_ROOT'
         EXPORTING
-          pernr  = l_pernr
-          reinr  = l_reinr
+          "mode_ftpt_req_head = 'X'
+          pernr              = l_pernr
+          reinr              = l_reinr
         EXCEPTIONS
-          OTHERS = 3.
+          OTHERS             = 3.
     ENDIF.
 
     " Show message in caller

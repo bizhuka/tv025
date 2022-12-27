@@ -79,9 +79,9 @@ define view ZI_TV025_ROOT as select from ftpt_req_head as root
     dates,
     times,
     
-    //@ObjectModel.readOnly: 'EXTERNAL_CALCULATION'
-    zz_etag,
-    zz_etag_usr,
+//    //@ObjectModel.readOnly: 'EXTERNAL_CALCULATION'
+//    zz_etag,
+//    zz_etag_usr,
     
     '########' as fake_visitor,
     '###'      as fake_agency,      

@@ -1,4 +1,4 @@
-sap.ui.controller("ztv025.ext.controller.ListReportExtension", {  
+sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
   _prefix: 'ztv025::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_TV025_ROOT--',
   _prefix_obj: 'ztv025::sap.suite.ui.generic.template.ObjectPage.view.Details::ZC_TV025_ROOT--',
 
@@ -20,6 +20,12 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
   // onChildOpenedExtension: function (oEvent) {
   //   if (window._objectPage) window._objectPage.afterOpen(oEvent)
+  // },
+  // beforeMultiEditSaveExtension: function (aContextsToBeUpdated) {
+  //   debugger
+  // },
+  // beforeSaveExtension: function () {
+  //   debugger
   // },
 
   onAfterRendering: function (oEvent) {
@@ -149,59 +155,47 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
       _view.byId(_this._prefix + 'template::ListReport::TableToolbar').addContent(new sap.m.Button(params))
   },
 
-  // beforeMultiEditSaveExtension: function (aContextsToBeUpdated) {
-  //   debugger
-  // },
-
-  // beforeSaveExtension: function () {
-  //   debugger
-  // },
-
   onInitSmartFilterBarExtension: function (oEvent) {
     const _this = this
     const _view = _this.getView()
     const _filterBar = oEvent.getSource() // _view.byId(this._prefix + 'listReportFilter') -> .attachInitialise()
+    //const userInfoModel = new sap.ui.model.json.JSONModel("/services/userapi/currentUser") .attachRequestCompleted(
 
-    const userInfoModel = new sap.ui.model.json.JSONModel("/services/userapi/currentUser")
-    userInfoModel.attachRequestCompleted(function () {
-      const urlUserName = _this.getParameterByName('uname')
-      const currentUser = userInfoModel.getData()
-      currentUser.name = urlUserName ? urlUserName : currentUser.name.toUpperCase()
+    const filterData = _filterBar.getFilterData()
 
-      const filterData = _filterBar.getFilterData()
-
+    const userName = _this.getParameterByName('uname') || ''
+    if (userName)
       filterData.crunm = {
         "ranges": [{
           "exclude": false,
           "operation": "EQ",
           "keyField": "crunm",
-          "value1": currentUser.name
+          "value1": userName
         }]
       }
-      filterData.chdat = {
-        "ranges": [{
-          "exclude": false,
-          "operation": "BT",
-          "keyField": "chdat",
-          "value1": new Date(new Date().getFullYear(), 0, 1),
-          "value2": new Date()
-        }]
-      }
-      _filterBar.setFilterData(filterData)
+    filterData.chdat = {
+      "ranges": [{
+        "exclude": false,
+        "operation": "BT",
+        "keyField": "chdat",
+        "value1": new Date(new Date().getFullYear(), 0, 1),
+        "value2": new Date()
+      }]
+    }
+    _filterBar.setFilterData(filterData)
+    //_filterBar.fireSearch()
 
-      //_filterBar.fireSearch()
-
-      _view.getModel().read("/ZC_TV025_UserInfo('" + currentUser.name + "')", {
+    if (userName)
+      _view.getModel().read("/ZC_TV025_UserInfo('" + userName + "')", {
         success: function (userInfo) {
-          const userInfoText = userInfo.UserName  //+ " (" + currentUser.name + ")"
+          const userInfoText = userInfo.UserName  //+ " (" + userName + ")"
           const token = _view.byId(_this._prefix + 'listReportFilter-filterItemControl_BASIC-crunm').getTokens()[0]
           token.setText(userInfoText)
           token.setTooltip(userInfoText)
         }
       })
-      // Main title
-      _view.byId(_this._prefix + 'template::PageVariant-text').setText('Travel request:')
-    });
+    // Main title
+    _view.byId(_this._prefix + 'template::PageVariant-text').setText('Travel request:')
   },
 
   getParameterByName: function (name, url = window.location.href) {

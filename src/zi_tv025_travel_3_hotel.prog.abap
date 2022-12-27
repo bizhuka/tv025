@@ -44,10 +44,7 @@ CLASS lcl_hotel IMPLEMENTATION.
     FROM zdtv025_hotel_ca
     WHERE hotel_id = @zdtv025_hotel-hotel_end.
 
-    ASSIGN go_model->mt_country[ land1 = zdtv025_hotel_ui-country_end ] TO FIELD-SYMBOL(<ls_country_end>).
-    IF sy-subrc = 0.
-      zdtv025_hotel_ui-country_end_txt = <ls_country_end>-landx.
-    ENDIF.
+    zdtv025_hotel_ui-country_end_txt = go_model->get_country_text( zdtv025_hotel_ui-country_end ).
 **********************************************************************
 
     SELECT SINGLE hotel_basis_txt INTO zdtv025_hotel_ui-hotel_basis_txt

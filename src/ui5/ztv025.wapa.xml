@@ -4,12 +4,41 @@
   <asx:values>
    <ATTRIBUTES>
     <APPLNAME>ZTV025</APPLNAME>
+    <APPLCLAS>ZCL_TV025_BSP_APPLICATION</APPLCLAS>
     <APPLEXT>ztv025</APPLEXT>
+    <STATEFUL>X</STATEFUL>
     <SECURITY>X</SECURITY>
     <ORIGLANG>E</ORIGLANG>
     <MODIFLANG>E</MODIFLANG>
     <TEXT>CDS + UI5 based interface</TEXT>
    </ATTRIBUTES>
+   <PAGES>
+    <item>
+     <ATTRIBUTES>
+      <APPLNAME>ZTV025</APPLNAME>
+      <PAGEKEY>DEFAULT.HTM</PAGEKEY>
+      <PAGENAME>default.htm</PAGENAME>
+      <MIMETYPE>text/html</MIMETYPE>
+      <IS_START_PAGE>X</IS_START_PAGE>
+      <LAYOUTLANGU>E</LAYOUTLANGU>
+      <VERSION>A</VERSION>
+      <LANGU>E</LANGU>
+     </ATTRIBUTES>
+    </item>
+    <item>
+     <ATTRIBUTES>
+      <APPLNAME>ZTV025</APPLNAME>
+      <PAGEKEY>LOCK.JSON</PAGEKEY>
+      <PAGENAME>lock.json</PAGENAME>
+      <MIMETYPE>application/json</MIMETYPE>
+      <IS_START_PAGE>X</IS_START_PAGE>
+      <LAYOUTLANGU>E</LAYOUTLANGU>
+      <VERSION>A</VERSION>
+      <LANGU>E</LANGU>
+      <DESCRIPT>Lock Travel Request</DESCRIPT>
+     </ATTRIBUTES>
+    </item>
+   </PAGES>
   </asx:values>
  </asx:abap>
 </abapGit>

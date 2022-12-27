@@ -45,19 +45,13 @@ CLASS lcl_flight IMPLEMENTATION.
     FROM zdtv025_airport
     WHERE airport_id = @zdtv025_flight-airport_beg.
 
-    ASSIGN go_model->mt_country[ land1 = zdtv025_flight_ui-country_beg ] TO FIELD-SYMBOL(<ls_country_beg>).
-    IF sy-subrc = 0.
-      zdtv025_flight_ui-country_beg_txt = <ls_country_beg>-landx.
-    ENDIF.
+    zdtv025_flight_ui-country_beg_txt = go_model->get_country_text( zdtv025_flight_ui-country_beg ).
 **********************************************************************
     SELECT SINGLE airport_name AS airport_end_txt, town AS town_end, country_id AS country_end INTO CORRESPONDING FIELDS OF @zdtv025_flight_ui
     FROM zdtv025_airport
     WHERE airport_id = @zdtv025_flight-airport_end.
 
-    ASSIGN go_model->mt_country[ land1 = zdtv025_flight_ui-country_end ] TO FIELD-SYMBOL(<ls_country_end>).
-    IF sy-subrc = 0.
-      zdtv025_flight_ui-country_end_txt = <ls_country_end>-landx.
-    ENDIF.
+    zdtv025_flight_ui-country_end_txt = go_model->get_country_text( zdtv025_flight_ui-country_end ).
 **********************************************************************
   ENDMETHOD.
 

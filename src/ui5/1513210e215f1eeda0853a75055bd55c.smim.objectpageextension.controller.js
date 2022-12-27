@@ -24,13 +24,13 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 		this.setIcons()
 		this._prepare_attach()
 		this._check_lock_before_press()
-		
+
 		this._check_lock_before_press()
 		this._toggle_by_checkbox()
 	},
 
 	_check_lock_before_press: function () {
-		const modifyButtons = ['ZC_TV025_ROOT--edit',
+		const editButtons = ['ZC_TV025_ROOT--edit',
 			'ZC_TV025_FLIGHT--edit',
 			'ZC_TV025_FLIGHT--delete',
 			'ZC_TV025_ROOT--FlightInfo::addEntry',
@@ -49,75 +49,112 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			'ZC_TV025_ROOT--AttachmentInfo::uploadFile',
 			'ZC_TV025_ROOT--AttachmentInfo::deleteEntry'
 		]
-		const _this = this
-		const _view = _this.getView()
 		const _byId = sap.ui.getCore().byId
-		for (const id of modifyButtons) {
-			const modifyButton = _byId(_this._details + id)
-			if (!modifyButton || modifyButton._std_fm) continue
+		for (const id of editButtons) {
+			const editButton = _byId(this._details + id)
+			if (!editButton || editButton._std_fm) continue
 
-			modifyButton._std_fm = modifyButton.mEventRegistry.press[0]
-			modifyButton.detachPress(modifyButton._std_fm.fFunction, modifyButton._std_fm.oListener)
+			editButton._std_fm = editButton.mEventRegistry.press[0]
+			editButton.detachPress(editButton._std_fm.fFunction, editButton._std_fm.oListener)
 
-			modifyButton.attachPress(function (oEvent) {
-				if (_this._currContext && (_this._currContext.getObject().zz_status === 'A' || _this._currContext.getObject().zz_status === 'C')) {
-					sap.m.MessageToast.show('Only requests with "Open" status can be editable', { duration: 3500 });
-					$(".sapMMessageToast").css("background", "#cc1919");
-					throw 'Cancel edit event' // oEvent.cancelBubble() preventDefault()
-				}
-
-				const button = oEvent.getSource()
-				if (button._go_on) {
-					button._go_on = null
-					return
-				}
-
-				// Fix called 2 times?
-				if (window._prev_lock_press && window._prev_lock_press.button === button && (new Date().getTime() - window._prev_lock_press.time) < 1000) {
-					throw 'Cancel edit event'
-				}
-				window._prev_lock_press = {
-					button: button,
-					time: new Date().getTime()
-				}
-
-				const buttonId = button.getId()
-				const currentRoot = _view.getBindingContext().getObject()
-
-				_view.getModel().callFunction("/ZC_TV025_ROOTLock", {
-					method: "POST",
-					urlParameters: {
-						"pernr": currentRoot.pernr ? currentRoot.pernr : currentRoot.employee_number,
-						"reinr": currentRoot.reinr ? currentRoot.reinr : currentRoot.trip_number,
-						"requestvrs": "99",
-						"plan_request": "R"
-					},
-					success: function (oData) {
-						if (oData.error_message) {
-							sap.m.MessageToast.show(oData.error_message, { duration: 3500 });
-							$(".sapMMessageToast").css("background", "#cc1919");
-							return
-						}
-
-						button._go_on = true
-
-						const editButton = _view.byId(buttonId)
-						_this._set_mandatory_editable(editButton)
-						editButton.firePress()
-					},
-					error: function (oError) {
-						console.log(oError)
-					}
-				})
-
-				throw 'Cancel edit event'
-			});
-
-			modifyButton.attachPress(modifyButton._std_fm.fFunction, modifyButton._std_fm.oListener)
+			// Set before standard handler
+			editButton.attachPress(this._check_lock_handler, this)
+			editButton.attachPress(editButton._std_fm.fFunction, editButton._std_fm.oListener)
 		}
 	},
 
-	_set_mandatory_editable: function (editButton) {		
+	_check_lock_handler: function (oEvent) {
+		const _this = this
+		if (_this._currContext && (_this._currContext.getObject().zz_status === 'A' || _this._currContext.getObject().zz_status === 'C')) {
+			sap.m.MessageToast.show('Only requests with "Open" status can be editable', { duration: 3500 });
+			$(".sapMMessageToast").css("background", "#cc1919");
+			throw 'Cancel edit event' // oEvent.cancelBubble() preventDefault()
+		}
+
+		const button = oEvent.getSource()
+		if (button._go_on) {
+			button._go_on = null
+			return
+		}
+
+		// Fix called 2 times?
+		if (window._prev_lock_press && window._prev_lock_press.button === button && (new Date().getTime() - window._prev_lock_press.time) < 1000) {
+			throw 'Cancel edit event'
+		}
+		window._prev_lock_press = {
+			button: button,
+			time: new Date().getTime()
+		}
+
+		const _view = _this.getView()
+		const currentRoot = _view.getBindingContext().getObject()
+		const lockInfo = {
+			pernr: currentRoot.pernr ? currentRoot.pernr : currentRoot.employee_number,
+			reinr: currentRoot.reinr ? currentRoot.reinr : currentRoot.trip_number,
+
+			success: function () {
+				const editButton = _view.byId(button.getId())
+				_this._set_mandatory_editable(editButton)
+				editButton._go_on = true
+				editButton.firePress()
+			},
+
+			error: function (message) {
+				sap.m.MessageToast.show(message, { duration: 3500 });
+				$(".sapMMessageToast").css("background", "#cc1919");
+				console.error(message)
+			}
+		}
+
+		if (window.location.hostname === 'localhost')
+			_this.lock_by_bopf_test_only(lockInfo)
+		else
+			_this.lock_by_bsp_productive(lockInfo)
+
+		throw 'Cancel edit event'
+	},
+
+	lock_by_bopf_test_only: function (lockInfo) {
+		this.getView().getModel().callFunction("/ZC_TV025_ROOTLock", {
+			method: "POST",
+			urlParameters: {
+				"pernr": lockInfo.pernr,
+				"reinr": lockInfo.reinr,
+				"requestvrs": "99",
+				"plan_request": "R"
+			},
+			success: function (result) {
+				if (result.error_message) {					
+					lockInfo.error(result.error_message)
+					return
+				}
+				lockInfo.success()
+			},
+			error: function (message) {
+				lockInfo.error(message)
+			}
+		})
+	},
+
+	lock_by_bsp_productive: function (lockInfo) {
+		$.ajax({
+			type: 'GET',
+			url: window.location.origin + '/sap/bc/bsp/sap/ztv025/lock.json?pernr=' + lockInfo.pernr + '&reinr=' + lockInfo.reinr,
+			dataType: 'json',
+			success: function (result) {
+				if (result.message === 'OK') {
+					lockInfo.success()
+					return
+				}
+				lockInfo.error(result.message)
+			},
+			error: function (message) {
+				lockInfo.error(message)
+			}
+		})
+	},
+
+	_set_mandatory_editable: function (editButton) {
 		const _this = this
 		const _byId = sap.ui.getCore().byId
 		const buttonInfo = editButton.getId().split('::')[2].split('--')

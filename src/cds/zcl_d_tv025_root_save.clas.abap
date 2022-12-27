@@ -42,37 +42,41 @@ CLASS ZCL_D_TV025_ROOT_SAVE IMPLEMENTATION.
                                                        ( |REQUESTVRS| )
                                                        ( |PLAN_REQUEST| )
                                                        ( |REINR| ) ).
-      IF <ls_root>-zz_etag_usr = zcl_a_tv025_lock=>mc_etag_user.
-        <ls_root>-zz_etag_usr = sy-uname.
-        lt_change_fields      = VALUE #( ( |ZZ_ETAG_USR| ) ).
-      ELSE.
-        " Copy previous from changed
-        IF <ls_root>-zz_crdat IS INITIAL.
-          <ls_root>-zz_crdat = <ls_root>-dates.
-        ENDIF.
-        IF <ls_root>-zz_crtime IS INITIAL.
-          <ls_root>-zz_crtime = <ls_root>-times.
-        ENDIF.
-
-        " Changed
-        <ls_root>-uname = sy-uname.
-        <ls_root>-dates = sy-datum.
-        <ls_root>-times = sy-uzeit.
-
-        " Created
-        <ls_root>-createdby = COND #( WHEN <ls_root>-createdby IS NOT INITIAL THEN <ls_root>-createdby ELSE sy-uname ).
-        <ls_root>-zz_crdat  = COND #( WHEN <ls_root>-zz_crdat  IS NOT INITIAL THEN <ls_root>-zz_crdat  ELSE sy-datum ).
-        <ls_root>-zz_crtime = COND #( WHEN <ls_root>-zz_crtime IS NOT INITIAL THEN <ls_root>-zz_crtime ELSE sy-uzeit ).
-
-        " Status
-        <ls_root>-zz_status = COND #( WHEN <ls_root>-zz_status IS NOT INITIAL THEN <ls_root>-zz_status ELSE zcl_tv025_model=>mc_status-open ).
-        _set_key( CHANGING cs_root = <ls_root> ).
+*      IF <ls_root>-zz_etag_usr = zcl_a_tv025_lock=>mc_etag_user.
+*        <ls_root>-zz_etag_usr = sy-uname.
+*        lt_change_fields      = VALUE #( ( |ZZ_ETAG_USR| ) ).
+*      ELSE.
+      " Copy previous from changed
+      IF <ls_root>-zz_crdat IS INITIAL.
+        <ls_root>-zz_crdat = <ls_root>-dates.
       ENDIF.
+      IF <ls_root>-zz_crtime IS INITIAL.
+        <ls_root>-zz_crtime = <ls_root>-times.
+      ENDIF.
+
+      " Changed
+      <ls_root>-uname = sy-uname.
+      <ls_root>-dates = sy-datum.
+      <ls_root>-times = sy-uzeit.
+
+      " Created
+      <ls_root>-createdby = COND #( WHEN <ls_root>-createdby IS NOT INITIAL THEN <ls_root>-createdby ELSE sy-uname ).
+      <ls_root>-zz_crdat  = COND #( WHEN <ls_root>-zz_crdat  IS NOT INITIAL THEN <ls_root>-zz_crdat  ELSE sy-datum ).
+      <ls_root>-zz_crtime = COND #( WHEN <ls_root>-zz_crtime IS NOT INITIAL THEN <ls_root>-zz_crtime ELSE sy-uzeit ).
+
+      " Status
+      <ls_root>-zz_status = COND #( WHEN <ls_root>-zz_status IS NOT INITIAL THEN <ls_root>-zz_status ELSE zcl_tv025_model=>mc_status-open ).
+      _set_key( CHANGING cs_root = <ls_root> ).
+*      ENDIF.
 
       io_modify->update( iv_node           = is_ctx-node_key
                          iv_key            = <ls_root>-key
                          is_data           = REF #( <ls_root> )
                          it_changed_fields = lt_change_fields ).
+
+*      zcl_tv025_model=>get_instance( )->lock( iv_unlock = abap_true
+*                                              iv_pernr  = <ls_root>-pernr
+*                                              iv_reinr  = <ls_root>-reinr ).
 
       " Just retrieve new one IN ZCL_V_TV025_ROOT
       created_root = <ls_root>-node_data.
