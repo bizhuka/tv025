@@ -34,7 +34,7 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
   //     currency: 'KZT'
   //   }
   // },
-
+  
   onAfterRendering: function (oEvent) {
     this._setMessageParser()
     this._initCreateDialog()
@@ -151,16 +151,10 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
       press: function () {
         const table = _view.byId(_this._prefix + 'responsiveTable')
-        const sFilter = table.getBinding("items").sFilterParams
-        if (!sFilter) {
-          sap.m.MessageToast.show('Please specify filter except quick search', { duration: 3500 });
-          $(".sapMMessageToast").css("background", "#cc1919");
-          return
-        }
         const sUrl =
           document.location.origin +
           "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_F4_Copy_From(pernr='00000000',reinr='0000000000')/$value?" +
-          sFilter
+          table.getBinding("items").sFilterParams
         window.open(sUrl)
       }
     }

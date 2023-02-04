@@ -23,6 +23,8 @@
 define view ZC_TV025_Airport as select from zdtv025_airport as _Airport
 
 association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _Airport.country_id
+association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.town
+
 
 {
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
@@ -41,6 +43,7 @@ association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _Airport.
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.9 }
     @UI.lineItem: [{ position: 30 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
+    @Consumption.valueHelp: '_Town'
     town,
     
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }    
@@ -53,5 +56,6 @@ association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _Airport.
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 50 }]
     airport_name,
     
-    _Country
+    _Country,
+    _Town
 }

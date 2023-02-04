@@ -11,6 +11,10 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 		const objectPage = _view.byId(this._prefix + "objectPage")
 		if (objectPage)
 			objectPage.setUseIconTabBar(true)
+
+		const expensePdfButton = _view.byId(this._prefix + 'action::bt_expense_pdf')
+		if (expensePdfButton && !expensePdfButton.getIcon())
+			expensePdfButton.setIcon(sap.ui.core.IconPool.getIconURI("sap-icon://expense-report"))
 	},
 
 	onAfterRendering: function () {
@@ -124,7 +128,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 				"plan_request": "R"
 			},
 			success: function (result) {
-				if (result.error_message) {					
+				if (result.error_message) {
 					lockInfo.error(result.error_message)
 					return
 				}
@@ -286,5 +290,10 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			_this.copyFromDialog.initDialog(_this)
 			_this.copyFromDialog.dialog.open();
 		});
+	},
+
+	_onExpensePdf: function () {
+		const currentRoot = this.getView().getBindingContext().getObject()
+		window.open( location.origin + "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_Attach(pernr='" + currentRoot.pernr + "',reinr='" + currentRoot.reinr + "',doc_id='EXPENSE_PDF')/$value")
 	}
 });

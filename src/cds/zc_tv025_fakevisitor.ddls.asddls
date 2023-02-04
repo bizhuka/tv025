@@ -40,6 +40,13 @@ association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _main.cit
       @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 20 }]
       ename,
       
+      @UI.lineItem: [{ position: 25, type: #WITH_URL, url: 'pas_url', label: 'Badge Number' }]
+      @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 25, label: 'Badge Number' }]
+      badge,
+      
+      @ObjectModel.readOnly: true
+      concat('http://pas/MVis/ViewMasterVisitorDetails.aspx?VisitorId=', badge) as pas_url,
+      
       @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8  }
       @UI.lineItem: [{ position: 40 }]
       @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 30 }]

@@ -48,7 +48,8 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
                                                   and _Attach.reinr           = root.reinr                                                  
   association [0..*] to ZC_TV025_F4_Copy_From as _CopyFrom on _CopyFrom.pernr = root.pernr
                                                           and _CopyFrom.reinr = root.reinr
-                                                  
+                                                          
+  association [0..1] to ZC_TV025_Currency as _Currency on _Currency.waers      = root.currency
   association [0..1] to ZC_TV025_Status as _Status on _Status.Status = root.zz_status
   association [0..1] to ZC_TV025_ActivityType as _ActivityType on _ActivityType.Activity = root.activity_type 
   association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = root.country_end
@@ -273,7 +274,58 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
 //    zz_etag,
 //    zz_etag_usr,
 //    
-           
+   
+   // Fix update bug
+    time_beg,
+    time_end,
+    estimated_cost,
+    status,
+    repid,
+    depar,
+    approvedby,    
+    delivery_date,    
+    delivery_loc,    
+    delivery_area,    
+    delivery_empl,    
+    arrival_work,    
+    return_work,    
+    t_actype,    
+    perm_trip_appr,    
+    tt_statu,    
+    tt_comsp,    
+    gwe,    
+    edi,    
+    carry_oth,    
+    carried_by_oth,    
+    datecow,    
+    timecow,    
+    dateeow,    
+    timeeow,    
+    incr_max_tripseg_reimb,    
+    addr_depar,    
+    addr_arrvl,
+///////////////////////////////////////////////////////////////
+    /* Sums */
+    
+    @Semantics.currencyCode 
+    @Consumption.valueHelp: '_Currency'
+    currency,
+                    
+    @ObjectModel:{ readOnly: true }    
+    @UI.dataPoint: { qualifier: 'Total', title: 'Total price' }
+    @Semantics.amount.currencyCode: 'currency'
+    @UI.fieldGroup: [{ qualifier: 'Total' }]
+    cast( 0 as abap.curr( 25, 2 ) ) as total_price,
+    
+//    @ObjectModel:{ readOnly: true }     
+//    sum( case when currency = _Flight.waers
+//              then _Flight.price
+//              else currency_conversion(
+//                    amount             => _Flight.price,
+//                    source_currency    => _Flight.waers,
+//                    target_currency    => currency,
+//                    exchange_rate_date => _Flight.date_beg) end )  as f1,
+                                 
 ///////////////////////////////////////////////////////////////
     /* Associations */
     _Employee,
@@ -284,6 +336,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     _Transport,
     _Attach,
     _CopyFrom,
+    _Currency,
     
     _Status,
     _ActivityType,

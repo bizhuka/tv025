@@ -21,7 +21,10 @@ association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _main.cit
       
       @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 20 }]
       ename,
-      
+
+      @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 25, label: 'Badge Number' }]
+      badge,
+            
       @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 30 }]
       orgeh_text,
       

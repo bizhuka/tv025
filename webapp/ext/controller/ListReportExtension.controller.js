@@ -7,7 +7,9 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
     const _this = this
     window._listPage = _this
 
-    _this.getView().byId(_this._prefix + 'listReportFilter').setLiveMode(true)
+    const listReportFilter = _this.getView().byId(_this._prefix + 'listReportFilter')
+    listReportFilter.setLiveMode(true)
+    listReportFilter.setShowClearOnFB(true)
 
     _this.getView().byId(_this._prefix + 'responsiveTable').attachItemPress(function (oEvent) {
       const currContext = oEvent.getParameters().listItem.getBindingContext()
@@ -26,6 +28,11 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
   // },
   // beforeSaveExtension: function () {
   //   debugger
+  // },
+  // getPredefinedValuesForCreateExtension: function () {
+  //   return {
+  //     currency: 'KZT'
+  //   }
   // },
 
   onAfterRendering: function (oEvent) {
@@ -98,6 +105,9 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
         Bool: true
       }
     }
+    // oEntitySet["com.sap.vocabularies.Common.v1.DefaultValuesFunction"] = {
+    //   String: "getPredefinedValuesForCreateExtension"
+    // }
   },
 
   _setMessageParser: function () {
@@ -121,6 +131,7 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
         _byId('__form0').setTitle('Create new visitor request')
         _byId('__field5').setMandatory(true)
         _byId('__field6').setMandatory(true)
+        _byId('__field7').setValue('KZT')
       })
     })
   },
@@ -140,10 +151,16 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
 
       press: function () {
         const table = _view.byId(_this._prefix + 'responsiveTable')
+        const sFilter = table.getBinding("items").sFilterParams
+        if (!sFilter) {
+          sap.m.MessageToast.show('Please specify filter except quick search', { duration: 3500 });
+          $(".sapMMessageToast").css("background", "#cc1919");
+          return
+        }
         const sUrl =
           document.location.origin +
           "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_F4_Copy_From(pernr='00000000',reinr='0000000000')/$value?" +
-          table.getBinding("items").sFilterParams
+          sFilter
         window.open(sUrl)
       }
     }

@@ -35,7 +35,7 @@ define view ZC_TV025_CheckPoint as select from zdtv025_checkp
     @UI.lineItem: [{ position: 20 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
         codegruppe,
-    
+        
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 30 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 30 }]

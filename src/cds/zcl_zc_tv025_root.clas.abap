@@ -22,10 +22,10 @@ ENDCLASS.
 CLASS ZCL_ZC_TV025_ROOT IMPLEMENTATION.
 
 
-METHOD define.
-  super->define( ).
-  zcl_tv025_odata_model=>define_model( model ).
-ENDMETHOD.
+    METHOD define.
+      super->define( ).
+      zcl_tv025_odata_model=>define_model( model ).
+    ENDMETHOD.
 
 
   method GET_PATHS.
@@ -36,6 +36,6 @@ et_paths = VALUE #(
 
 
   method GET_TIMESTAMP.
-RV_TIMESTAMP = 20221227050958.
+RV_TIMESTAMP = 20230204031133.
   endmethod.
 ENDCLASS.

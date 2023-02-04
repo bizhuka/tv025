@@ -39,5 +39,7 @@ define view zi_tv025_visitor as select from zdtv025_visitor as _Visitor
          passp_number,
          
          @ObjectModel:{ mandatory: true }
-         passp_expiry
+         passp_expiry,
+         
+         badge
 }

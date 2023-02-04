@@ -240,6 +240,27 @@
                 </Annotation>
             </Annotations>
 
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/currency">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Currency" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="currency" />
+                                    <PropertyValue Property="ValueListProperty" String="waers" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ltext" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType/crunm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -447,9 +468,6 @@
                                     <PropertyValue Property="ValueListProperty" String="hotel_id" />
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="hotel_class" />
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="country_id" />
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
@@ -457,6 +475,9 @@
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="town_id" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="hotel_class" />
                                 </Record>
                                 <Record Type="Common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="hotel_name" />
@@ -564,6 +585,70 @@
             </Annotations>
 
             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/country_id">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/town">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="All towns"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_AirportTown"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="town"/>
+                                    <PropertyValue Property="ValueListProperty" String="town"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id"/>
+                                    <PropertyValue Property="ValueListProperty" String="country_id"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/airport_id">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/CountryText">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/iata_code">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/airport_name">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/to_Country">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportType/to_Town">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportTownType/town">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_AirportTownType/country_id">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Country" />
@@ -752,6 +837,80 @@
                 </Annotation>
             </Annotations>
 
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/town_id">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="All towns"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_HotelTown"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="town_id"/>
+                                    <PropertyValue Property="ValueListProperty" String="town_id"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id"/>
+                                    <PropertyValue Property="ValueListProperty" String="country_id"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/hotel_id">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/CountryText">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>            
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/hotel_class">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/hotel_name">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/hotel_address">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/hotel_phone">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/hotel_comments">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/to_Country">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelCatalogType/to_Town">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelTownType/town_id">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/> 
+            </Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_HotelTownType/country_id">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country" />
+                        <PropertyValue Property="CollectionPath" String="ZC_TV025_Country" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="country_id" />
+                                    <PropertyValue Property="ValueListProperty" String="land1" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryText" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
             <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType/check_point">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -835,14 +994,20 @@
                     </Record>
                 </Annotation>
 
-                <Annotation Term="SAP__UI.HeaderFacets">
+                <Annotation Term="com.sap.vocabularies.Common.v1.DefaultValuesFunction" String="getPredefinedValuesForCreateExtension"/>
+
+                <!-- <Annotation Term="SAP__UI.HeaderFacets">
                     <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="TravelHeaderPrice" />
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Total" />
+                        </Record>
                         <Record Type="SAP__UI.ReferenceFacet">
                             <PropertyValue Property="ID" String="TravelHeaderOverallStatus" />
                             <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#StatusData" />
                         </Record>
                     </Collection>
-                </Annotation>
+                </Annotation> -->
 
                 <Annotation Term="UI.HeaderInfo">
                     <Record>

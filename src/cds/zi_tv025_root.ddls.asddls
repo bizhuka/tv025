@@ -83,6 +83,67 @@ define view ZI_TV025_ROOT as select from ftpt_req_head as root
 //    zz_etag,
 //    zz_etag_usr,
     
+    @ObjectModel: { mandatory: true }
+    currency,
+    
+    // TODO fix update bug    
+    @ObjectModel: { readOnly: true }
+    time_beg,
+    @ObjectModel: { readOnly: true }
+    time_end,
+    @ObjectModel: { readOnly: true }
+    estimated_cost,
+    @ObjectModel: { readOnly: true }
+    status,
+    @ObjectModel: { readOnly: true }
+    repid,
+    @ObjectModel: { readOnly: true }
+    depar,
+    @ObjectModel: { readOnly: true }
+    approvedby,
+    @ObjectModel: { readOnly: true }
+    delivery_date,
+    @ObjectModel: { readOnly: true }
+    delivery_loc,
+    @ObjectModel: { readOnly: true }
+    delivery_area,
+    @ObjectModel: { readOnly: true }
+    delivery_empl,
+    @ObjectModel: { readOnly: true }
+    arrival_work,
+    @ObjectModel: { readOnly: true }
+    return_work,
+    @ObjectModel: { readOnly: true }
+    t_actype,
+    @ObjectModel: { readOnly: true }
+    perm_trip_appr,
+    @ObjectModel: { readOnly: true }
+    tt_statu,
+    @ObjectModel: { readOnly: true }
+    tt_comsp,
+    @ObjectModel: { readOnly: true }
+    gwe,
+    @ObjectModel: { readOnly: true }
+    edi,
+    @ObjectModel: { readOnly: true }
+    carry_oth,
+    @ObjectModel: { readOnly: true }
+    carried_by_oth,
+    @ObjectModel: { readOnly: true }
+    datecow,
+    @ObjectModel: { readOnly: true }
+    timecow,
+    @ObjectModel: { readOnly: true }
+    dateeow,
+    @ObjectModel: { readOnly: true }
+    timeeow,
+    @ObjectModel: { readOnly: true }
+    incr_max_tripseg_reimb,
+    @ObjectModel: { readOnly: true }
+    addr_depar,
+    @ObjectModel: { readOnly: true }
+    addr_arrvl,
+    
     '########' as fake_visitor,
     '###'      as fake_agency,      
     '#####'    as fake_hotel_id,

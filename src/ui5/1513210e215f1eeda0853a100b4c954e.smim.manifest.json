@@ -130,7 +130,15 @@
                                                   "id": "bt_copy_from",
                                                   "text" : "Copy from",
                                                   "press": "_onCopyFromPress"
-                                              }
+                                              },
+                                              "EXPENSE_PDF": {
+                                                "id": "bt_expense_pdf",
+                                                "tooltip" : "Expense Report",
+                                                "press": "_onExpensePdf",
+                                                "icon":  {
+                                                  "src": "sap-icon://expense-report"
+                                                }
+                                            }
                                             }
                                           }
                                         }
@@ -181,9 +189,8 @@
                 "useDateRange": true
               }
             },
-                    											 "dataLoadSettings": {  "loadDataOnAppLaunch": "never" },
-
-                                           
+                    											 "dataLoadSettings": {  "loadDataOnAppLaunch": "never" },                                           
+                                         
                                            "tableSettings": {
                                             "multiSelect": true,
                                             "createWithParameterDialog" : {
@@ -194,13 +201,14 @@
                                                   "location_end":{"path": "location_end"},
                                                   "request_reason":{"path": "request_reason"},
                                                   "date_beg":{"path": "date_beg"},
-                                                  "date_end":{"path": "date_end"}
+                                                  "date_end":{"path": "date_end"},
+                                                  "currency":{"path": "currency"}
                                               }
                                             },
                                             "multiEdit": {
                                               "enabled" : true,
                                               "annotationPath": "com.sap.vocabularies.UI.v1.FieldGroup#State"
-                                             }          
+                                             }
                                             }
           }
         },

@@ -45,6 +45,7 @@ CLASS zcl_v_tv025_attach DEFINITION
         name           TYPE bapibds01-classname VALUE 'ZTV_025_ATTACH',
         type           TYPE bapibds01-classtype VALUE 'OT',
         employee_photo TYPE bds_docid VALUE 'EMPLOYEE_PHOTO',
+        expense_pdf    TYPE bds_docid VALUE 'EXPENSE_PDF',
       END OF ms_oaor .
     DATA mv_attach_key TYPE swotobjid-objkey .
     DATA ms_db_key TYPE zcl_tv025_model=>ts_db_key .
@@ -60,6 +61,7 @@ CLASS zcl_v_tv025_attach DEFINITION
       RETURNING
         VALUE(rv_text) TYPE string .
     METHODS _get_employee_photo RETURNING VALUE(rv_photo) TYPE xstring.
+    METHODS _get_expense_pdf RETURNING VALUE(rv_pdf) TYPE xstring.
 ENDCLASS.
 
 
@@ -359,11 +361,19 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
     set_key( CORRESPONDING zcl_tv025_model=>ts_db_key( ls_attach ) ).
 
     IF ms_db_key-reinr IS INITIAL AND ls_attach-doc_id = ms_oaor-employee_photo.
-      DATA(lv_content) = _get_employee_photo( ).
+      DATA(lv_content)   = _get_employee_photo( ).
+      DATA(lv_mime_type) = |image/jpeg|.
       io_srv_runtime->set_header(
            VALUE #( name  = 'Content-Disposition'
-                    value = |outline; filename="ok.jpg"| ) ).
+                    value = |inline; filename="ok.jpg"| ) ).
+    ELSEIF ls_attach-doc_id = ms_oaor-expense_pdf.
+      lv_content   = _get_expense_pdf( ).
+      lv_mime_type = |application/pdf|.
+      io_srv_runtime->set_header(
+           VALUE #( name  = 'Content-Disposition'
+                    value = |outline; filename="expense.pdf"| ) ).
     ELSE.
+      lv_mime_type = |application/binary|.
       read( IMPORTING et_attach_alv = DATA(lt_alv) ).
       " Get full info about file
       ASSIGN lt_alv[ doc_id = ls_attach-doc_id ] TO FIELD-SYMBOL(<ls_alv>).
@@ -380,7 +390,7 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
     " Any binary file
     er_stream = NEW /iwbep/cl_mgw_abs_data=>ty_s_media_resource(
       value     = lv_content
-      mime_type = 'application/binary' ).
+      mime_type =  lv_mime_type ).
   ENDMETHOD.
 
 
@@ -430,6 +440,20 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
                                                   iv_length = lt_info[ 1 ]-comp_size ).
       RETURN.
     ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD _get_expense_pdf.
+    DATA(lt_return) = VALUE bapirettab( ).
+    CALL FUNCTION 'PTRM_WEB_FORM_PDF_GET'
+      EXPORTING
+        i_employeenumber = ms_db_key-pernr
+        i_tripnumber     = ms_db_key-reinr
+        i_display_form   = ' '
+      IMPORTING
+        e_pdf_form       = rv_pdf
+      TABLES
+        et_return        = lt_return.
   ENDMETHOD.
 
 
