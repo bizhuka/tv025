@@ -5,16 +5,22 @@
    <NAME>ZTV_025_REPORT.XLSX</NAME>
    <PARAMS>
     <WWWPARAMS>
-     <NAME>fileextension</NAME>
-     <VALUE>.XLSX</VALUE>
-    </WWWPARAMS>
-    <WWWPARAMS>
+     <RELID>MI</RELID>
+     <OBJID>ZTV_025_REPORT.XLSX</OBJID>
      <NAME>filename</NAME>
      <VALUE>ZTV_025_REPORT.XLSX</VALUE>
     </WWWPARAMS>
     <WWWPARAMS>
+     <RELID>MI</RELID>
+     <OBJID>ZTV_025_REPORT.XLSX</OBJID>
      <NAME>mimetype</NAME>
      <VALUE>application/msexcel</VALUE>
+    </WWWPARAMS>
+    <WWWPARAMS>
+     <RELID>MI</RELID>
+     <OBJID>ZTV_025_REPORT.XLSX</OBJID>
+     <NAME>fileextension</NAME>
+     <VALUE>.XLSX</VALUE>
     </WWWPARAMS>
    </PARAMS>
   </asx:values>

@@ -25,8 +25,7 @@ CLASS ZCL_V_TV025_REPORT IMPLEMENTATION.
     CHECK io_tech_request_context IS NOT INITIAL
       AND io_tech_request_context IS INSTANCE OF /iwbep/cl_mgw_request.
 
-    DATA(lv_filter) = lcl_request=>get_filter( CAST #( io_tech_request_context ) ).
-    DATA(lo_xtt)    = NEW zcl_tv025_report( lv_filter )->get_xtt( ).
+    DATA(lo_xtt) = NEW zcl_tv025_report( iv_filter )->get_xtt( ).
 
     io_srv_runtime->set_header(
          VALUE #( name  = 'Content-Disposition'

@@ -91,6 +91,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <PARAM_ID>PER</PARAM_ID>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -99,6 +100,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-ENAME</NAME>
+       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>034</COLUMN>
        <LENGTH>040</LENGTH>
@@ -108,6 +110,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <REQU_ENTRY>N</REQU_ENTRY>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -134,6 +137,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-REINR</NAME>
+       <TEXT>__________</TEXT>
        <LINE>002</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>010</LENGTH>
@@ -142,6 +146,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>NUMC</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -150,6 +155,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-REQUEST_REASON</NAME>
+       <TEXT>___________________________________________________________</TEXT>
        <LINE>002</LINE>
        <COLUMN>034</COLUMN>
        <LENGTH>059</LENGTH>
@@ -159,6 +165,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <REQU_ENTRY>N</REQU_ENTRY>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -306,32 +313,45 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0100_main.</LINE>
+       <LINE>MODULE pbo_0100_main.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  CALL SUBSCREEN tabs_area</LINE>
+       <LINE>CALL SUBSCREEN tabs_area</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>    INCLUDING g_tabs-prog g_tabs-subscreen.</LINE>
+       <LINE>INCLUDING g_tabs-prog g_tabs-subscreen.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  &quot;MODULE pai_exit AT EXIT-COMMAND.</LINE>
+       <LINE>&quot;MODULE pai_exit AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  CALL SUBSCREEN tabs_area.</LINE>
+       <LINE>CALL SUBSCREEN tabs_area.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS ON VALUE-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  FIELD zss_tv025_head-pernr MODULE f4_free_search.</LINE>
+       <LINE>FIELD zss_tv025_head-pernr MODULE f4_free_search.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>2</item>
+      <item>4</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -381,13 +401,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0102.</LINE>
+       <LINE>MODULE pbo_0102.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -437,13 +463,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0103.</LINE>
+       <LINE>MODULE pbo_0103.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -493,13 +525,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0104.</LINE>
+       <LINE>MODULE pbo_0104.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -549,13 +587,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0105.</LINE>
+       <LINE>MODULE pbo_0105.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -594,6 +638,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-ZZ_STATUS</NAME>
+       <TEXT>Status</TEXT>
        <LINE>002</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>006</LENGTH>
@@ -623,6 +668,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <POSS_ENTRY>1</POSS_ENTRY>
@@ -661,6 +707,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <POSS_ENTRY>1</POSS_ENTRY>
@@ -688,6 +735,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-COUNTRY_END</NAME>
+       <TEXT>___</TEXT>
        <LINE>004</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>003</LENGTH>
@@ -697,6 +745,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <PARAM_ID>LND</PARAM_ID>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_FKY>X</DICT_I_FKY>
@@ -706,6 +755,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-COUNTRYTEXT</NAME>
+       <TEXT>_______________</TEXT>
        <LINE>004</LINE>
        <COLUMN>039</COLUMN>
        <LENGTH>015</LENGTH>
@@ -715,6 +765,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -742,6 +793,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-LOCATION_END</NAME>
+       <TEXT>___________________________________________________________</TEXT>
        <LINE>005</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>059</LENGTH>
@@ -751,6 +803,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -759,6 +812,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-DATE_BEG</NAME>
+       <TEXT>Begins_On______</TEXT>
        <LINE>006</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>015</LENGTH>
@@ -775,6 +829,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-DATE_BEG</NAME>
+       <TEXT>__________</TEXT>
        <LINE>006</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>010</LENGTH>
@@ -783,6 +838,7 @@
        <GROUP1>VIS</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -791,6 +847,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-DATE_END</NAME>
+       <TEXT>Ends_On________</TEXT>
        <LINE>007</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>015</LENGTH>
@@ -807,6 +864,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-DATE_END</NAME>
+       <TEXT>__________</TEXT>
        <LINE>007</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>010</LENGTH>
@@ -815,6 +873,7 @@
        <GROUP1>VIS</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -835,13 +894,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0100_main.</LINE>
+       <LINE>MODULE pbo_0100_main.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -880,6 +945,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-BIRTH_DATE</NAME>
+       <TEXT>Birth_date__</TEXT>
        <LINE>002</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>012</LENGTH>
@@ -896,6 +962,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-BIRTH_DATE</NAME>
+       <TEXT>__________</TEXT>
        <LINE>002</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>010</LENGTH>
@@ -905,6 +972,7 @@
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <CONV_EXIT>PDATE</CONV_EXIT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -930,6 +998,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-ORGEH_TEXT</NAME>
+       <TEXT>_________________________</TEXT>
        <LINE>003</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>025</LENGTH>
@@ -939,6 +1008,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -947,6 +1017,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CITIZENSHIP</NAME>
+       <TEXT>Citizenship_________</TEXT>
        <LINE>004</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>020</LENGTH>
@@ -963,6 +1034,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CITIZENSHIP</NAME>
+       <TEXT>___</TEXT>
        <LINE>004</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>003</LENGTH>
@@ -971,6 +1043,7 @@
        <GROUP1>VIS</GROUP1>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_FKY>X</DICT_I_FKY>
@@ -980,6 +1053,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD_UI-PASSP_NUMBER</NAME>
+       <TEXT>Passport_Number_____</TEXT>
        <LINE>005</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>020</LENGTH>
@@ -996,6 +1070,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD_UI-PASSP_NUMBER</NAME>
+       <TEXT>_________________________</TEXT>
        <LINE>005</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>025</LENGTH>
@@ -1012,6 +1087,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD_UI-PASSP_EXPIRY</NAME>
+       <TEXT>Expiration_Date</TEXT>
        <LINE>006</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>015</LENGTH>
@@ -1028,6 +1104,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD_UI-PASSP_EXPIRY</NAME>
+       <TEXT>__________</TEXT>
        <LINE>006</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1036,6 +1113,7 @@
        <GROUP1>VIS</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1061,6 +1139,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD_UI-DEPARTMENT</NAME>
+       <TEXT>________</TEXT>
        <LINE>008</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>008</LENGTH>
@@ -1069,6 +1148,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>NUMC</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1096,6 +1176,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-KOSTL</NAME>
+       <TEXT>Cost_Center____</TEXT>
        <LINE>009</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>015</LENGTH>
@@ -1112,6 +1193,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-KOSTL</NAME>
+       <TEXT>__________</TEXT>
        <LINE>009</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1122,6 +1204,7 @@
        <FROM_DICT>X</FROM_DICT>
        <CONV_EXIT>ALPHA</CONV_EXIT>
        <PARAM_ID>KOS</PARAM_ID>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1150,6 +1233,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-POSID</NAME>
+       <TEXT>WBS_Element____</TEXT>
        <LINE>010</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>015</LENGTH>
@@ -1179,6 +1263,7 @@
        <MODIFIC>X</MODIFIC>
        <CONV_EXIT>ABPSN</CONV_EXIT>
        <PARAM_ID>PRO</PARAM_ID>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1198,6 +1283,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1219,13 +1305,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0100_main.</LINE>
+       <LINE>MODULE pbo_0100_main.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -1264,6 +1356,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CRUNM</NAME>
+       <TEXT>Created_by</TEXT>
        <LINE>002</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1280,6 +1373,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CRUNM</NAME>
+       <TEXT>____________</TEXT>
        <LINE>002</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>012</LENGTH>
@@ -1288,6 +1382,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1296,6 +1391,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CRNAME</NAME>
+       <TEXT>______________________________</TEXT>
        <LINE>002</LINE>
        <COLUMN>039</COLUMN>
        <LENGTH>030</LENGTH>
@@ -1304,6 +1400,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1313,6 +1410,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CRDAT</NAME>
+       <TEXT>Created_date________</TEXT>
        <LINE>003</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>020</LENGTH>
@@ -1329,6 +1427,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CRDAT</NAME>
+       <TEXT>__________</TEXT>
        <LINE>003</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1337,6 +1436,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1345,6 +1445,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CRTIME</NAME>
+       <TEXT>Creation_Time_______</TEXT>
        <LINE>004</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>020</LENGTH>
@@ -1361,6 +1462,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CRTIME</NAME>
+       <TEXT>________</TEXT>
        <LINE>004</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>008</LENGTH>
@@ -1369,6 +1471,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>TIMS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1377,6 +1480,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CHUNM</NAME>
+       <TEXT>Updated_by</TEXT>
        <LINE>005</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1393,6 +1497,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CHUNM</NAME>
+       <TEXT>____________</TEXT>
        <LINE>005</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>012</LENGTH>
@@ -1401,6 +1506,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1409,6 +1515,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CHNAME</NAME>
+       <TEXT>______________________________</TEXT>
        <LINE>005</LINE>
        <COLUMN>039</COLUMN>
        <LENGTH>030</LENGTH>
@@ -1417,6 +1524,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1426,6 +1534,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CHDAT</NAME>
+       <TEXT>Updated_date________</TEXT>
        <LINE>006</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>020</LENGTH>
@@ -1442,6 +1551,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CHDAT</NAME>
+       <TEXT>__________</TEXT>
        <LINE>006</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1450,6 +1560,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1458,6 +1569,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZSS_TV025_HEAD-CHTIME</NAME>
+       <TEXT>Changed_at_time_____</TEXT>
        <LINE>007</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>020</LENGTH>
@@ -1474,6 +1586,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZSS_TV025_HEAD-CHTIME</NAME>
+       <TEXT>________</TEXT>
        <LINE>007</LINE>
        <COLUMN>023</COLUMN>
        <LENGTH>008</LENGTH>
@@ -1482,6 +1595,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>TIMS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1502,13 +1616,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0100_main.</LINE>
+       <LINE>MODULE pbo_0100_main.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -1566,6 +1686,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>F</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
@@ -1593,6 +1714,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-TYPE</NAME>
+       <TEXT>__________</TEXT>
        <DROPDOWN>K</DROPDOWN>
        <LINE>003</LINE>
        <COLUMN>016</COLUMN>
@@ -1603,6 +1725,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <POSS_ENTRY>1</POSS_ENTRY>
@@ -1630,6 +1753,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-DATE_BEG</NAME>
+       <TEXT>__________</TEXT>
        <LINE>004</LINE>
        <COLUMN>016</COLUMN>
        <LENGTH>010</LENGTH>
@@ -1638,6 +1762,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1646,6 +1771,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-TIME_BEG</NAME>
+       <TEXT>________</TEXT>
        <LINE>004</LINE>
        <COLUMN>027</COLUMN>
        <LENGTH>008</LENGTH>
@@ -1654,6 +1780,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>TIMS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1693,6 +1820,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-AIRPORT_BEG</NAME>
+       <TEXT>_____</TEXT>
        <LINE>007</LINE>
        <COLUMN>020</COLUMN>
        <LENGTH>005</LENGTH>
@@ -1701,6 +1829,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1738,6 +1867,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1747,6 +1877,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT_UI-COUNTRY_BEG</NAME>
+       <TEXT>Country_____</TEXT>
        <LINE>008</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>012</LENGTH>
@@ -1763,6 +1894,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT_UI-COUNTRY_BEG</NAME>
+       <TEXT>___</TEXT>
        <LINE>008</LINE>
        <COLUMN>020</COLUMN>
        <LENGTH>003</LENGTH>
@@ -1774,6 +1906,7 @@
        <PARAM_ID>LND</PARAM_ID>
        <SET_PARAM>X</SET_PARAM>
        <GET_PARAM>X</GET_PARAM>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1794,6 +1927,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1803,6 +1937,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT_UI-TOWN_BEG</NAME>
+       <TEXT>Town_ID</TEXT>
        <LINE>009</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>007</LENGTH>
@@ -1830,6 +1965,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1870,6 +2006,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-AIRPORT_END</NAME>
+       <TEXT>_____</TEXT>
        <LINE>012</LINE>
        <COLUMN>020</COLUMN>
        <LENGTH>005</LENGTH>
@@ -1878,6 +2015,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -1915,6 +2053,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1924,6 +2063,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT_UI-COUNTRY_END</NAME>
+       <TEXT>Country_____</TEXT>
        <LINE>013</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>012</LENGTH>
@@ -1940,6 +2080,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT_UI-COUNTRY_END</NAME>
+       <TEXT>___</TEXT>
        <LINE>013</LINE>
        <COLUMN>020</COLUMN>
        <LENGTH>003</LENGTH>
@@ -1951,6 +2092,7 @@
        <PARAM_ID>LND</PARAM_ID>
        <SET_PARAM>X</SET_PARAM>
        <GET_PARAM>X</GET_PARAM>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1971,6 +2113,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -1980,6 +2123,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT_UI-TOWN_END</NAME>
+       <TEXT>Town_ID</TEXT>
        <LINE>014</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>007</LENGTH>
@@ -2007,6 +2151,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -2047,6 +2192,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-DATE_END</NAME>
+       <TEXT>__________</TEXT>
        <LINE>017</LINE>
        <COLUMN>021</COLUMN>
        <LENGTH>010</LENGTH>
@@ -2055,6 +2201,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -2063,6 +2210,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-TIME_END</NAME>
+       <TEXT>________</TEXT>
        <LINE>017</LINE>
        <COLUMN>032</COLUMN>
        <LENGTH>008</LENGTH>
@@ -2071,6 +2219,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>TIMS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -2103,6 +2252,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>F</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
@@ -2122,6 +2272,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>F</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
@@ -2131,6 +2282,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT-APPROVED_BY</NAME>
+       <TEXT>Approved_by____</TEXT>
        <LINE>020</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -2160,6 +2312,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <POSS_ENTRY>1</POSS_ENTRY>
@@ -2187,6 +2340,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-AGENCY</NAME>
+       <TEXT>___</TEXT>
        <LINE>021</LINE>
        <COLUMN>021</COLUMN>
        <LENGTH>003</LENGTH>
@@ -2195,6 +2349,7 @@
        <GROUP1>200</GROUP1>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_FKY>X</DICT_I_FKY>
@@ -2233,6 +2388,7 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -2269,6 +2425,7 @@
        <FORMAT>CURR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <REF_FIELD>PA0008-WAERS</REF_FIELD>
@@ -2296,6 +2453,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-WAERS</NAME>
+       <TEXT>_____</TEXT>
        <LINE>023</LINE>
        <COLUMN>021</COLUMN>
        <LENGTH>005</LENGTH>
@@ -2307,6 +2465,7 @@
        <PARAM_ID>FWS</PARAM_ID>
        <SET_PARAM>X</SET_PARAM>
        <GET_PARAM>X</GET_PARAM>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -2340,6 +2499,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>F</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
@@ -2377,6 +2537,7 @@
        <FORMAT>CURR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <REF_FIELD>ZDTV025_FLIGHT-PENALTY_WAERS</REF_FIELD>
@@ -2387,6 +2548,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT-PENALTY_WAERS</NAME>
+       <TEXT>Penalty_Currenc</TEXT>
        <LINE>028</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -2403,6 +2565,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_FLIGHT-PENALTY_WAERS</NAME>
+       <TEXT>_____</TEXT>
        <LINE>028</LINE>
        <COLUMN>021</COLUMN>
        <LENGTH>005</LENGTH>
@@ -2415,6 +2578,7 @@
        <PARAM_ID>FWS</PARAM_ID>
        <SET_PARAM>X</SET_PARAM>
        <GET_PARAM>X</GET_PARAM>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -2437,6 +2601,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_FLIGHT-COMMENT1</NAME>
+       <TEXT>Comment________</TEXT>
        <LINE>031</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -2464,7 +2629,7 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0200.</LINE>
+       <LINE>MODULE pbo_0200.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW/>
@@ -2479,15 +2644,28 @@
        <LINE>PROCESS ON VALUE-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  FIELD: zdtv025_flight-agency      MODULE general_pov,</LINE>
+       <LINE>FIELD: zdtv025_flight-agency      MODULE general_pov,</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>         zdtv025_flight-airport_beg MODULE general_pov,</LINE>
+       <LINE>zdtv025_flight-airport_beg MODULE general_pov,</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>         zdtv025_flight-airport_end MODULE general_pov.</LINE>
+       <LINE>zdtv025_flight-airport_end MODULE general_pov.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>9</item>
+      <item>9</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -2535,6 +2713,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-DATE_BEG</NAME>
+       <TEXT>Begins_On______</TEXT>
        <LINE>002</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -2569,6 +2748,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>CHECK</TYPE>
        <NAME>ZDTV025_HOTEL-EARLY_CHECK_IN</NAME>
+       <TEXT>Early_check_in_</TEXT>
        <LINE>002</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>017</LENGTH>
@@ -2587,6 +2767,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-DATE_END</NAME>
+       <TEXT>Ends_On________</TEXT>
        <LINE>003</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -2640,6 +2821,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-BOOKED_NIGHTS</NAME>
+       <TEXT>Booked_nights_______</TEXT>
        <LINE>004</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>020</LENGTH>
@@ -2688,6 +2870,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-HOTEL_END</NAME>
+       <TEXT>Hotel_ID</TEXT>
        <LINE>007</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>008</LENGTH>
@@ -2739,6 +2922,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL_UI-HOTEL_NAME</NAME>
+       <TEXT>________________________________________</TEXT>
        <LINE>007</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2757,6 +2941,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL_UI-HOTEL_CLASS</NAME>
+       <TEXT>Hotel_class</TEXT>
        <LINE>008</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>011</LENGTH>
@@ -2774,6 +2959,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL_UI-HOTEL_CLASS</NAME>
+       <TEXT>_</TEXT>
        <LINE>008</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>001</LENGTH>
@@ -2782,6 +2968,7 @@
        <GROUP2>GRY</GROUP2>
        <FORMAT>NUMC</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -2792,6 +2979,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL_UI-TOWN_ID</NAME>
+       <TEXT>Town_ID</TEXT>
        <LINE>009</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>007</LENGTH>
@@ -2809,6 +2997,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL_UI-TOWN_ID</NAME>
+       <TEXT>________________________________________</TEXT>
        <LINE>009</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2818,6 +3007,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -2845,6 +3035,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL_UI-COUNTRY_END_TXT</NAME>
+       <TEXT>_______________</TEXT>
        <LINE>010</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>015</LENGTH>
@@ -2854,6 +3045,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <_--32_DIMENS>X</_--32_DIMENS>
@@ -2863,6 +3055,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-BASIS</NAME>
+       <TEXT>Basis_Id</TEXT>
        <LINE>011</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>008</LENGTH>
@@ -2914,6 +3107,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL_UI-HOTEL_BASIS_TXT</NAME>
+       <TEXT>________________________________________</TEXT>
        <LINE>011</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2932,6 +3126,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-AGENCY</NAME>
+       <TEXT>Agency_Id___________</TEXT>
        <LINE>012</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>020</LENGTH>
@@ -2983,6 +3178,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL_UI-AGENCY_NAME</NAME>
+       <TEXT>________________________________________</TEXT>
        <LINE>012</LINE>
        <COLUMN>041</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3001,6 +3197,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-PRICE</NAME>
+       <TEXT>Price</TEXT>
        <LINE>013</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>005</LENGTH>
@@ -3036,6 +3233,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-WAERS</NAME>
+       <TEXT>Currency</TEXT>
        <LINE>014</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>008</LENGTH>
@@ -3084,6 +3282,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>CHECK</TYPE>
        <NAME>ZDTV025_HOTEL-ASSIGNED_CAR</NAME>
+       <TEXT>Assigned_car___</TEXT>
        <LINE>017</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>017</LENGTH>
@@ -3103,6 +3302,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-TYPE_CAR</NAME>
+       <TEXT>Type_of_car____</TEXT>
        <LINE>018</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -3141,6 +3341,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>CHECK</TYPE>
        <NAME>ZDTV025_HOTEL-TRANSPORT_AIRPORT</NAME>
+       <TEXT>Transport_airp-hotel</TEXT>
        <LINE>019</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>022</LENGTH>
@@ -3160,6 +3361,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>CHECK</TYPE>
        <NAME>ZDTV025_HOTEL-TRANSPORT_HOTEL</NAME>
+       <TEXT>Transport_hotel-airp</TEXT>
        <LINE>020</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>022</LENGTH>
@@ -3179,6 +3381,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-TRANSPORT_PRICE</NAME>
+       <TEXT>Transport_Amoun</TEXT>
        <LINE>021</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -3194,6 +3397,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL-TRANSPORT_PRICE</NAME>
+       <TEXT>__________________</TEXT>
        <LINE>021</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>018</LENGTH>
@@ -3213,6 +3417,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-TRANSPORT_WAERS</NAME>
+       <TEXT>Car_price_currency</TEXT>
        <LINE>022</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>018</LENGTH>
@@ -3228,6 +3433,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL-TRANSPORT_WAERS</NAME>
+       <TEXT>_____</TEXT>
        <LINE>022</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>005</LENGTH>
@@ -3259,6 +3465,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>CHECK</TYPE>
        <NAME>ZDTV025_HOTEL-PENALTY_CHECK</NAME>
+       <TEXT>Penalty</TEXT>
        <LINE>025</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>009</LENGTH>
@@ -3269,6 +3476,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>2</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
@@ -3278,6 +3486,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-PENALTY</NAME>
+       <TEXT>Penalty________</TEXT>
        <LINE>026</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -3293,6 +3502,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL-PENALTY</NAME>
+       <TEXT>__________________</TEXT>
        <LINE>026</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>018</LENGTH>
@@ -3312,6 +3522,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-PENALTY_WAERS</NAME>
+       <TEXT>Penalty_Currenc</TEXT>
        <LINE>027</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -3327,6 +3538,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_HOTEL-PENALTY_WAERS</NAME>
+       <TEXT>_____</TEXT>
        <LINE>027</LINE>
        <COLUMN>024</COLUMN>
        <LENGTH>005</LENGTH>
@@ -3359,6 +3571,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZDTV025_HOTEL-COMMENT1</NAME>
+       <TEXT>Comment________</TEXT>
        <LINE>030</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>015</LENGTH>
@@ -3386,7 +3599,7 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0300.</LINE>
+       <LINE>MODULE pbo_0300.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
@@ -3400,15 +3613,27 @@
        <LINE>PROCESS ON VALUE-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  FIELD: zdtv025_hotel-hotel_end MODULE general_pov,</LINE>
+       <LINE>FIELD: zdtv025_hotel-hotel_end MODULE general_pov,</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>         zdtv025_hotel-basis     MODULE general_pov,</LINE>
+       <LINE>zdtv025_hotel-basis     MODULE general_pov,</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>         zdtv025_hotel-agency    MODULE general_pov.</LINE>
+       <LINE>zdtv025_hotel-agency    MODULE general_pov.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>9</item>
+      <item>9</item>
+     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -3473,6 +3698,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_TRANSP-DATE_BEG</NAME>
+       <TEXT>__________</TEXT>
        <LINE>002</LINE>
        <COLUMN>037</COLUMN>
        <LENGTH>010</LENGTH>
@@ -3481,6 +3707,7 @@
        <GROUP1>400</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -3489,6 +3716,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_TRANSP-TIME_BEG</NAME>
+       <TEXT>________</TEXT>
        <LINE>002</LINE>
        <COLUMN>050</COLUMN>
        <LENGTH>008</LENGTH>
@@ -3522,6 +3750,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_TRANSP-DATE_END</NAME>
+       <TEXT>__________</TEXT>
        <LINE>003</LINE>
        <COLUMN>037</COLUMN>
        <LENGTH>010</LENGTH>
@@ -3530,6 +3759,7 @@
        <GROUP1>400</GROUP1>
        <FORMAT>DATS</FORMAT>
        <FROM_DICT>X</FROM_DICT>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
@@ -3538,6 +3768,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_TRANSP-TIME_END</NAME>
+       <TEXT>________</TEXT>
        <LINE>003</LINE>
        <COLUMN>050</COLUMN>
        <LENGTH>008</LENGTH>
@@ -3585,6 +3816,7 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZDTV025_TRANSP-CHECK_POINT</NAME>
+       <TEXT>____</TEXT>
        <ROLLING>X</ROLLING>
        <LINE>006</LINE>
        <COLUMN>037</COLUMN>
@@ -3766,6 +3998,7 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>F</MODIFIC>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
@@ -3806,7 +4039,7 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  MODULE pbo_0400.</LINE>
+       <LINE>MODULE pbo_0400.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
@@ -3820,12 +4053,23 @@
        <LINE>PROCESS ON VALUE-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>  FIELD: zdtv025_transp-check_point MODULE general_pov,</LINE>
+       <LINE>FIELD: zdtv025_transp-check_point MODULE general_pov,</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>         zdtv025_transp-arrival     MODULE general_pov.</LINE>
+       <LINE>zdtv025_transp-arrival     MODULE general_pov.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>9</item>
+     </SPACES>
     </item>
    </DYNPROS>
    <CUA>
