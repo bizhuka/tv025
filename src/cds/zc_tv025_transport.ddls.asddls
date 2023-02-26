@@ -31,16 +31,16 @@ association [0..1] to ZC_TV025_CheckPoint as _Arrrival   on _Arrrival.id   = _Tr
 
     @UI.identification: [{ position: 10 }]    
     @UI.lineItem: [{ position: 50 }]
-    @ObjectModel.text.element: ['ChkText']
-    @Consumption.valueHelp: '_CheckPoint'
+//    @ObjectModel.text.element: ['ChkText']
+//    @Consumption.valueHelp: '_CheckPoint'
     check_point,    
     @ObjectModel:{ readOnly: true }
     _CheckPoint.kurztext as ChkText,
     
     @UI.identification: [{ position: 20 }]
     @UI.lineItem: [{ position: 60 }]
-    @ObjectModel.text.element: ['ArrText']
-    @Consumption.valueHelp: '_Arrrival'
+//    @ObjectModel.text.element: ['ArrText']
+//    @Consumption.valueHelp: '_Arrrival'
     @EndUserText.label: 'Arrrival' 
     arrival,    
     @ObjectModel:{ readOnly: true }
@@ -49,17 +49,17 @@ association [0..1] to ZC_TV025_CheckPoint as _Arrrival   on _Arrrival.id   = _Tr
 ///////////////////////////////////////////////////////////////////////    
     
     @UI.lineItem: [{ position: 10 }]
-    @UI.fieldGroup: [{ qualifier: 'Dates', position: 10 }]
+    @UI.fieldGroup: [{ qualifier: 'Departure', position: 10 }]
     date_beg,    
     @UI.lineItem: [{ position: 20 }]
-    @UI.fieldGroup: [{ qualifier: 'Dates', position: 20 }]
+    @UI.fieldGroup: [{ qualifier: 'Departure', position: 20 }]
     time_beg,
     
     @UI.lineItem: [{ position: 30 }]
-    @UI.fieldGroup: [{ qualifier: 'Dates', position: 30 }]
+    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 30 }]
     date_end,    
     @UI.lineItem: [{ position: 40 }]
-    @UI.fieldGroup: [{ qualifier: 'Dates', position: 40 }]
+    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 40 }]
     time_end,
     
 

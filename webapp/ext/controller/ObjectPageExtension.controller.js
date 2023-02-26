@@ -12,9 +12,14 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 		if (objectPage)
 			objectPage.setUseIconTabBar(true)
 
-		const expensePdfButton = _view.byId(this._prefix + 'action::bt_expense_pdf')
-		if (expensePdfButton && !expensePdfButton.getIcon())
-			expensePdfButton.setIcon(sap.ui.core.IconPool.getIconURI("sap-icon://expense-report"))
+		this._setIcon('bt_copy_from', 'sap-icon://copy')
+		this._setIcon('bt_expense_pdf', 'sap-icon://expense-report')
+	},
+
+	_setIcon: function (id, icon) {
+		const button = this.getView().byId(this._prefix + 'action::' + id)
+		if (button && !button.getIcon())
+			button.setIcon(sap.ui.core.IconPool.getIconURI(icon))
 	},
 
 	onAfterRendering: function () {
@@ -36,9 +41,10 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 	_check_lock_before_press: function () {
 		const editButtons = ['ZC_TV025_ROOT--edit',
 			'ZC_TV025_FLIGHT--edit',
-			'ZC_TV025_FLIGHT--delete',
+			'ZC_TV025_FLIGHT--delete',			
 			'ZC_TV025_ROOT--FlightInfo::addEntry',
 			'ZC_TV025_ROOT--FlightInfo::deleteEntry',
+			'ZC_TV025_ROOT--FlightInfo::action::ZC_TV025_ROOT_CDS.ZC_TV025_ROOT_CDS_Entities::ZC_TV025_FLIGHTInverse_copy',
 
 			'ZC_TV025_HOTEL--edit',
 			'ZC_TV025_HOTEL--delete',
@@ -172,6 +178,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			case "ZC_TV025_FLIGHT":
 				field_grp_beg = 'Departure'
 				field_grp_end = 'Arrival'
+				//_this._addInverseButton()
 				break
 			case "ZC_TV025_ROOT":
 				const visitor = window.location.href.indexOf("pernr='9") !== -1
@@ -294,6 +301,6 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 
 	_onExpensePdf: function () {
 		const currentRoot = this.getView().getBindingContext().getObject()
-		window.open( location.origin + "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_Attach(pernr='" + currentRoot.pernr + "',reinr='" + currentRoot.reinr + "',doc_id='EXPENSE_PDF')/$value")
+		window.open(location.origin + "/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_Attach(pernr='" + currentRoot.pernr + "',reinr='" + currentRoot.reinr + "',doc_id='EXPENSE_PDF')/$value")
 	}
 });

@@ -1288,20 +1288,24 @@
                             <PropertyValue Property="Facets">
                                 <Collection>
                                     <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Main fields" />
+                                        <PropertyValue Property="Label" String="Departure date and time" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Departure" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Arrival date and time" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Arrival" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Location" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.Identification" />
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Dates" />
-                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Dates" />
+                                        <PropertyValue Property="Label" String="Description" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Other" />
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
                                         <PropertyValue Property="Label" String="Status" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Status" />
-                                    </Record>
-                                    <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Other" />
-                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Other" />
                                     </Record>
                                 </Collection>
                             </PropertyValue>

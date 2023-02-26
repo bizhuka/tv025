@@ -23,6 +23,9 @@ define view ZI_TV025_FLIGHT as select from zdtv025_flight as _Flight
                                               and _root.plan_request = _Flight.plan_request
 
 {    
+    @UI: { lineItem: [  //Action Button
+                       { type: #FOR_ACTION, position: 0, dataAction: 'BOPF:INVERSE_COPY',  label: 'Inverse copy' }] }
+                       
     key employee_number,
     key trip_number,
     key s_index,

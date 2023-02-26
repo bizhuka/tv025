@@ -129,7 +129,10 @@
                                               "COPY_FROM": {
                                                   "id": "bt_copy_from",
                                                   "text" : "Copy from",
-                                                  "press": "_onCopyFromPress"
+                                                  "press": "_onCopyFromPress",
+                                                  "icon":  {
+                                                    "src": "sap-icon://copy"
+                                                  }
                                               },
                                               "EXPENSE_PDF": {
                                                 "id": "bt_expense_pdf",
@@ -139,6 +142,22 @@
                                                   "src": "sap-icon://expense-report"
                                                 }
                                             }
+                                            }
+                                          }
+                                        },
+
+                                        "ZC_TV025_FLIGHT_123":{
+                                          "EntitySet": "ZC_TV025_FLIGHT_123",
+                                          "Header" : {
+                                          "Actions": {
+                                              "COPY_FROM": {
+                                                  "id": "bt_inverse_copy",
+                                                  "text" : "Inverse copy",
+                                                  "press": "_onInverseCopyPress",
+                                                  "icon":  {
+                                                    "src": "sap-icon://synchronize"
+                                                  }
+                                              }
                                             }
                                           }
                                         }

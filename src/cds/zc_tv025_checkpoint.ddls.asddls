@@ -27,7 +27,7 @@ define view ZC_TV025_CheckPoint as select from zdtv025_checkp
     @UI.lineItem: [{ position: 10, importance: #HIGH }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 10 }] 
     
-    @ObjectModel.text.element: [ 'ChkPointText' ]
+    @ObjectModel.text.element: [ 'kurztext' ]
     @EndUserText.label: 'Check point'
     key id,
     

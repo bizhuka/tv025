@@ -32,18 +32,15 @@
       <RSFDO>
        <PARAMETER>I_DATE_FROM</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>I_DATE_TO</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>ET_TRANSPORT</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Table type for Transport Data extraction for ERP</STEXT>
-       <INDEX> 003</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

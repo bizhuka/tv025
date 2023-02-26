@@ -95,7 +95,6 @@ interface ZIF_C_TV025_CHECKPOINT_C
   NODE_DATA                      TYPE STRING VALUE 'NODE_DATA',
   ID                             TYPE STRING VALUE 'ID',
   CODEGRUPPE                     TYPE STRING VALUE 'CODEGRUPPE',
-  CODEGRUPPE_TXT                 TYPE STRING VALUE 'CODEGRUPPE_TXT',
   CODE                           TYPE STRING VALUE 'CODE',
   KURZTEXT                       TYPE STRING VALUE 'KURZTEXT',
       END OF ZC_TV025_CHECKPOINT,

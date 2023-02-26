@@ -36,8 +36,8 @@ association [0..1] to ZC_TV025_Currency as _CurrencyTrans on _CurrencyTrans.waer
     
     @UI.identification: [{ position: 10 }]
     @UI.lineItem: [{ position: 10, importance: #HIGH }]
-    @ObjectModel.text.element: ['hotel_name']
-    @Consumption.valueHelp: '_HotelCatalog'
+//    @ObjectModel.text.element: ['hotel_name']
+//    @Consumption.valueHelp: '_HotelCatalog'
     hotel_end, 
     @ObjectModel:{ readOnly: true }
     _HotelCatalog.hotel_name,
@@ -109,8 +109,8 @@ association [0..1] to ZC_TV025_Currency as _CurrencyTrans on _CurrencyTrans.waer
     _Agency.agency_name,
         
     @UI.fieldGroup: [{ qualifier: 'HotelGroup', position: 20 }]
-    @ObjectModel.text.element: ['hotel_basis_txt']
-    @Consumption.valueHelp: '_Basis'
+//    @ObjectModel.text.element: ['hotel_basis_txt']
+//    @Consumption.valueHelp: '_Basis'
     @EndUserText.label: 'Basis'
     basis,
     @ObjectModel:{ readOnly: true }

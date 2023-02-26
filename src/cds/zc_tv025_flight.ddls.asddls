@@ -32,67 +32,81 @@ association [0..1] to ZC_TV025_Currency as _CurrencyPen on _CurrencyPen.waers = 
 
 association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Flight.approved_by
 
-
-{
+{    
     key employee_number,
     key trip_number,
     key s_index,
     
-    @UI.identification: [{ position: 10 }]
-    @UI.lineItem: [{ position: 10, importance: #HIGH }]
-    @ObjectModel.text.element: ['FlightType']
-    @Consumption.valueHelp: '_FlightType'
-    type,
+    @UI.lineItem: [{ position: 10, label: 'Start Date' }]
+    @UI.fieldGroup: [{ qualifier: 'Departure', position: 20 }]    
+    date_beg,    
+//    @UI.fieldGroup: [{ qualifier: 'Departure', position: 30 }]
+    @UI.hidden 
+    time_beg,
     
+    @UI.lineItem: [{ position: 20, label: 'From' }]
+    @UI.fieldGroup: [{ qualifier: 'Departure', position: 10 }]
+    @EndUserText.label: 'Departure'    
+    @ObjectModel.text.element: ['AirportNameBeg']
+//    @ObjectModel.text.association: 'AirportNameBeg'  
+//    @Consumption.valueHelp: '_AirportBeg'
+//    @UI.textArrangement: #TEXT_LAST //TEXT_SEPARATE
+    airport_beg,      
     @ObjectModel:{ readOnly: true }
-    _FlightType.FlightType,
+    @UI.hidden 
+    _AirportBeg.airport_with_code as AirportNameBeg,
     
-    @UI.identification: [{ position: 5 }]
-    cancelled,
+    @UI.lineItem: [{ position: 30, label: 'To' }]
+    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 10 }]
+    @EndUserText.label: 'Arrival'    
+    @ObjectModel.text.element: ['AirportNameEnd']
+//    @Consumption.valueHelp: '_AirportEnd'
+    airport_end,  
+    @ObjectModel:{ readOnly: true }
+    @UI.hidden 
+    _AirportEnd.airport_with_code as AirportNameEnd,
     
-    @UI.fieldGroup: [{ qualifier: 'FlightGroup' }]
-    @UI.lineItem: [{ position: 20 }]
+    @UI.lineItem: [{ position: 40, label: 'End Date' }]
+    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 20 }]
+    date_end,    
+//    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 30 }]
+    @UI.hidden 
+    time_end,
+    
+    @UI.lineItem: [{ position: 50 }]
+    @UI.fieldGroup: [{ qualifier: 'Ticket', position: 10 }]
+    ticket,   
+    
+    @UI.lineItem: [{ position: 60 }]
+    @UI.fieldGroup: [{ qualifier: 'FlightGroup', position: 20 }]    
     @ObjectModel.text.element: ['agency_name']
 //    @Consumption.valueHelp: '_Agency'
     @EndUserText.label: 'Agency'
     agency,
     @ObjectModel:{ readOnly: true }
+    @UI.hidden 
     _Agency.agency_name,
     
+    @UI.lineItem: [{ position: 70, label: 'Ticket class', importance: #HIGH }]
+    @UI.fieldGroup: [{ qualifier: 'FlightGroup', label: 'Ticket class', position: 10 }]    
+    @ObjectModel.text.element: ['FlightType']
+    @Consumption.valueHelp: '_FlightType'
+    type,
     
-    @UI.fieldGroup: [{ qualifier: 'Departure', position: 10 }]
-    @EndUserText.label: 'Departure'
-    @UI.lineItem: [{ position: 70, label: 'Departure' }]
-    @ObjectModel.text.element: ['AirportNameBeg']
-    @Consumption.valueHelp: '_AirportBeg'
-    airport_beg,
+    @UI.lineItem: [{ position: 80, label: 'Price'  }]
+    @UI.fieldGroup: [{ qualifier: 'Ticket', position: 30 }]
+    @Semantics.amount.currencyCode: 'waers'
+    price,    
+    @Semantics.currencyCode 
+    @Consumption.valueHelp: '_Currency'   
+    waers,
+    
     @ObjectModel:{ readOnly: true }
-    _AirportBeg.airport_name as AirportNameBeg,    
+    _FlightType.FlightType,
     
-    @UI.fieldGroup: [{ qualifier: 'Departure', position: 20 }]
-    @UI.lineItem: [{ position: 30 }]
-    date_beg,
+//    @UI.identification: [{ position: 5 }]
+    cancelled,     
     
-    @UI.fieldGroup: [{ qualifier: 'Departure', position: 30 }]
-    @UI.lineItem: [{ position: 40 }]
-    time_beg,
-    
-    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 10 }]
-    @EndUserText.label: 'Arrival'
-    @UI.lineItem: [{ position: 80, label: 'Arrival' }]
-    @ObjectModel.text.element: ['AirportNameEnd']
-    @Consumption.valueHelp: '_AirportEnd'
-    airport_end,
-    @ObjectModel:{ readOnly: true }
-    _AirportEnd.airport_name as AirportNameEnd,
-
-    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 20 }]
-    @UI.lineItem: [{ position: 50 }]
-    date_end,
-    
-    @UI.fieldGroup: [{ qualifier: 'Arrival', position: 30 }]
-    @UI.lineItem: [{ position: 60 }]
-    time_end,
     
     @UI.fieldGroup: [{ qualifier: 'Other' }]
     @UI: {lineItem: [{ position: 90} ] }
@@ -106,22 +120,12 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     penalty,
     @Semantics.currencyCode
     @Consumption.valueHelp: '_CurrencyPen'
-    penalty_waers,
-    
-    @UI.fieldGroup: [{ qualifier: 'Ticket', position: 10 }]
-    ticket,    
+    penalty_waers,    
+
     @UI.fieldGroup: [{ qualifier: 'Ticket', position: 20 }]
-    transport,   
-
-
-    @UI.fieldGroup: [{ qualifier: 'Ticket', position: 30 }]
-    @Semantics.amount.currencyCode: 'waers'
-    price,    
-    @Semantics.currencyCode 
-    @Consumption.valueHelp: '_Currency'   
-    waers, 
+    transport,
     
-    @UI.lineItem: [{ position: 100 }]
+    //@UI.lineItem: [{ position: 100 }]
     @UI.fieldGroup: [{ qualifier: 'Ticket', position: 50 }]
     @ObjectModel.text.element: [ 'ApprovedByText' ]
     @Consumption.valueHelp: '_ApprovedBy'
@@ -129,11 +133,11 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     @ObjectModel.readOnly: true
     _ApprovedBy.text as ApprovedByText,
     
-    _FlightType,
-    _Agency,
+    _FlightType,    
     _AirportBeg,
     _AirportEnd,
     _Currency,
     _CurrencyPen,
-    _ApprovedBy
+    _ApprovedBy,
+    _Agency
 }

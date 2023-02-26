@@ -11,6 +11,14 @@
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
    </VSEOCLASS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>DEFINE_MODEL</CMPNAME>
+     <SCONAME>/IWBEP/CX_MGW_MED_EXCEPTION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Meta data exception</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
   </asx:values>
  </asx:abap>
 </abapGit>

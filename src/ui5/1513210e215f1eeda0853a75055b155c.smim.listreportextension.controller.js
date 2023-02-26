@@ -211,8 +211,8 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
           token.setTooltip(userInfoText)
         }
       })
-    // Main title
-    _view.byId(_this._prefix + 'template::PageVariant-text').setText('Travel request:')
+    // Hide variant selection
+    _view.byId(this._prefix + 'template:::ListReportPage:::DynamicPageTitle').setVisible(false)
   },
 
   getParameterByName: function (name, url = window.location.href) {

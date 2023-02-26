@@ -28,6 +28,7 @@ association [0..1] to ZC_TV025_HotelTown as _Town on _Town.town_id = _cat.town_i
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 10, importance: #HIGH }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 10 }]  
+    @ObjectModel.text.element: ['hotel_name']
     key hotel_id,        
         @Search: { defaultSearchElement: true, fuzzinessThreshold: 1 }
         @UI.lineItem: [{ position: 30 }]  
