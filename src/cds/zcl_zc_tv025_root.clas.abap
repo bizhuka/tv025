@@ -5,9 +5,6 @@ class ZCL_ZC_TV025_ROOT definition
   create public .
 
 public section.
-
-  methods DEFINE
-    redefinition .
 protected section.
 
   methods GET_PATHS
@@ -22,12 +19,6 @@ ENDCLASS.
 CLASS ZCL_ZC_TV025_ROOT IMPLEMENTATION.
 
 
-    METHOD define.
-      super->define( ).
-      zcl_tv025_odata_model=>define_model( model ).
-    ENDMETHOD.
-
-
   method GET_PATHS.
 et_paths = VALUE #(
 ( `CDS~ZC_TV025_ROOT` )
@@ -36,6 +27,6 @@ et_paths = VALUE #(
 
 
   method GET_TIMESTAMP.
-RV_TIMESTAMP = 20230204031133.
+RV_TIMESTAMP = 20230310065423.
   endmethod.
 ENDCLASS.

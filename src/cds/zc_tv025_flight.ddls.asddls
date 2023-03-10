@@ -49,7 +49,7 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     @EndUserText.label: 'Departure'    
     @ObjectModel.text.element: ['AirportNameBeg']
 //    @ObjectModel.text.association: 'AirportNameBeg'  
-//    @Consumption.valueHelp: '_AirportBeg'
+    @Consumption.valueHelp: '_AirportBeg'
 //    @UI.textArrangement: #TEXT_LAST //TEXT_SEPARATE
     airport_beg,      
     @ObjectModel:{ readOnly: true }
@@ -60,7 +60,7 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     @UI.fieldGroup: [{ qualifier: 'Arrival', position: 10 }]
     @EndUserText.label: 'Arrival'    
     @ObjectModel.text.element: ['AirportNameEnd']
-//    @Consumption.valueHelp: '_AirportEnd'
+    @Consumption.valueHelp: '_AirportEnd'
     airport_end,  
     @ObjectModel:{ readOnly: true }
     @UI.hidden 
@@ -80,7 +80,7 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     @UI.lineItem: [{ position: 60 }]
     @UI.fieldGroup: [{ qualifier: 'FlightGroup', position: 20 }]    
     @ObjectModel.text.element: ['agency_name']
-//    @Consumption.valueHelp: '_Agency'
+    @Consumption.valueHelp: '_Agency'
     @EndUserText.label: 'Agency'
     agency,
     @ObjectModel:{ readOnly: true }

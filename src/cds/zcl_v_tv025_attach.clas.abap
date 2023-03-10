@@ -1,67 +1,66 @@
-CLASS zcl_v_tv025_attach DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_V_TV025_ATTACH definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    INTERFACES zif_sadl_exit .
-    INTERFACES zif_sadl_delete_runtime .
-    INTERFACES zif_sadl_read_runtime .
-    INTERFACES zif_sadl_stream_runtime .
+  interfaces ZIF_SADL_EXIT .
+  interfaces ZIF_SADL_DELETE_RUNTIME .
+  interfaces ZIF_SADL_READ_RUNTIME .
+  interfaces ZIF_SADL_STREAM_RUNTIME .
 
-    TYPES:
-      tt_attach_alv TYPE STANDARD TABLE OF zdtv025_attach_d WITH DEFAULT KEY .
+  types:
+    tt_attach_alv TYPE STANDARD TABLE OF zdtv025_attach_d WITH DEFAULT KEY .
 
-    METHODS constructor .
-    METHODS set_key
-      IMPORTING
-        !is_db_key       TYPE zcl_tv025_model=>ts_db_key
-      RETURNING
-        VALUE(ro_attach) TYPE REF TO zcl_v_tv025_attach .
-    METHODS add_file
-      IMPORTING
-        !iv_file_name    TYPE string
-        !iv_file_content TYPE xstring
-      RETURNING
-        VALUE(rv_ok)     TYPE abap_bool
-      RAISING
-        /iwbep/cx_mgw_busi_exception .
-    METHODS read
-      EXPORTING
-        !et_signature  TYPE sbdst_signature
-        !et_attach_alv TYPE tt_attach_alv .
-    METHODS get_file_content
-      IMPORTING
-        !is_obj_key  TYPE sdokobject
-      EXPORTING
-        !ev_filetype TYPE char10
-        !ev_content  TYPE xstring .
+  methods SET_KEY
+    importing
+      !IS_DB_KEY type ZCL_TV025_MODEL=>TS_DB_KEY
+    returning
+      value(RO_ATTACH) type ref to ZCL_V_TV025_ATTACH .
+  methods ADD_FILE
+    importing
+      !IV_FILE_NAME type STRING
+      !IV_FILE_CONTENT type XSTRING
+    returning
+      value(RV_OK) type ABAP_BOOL
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION .
+  methods READ
+    exporting
+      !ET_SIGNATURE type SBDST_SIGNATURE
+      !ET_ATTACH_ALV type TT_ATTACH_ALV .
+  methods GET_FILE_CONTENT
+    importing
+      !IS_OBJ_KEY type SDOKOBJECT
+    exporting
+      !EV_FILETYPE type CHAR10
+      !EV_CONTENT type XSTRING .
   PROTECTED SECTION.
-  PRIVATE SECTION.
+private section.
 
-    CONSTANTS:
-      BEGIN OF ms_oaor,
+  constants:
+    BEGIN OF ms_oaor,
         name           TYPE bapibds01-classname VALUE 'ZTV_025_ATTACH',
         type           TYPE bapibds01-classtype VALUE 'OT',
-        employee_photo TYPE bds_docid VALUE 'EMPLOYEE_PHOTO',
         expense_pdf    TYPE bds_docid VALUE 'EXPENSE_PDF',
       END OF ms_oaor .
-    DATA mv_attach_key TYPE swotobjid-objkey .
-    DATA ms_db_key TYPE zcl_tv025_model=>ts_db_key .
+  data MV_ATTACH_KEY type SWOTOBJID-OBJKEY .
+  data MS_DB_KEY type ZCL_TV025_MODEL=>TS_DB_KEY .
 
-    METHODS _check_is_already_exists
-      IMPORTING
-        !iv_filename TYPE csequence
-      RAISING
-        /iwbep/cx_mgw_busi_exception .
-    METHODS _get_file_size_txt
-      IMPORTING
-        !iv_size       TYPE bds_compsi
-      RETURNING
-        VALUE(rv_text) TYPE string .
-    METHODS _get_employee_photo RETURNING VALUE(rv_photo) TYPE xstring.
-    METHODS _get_expense_pdf RETURNING VALUE(rv_pdf) TYPE xstring.
+  methods _CHECK_IS_ALREADY_EXISTS
+    importing
+      !IV_FILENAME type CSEQUENCE
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION .
+  methods _GET_FILE_SIZE_TXT
+    importing
+      !IV_SIZE type BDS_COMPSI
+    returning
+      value(RV_TEXT) type STRING .
+  methods _GET_EXPENSE_PDF
+    returning
+      value(RV_PDF) type XSTRING .
 ENDCLASS.
 
 
@@ -118,27 +117,6 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
     ENDIF.
 
     rv_ok = abap_true.
-  ENDMETHOD.
-
-
-  METHOD constructor.
-    SELECT SINGLE @abap_true INTO @DATA(lv_ok)
-    FROM wbcrossgt
-    WHERE otype	  EQ   'ME'
-      AND name    EQ   'ZCL_TV025_ODATA_MODEL\ME:DEFINE_MODEL'
-      AND include	LIKE 'ZCL_ZC_TV025_ROOT=============CM%'.
-    CHECK lv_ok <> abap_true.
-    MESSAGE 'Activate "ZC_TV025_ROOT" cds & Insert code below to the "ZCL_ZC_TV025_ROOT" class' TYPE 'X'.
-
-*    METHOD define.
-*      super->define( ).
-*      zcl_tv025_odata_model=>define_model( model ).
-*    ENDMETHOD.
-
-
-
-*    zcx_eui_no_check=>raise_sys_error( ).
-*    zcx_eui_exception=>raise_dump( ) .
   ENDMETHOD.
 
 
@@ -360,15 +338,9 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
     " Info about all files
     set_key( CORRESPONDING zcl_tv025_model=>ts_db_key( ls_attach ) ).
 
-    IF ms_db_key-reinr IS INITIAL AND ls_attach-doc_id = ms_oaor-employee_photo.
-      DATA(lv_content)   = _get_employee_photo( ).
-      DATA(lv_mime_type) = |image/jpeg|.
-      io_srv_runtime->set_header(
-           VALUE #( name  = 'Content-Disposition'
-                    value = |inline; filename="ok.jpg"| ) ).
-    ELSEIF ls_attach-doc_id = ms_oaor-expense_pdf.
-      lv_content   = _get_expense_pdf( ).
-      lv_mime_type = |application/pdf|.
+    IF ls_attach-doc_id = ms_oaor-expense_pdf.
+      DATA(lv_content)   = _get_expense_pdf( ).
+      DATA(lv_mime_type) = |application/pdf|.
       io_srv_runtime->set_header(
            VALUE #( name  = 'Content-Disposition'
                     value = |outline; filename="expense.pdf"| ) ).
@@ -405,40 +377,6 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
         EXPORTING
           textid            = /iwbep/cx_mgw_busi_exception=>business_error
           message_unlimited = lv_message.
-    ENDLOOP.
-  ENDMETHOD.
-
-
-  METHOD _get_employee_photo.
-    DATA lt_connection TYPE STANDARD TABLE OF bdn_con.
-    CALL FUNCTION 'BDS_ALL_CONNECTIONS_GET'
-      EXPORTING
-        classname       = 'PREL'
-        classtype       = 'CL'
-        objkey          = CONV swotobjid-objkey( ms_db_key-pernr && '%' )
-      TABLES
-        all_connections = lt_connection
-      EXCEPTIONS
-        OTHERS          = 0.
-    LOOP AT lt_connection ASSIGNING FIELD-SYMBOL(<ls_connection>) WHERE doc_type EQ 'HRICOLFOTO' OR doc_type EQ 'HRIEMPFOTO'.
-      DATA(lt_info) = VALUE ilm_stor_t_scms_acinf( ).
-      DATA(lt_bin)  = VALUE btc_t_xmlxtab( ).
-      CLEAR: lt_info, lt_bin.
-      CALL FUNCTION 'SCMS_DOC_READ'
-        EXPORTING
-          stor_cat    = space
-          crep_id     = <ls_connection>-contrep
-          doc_id      = <ls_connection>-bds_docid
-        TABLES
-          access_info = lt_info
-          content_bin = lt_bin
-        EXCEPTIONS
-          OTHERS      = 15.
-      CHECK sy-subrc = 0 AND lt_info[] IS NOT INITIAL AND lt_bin IS NOT INITIAL.
-
-      rv_photo = zcl_eui_conv=>binary_to_xstring( it_table  = lt_bin
-                                                  iv_length = lt_info[ 1 ]-comp_size ).
-      RETURN.
     ENDLOOP.
   ENDMETHOD.
 

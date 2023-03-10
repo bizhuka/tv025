@@ -17,7 +17,6 @@
 //    draftEnabled: true
 }
 
-
 @UI: {
     headerInfo: {
         typeName: 'Travel Request',
@@ -30,7 +29,7 @@
         }
     }
 }   
- 
+
 @OData.publish: true
 @ZABAP.virtualEntity: 'ZCL_V_TV025_ROOT'
 
@@ -83,7 +82,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     @ObjectModel.text.element: ['request_reason']
     @UI.lineItem: [{ position: 20, importance: #HIGH }]
 //    @UI.fieldGroup: [{ qualifier: 'MainGroup', position: 1 }]
-//    @Consumption.valueHelp: '_CopyFrom'
+    @Consumption.valueHelp: '_CopyFrom'
     key reinr,
     
     key requestvrs,
@@ -111,7 +110,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
 ///////////////////////////////////////////////////////////////
     @UI.lineItem: [{ position: 30 }]
     @UI.selectionField: [{ position: 200 }]
-//    @Consumption.valueHelp: '_ActivityType' //@Consumption.valueHelpDefinition: [{ entity : {name: '_ActivityType', element: 'Activity'  } }]   
+    @Consumption.valueHelp: '_ActivityType' //@Consumption.valueHelpDefinition: [{ entity : {name: '_ActivityType', element: 'Activity'  } }]   
     @ObjectModel.text.element: ['activity_name']
     @UI.fieldGroup: [{ qualifier: 'MainGroup', position: 20 }] 
     @UI.textArrangement: #TEXT_ONLY    
@@ -124,7 +123,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     @UI.dataPoint: { qualifier: 'StatusData', title: 'Status', criticality: 'StatusCriticality' }
     @UI.lineItem: [{ position: 100, criticality: 'StatusCriticality', importance: #HIGH }]
     @UI.selectionField: [{ position: 100 }]
-//    @Consumption.valueHelp: '_Status' 
+    @Consumption.valueHelp: '_Status' 
     @ObjectModel.text.element: ['StatusText']
     @UI.fieldGroup: [{ qualifier: 'State', position: 10 }] 
     root.zz_status,
@@ -156,7 +155,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     @UI.lineItem: [{ position: 60, label: 'Country' }]
     @UI.fieldGroup: [{ qualifier: 'MainGroup', label: 'Country', position: 60 }]
     @ObjectModel.text.element: ['CountryText']
-//    @Consumption.valueHelp: '_Country'
+    @Consumption.valueHelp: '_Country'
     country_end,
     
     @ObjectModel:{ readOnly: true }
@@ -264,7 +263,8 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     times     as chtime,
     
     @ObjectModel:{ readOnly: true }
-    cast( ' ' as abap.char( 255 ) ) as photo_path,
+    concat( concat('../../../../../opu/odata/sap/ZC_PY000_ORGASSIGNMENT_CDS/ZC_PY000_PernrPhoto(pernr=''', pernr),
+                   ''')/$value')  as photo_path,
 
     @ObjectModel:{ readOnly: true }
     cast( ' ' as abap.char( 255 ) ) as error_message,    

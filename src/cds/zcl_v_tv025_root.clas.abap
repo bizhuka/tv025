@@ -5,8 +5,10 @@ CLASS zcl_v_tv025_root DEFINITION
 
   PUBLIC SECTION.
 
-    INTERFACES zif_sadl_exit .
-    INTERFACES zif_sadl_read_runtime .
+    INTERFACES:
+      zif_sadl_exit,
+      zif_sadl_read_runtime,
+      zif_sadl_mpc.
 
     TYPES:
       BEGIN OF ts_passport,
@@ -17,13 +19,6 @@ CLASS zcl_v_tv025_root DEFINITION
         passp_expiry TYPE ptk99-zz_passp_expiry,
         passp_number TYPE ptk99-zz_passp_number,
       END OF ts_passport .
-    TYPES:
-      BEGIN OF ts_image,
-        " Importing
-        pernr      TYPE pernr-pernr,
-        " Exporting
-        photo_path TYPE text255,
-      END OF ts_image .
     TYPES:
       BEGIN OF ts_total,
         " Importing
@@ -48,6 +43,11 @@ ENDCLASS.
 
 
 CLASS ZCL_V_TV025_ROOT IMPLEMENTATION.
+
+
+  METHOD zif_sadl_mpc~define.
+    zcl_tv025_odata_model=>define_model( io_model ).
+  ENDMETHOD.
 
 
   METHOD zif_sadl_read_runtime~execute.
@@ -115,17 +115,12 @@ CLASS ZCL_V_TV025_ROOT IMPLEMENTATION.
         ls_passport-passp_expiry = ls_0290-daten.
       ENDIF.
 
-      DATA(ls_photo) = CORRESPONDING ts_image( <ls_row> ).
-      ls_photo-photo_path = |{ lv_protocol }://{ lv_host }:{ lv_port }/sap/opu/odata/sap/ZC_TV025_ROOT_CDS/ZC_TV025_Attach(pernr='{
-         ls_photo-pernr }',reinr='0000000000',doc_id='EMPLOYEE_PHOTO')/$value?sap-client={ sy-mandt }|.
-
       DATA(ls_total) = CORRESPONDING ts_total( <ls_row> ).
       IF lv_fill_total = abap_true.
         _calculate_total( CHANGING cs_total = ls_total ).
       ENDIF.
 
       MOVE-CORRESPONDING: ls_passport TO <ls_row>,
-                          ls_photo    TO <ls_row>,
                           ls_total    TO <ls_row>.
     ENDLOOP.
   ENDMETHOD.

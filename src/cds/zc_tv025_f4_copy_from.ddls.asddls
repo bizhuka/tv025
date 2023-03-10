@@ -53,7 +53,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     date_end,
     
     @UI.selectionField: [{ position: 200 }]
-    //@Consumption.valueHelp: '_ActivityType'
+    @Consumption.valueHelp: '_ActivityType'
     @ObjectModel.text.element: ['activity_name']     
     @UI.lineItem: [{ position: 30 }]
     //@UI.hidden: true
@@ -63,7 +63,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     
     @UI.lineItem: [{ position: 40, label: 'Country' }]
     @ObjectModel.text.element: ['CountryText']
-    //@Consumption.valueHelp: '_Country'
+    @Consumption.valueHelp: '_Country'
     //@UI.hidden: true
     country_end,
     @EndUserText.label: 'Country'
@@ -74,7 +74,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     
     @UI.lineItem: [{ position: 100, criticality: 'StatusCriticality', importance: #HIGH }]
     @UI.selectionField: [{ position: 100 }]
-    //@Consumption.valueHelp: '_Status' 
+    @Consumption.valueHelp: '_Status' 
     @ObjectModel.text.element: ['StatusText']
     //@UI.hidden: true
     zz_status,
@@ -82,7 +82,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     _Status.StatusText,    
 
     @UI.selectionField: [{ position: 400 }]
-    //@Consumption.valueHelp: '_UserInfoCrt'
+    @Consumption.valueHelp: '_UserInfoCrt'
     @ObjectModel.text.element: ['CrtName']
     //@UI.hidden: true
     createdby as crunm,
@@ -93,20 +93,20 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
     case when zz_crdat = '00000000' then dates else zz_crdat end as crdat,
     
     @UI.selectionField: [{ position: 500 }]
-    //@Consumption.valueHelp: '_UserInfoChg'
+    @Consumption.valueHelp: '_UserInfoChg'
     @ObjectModel.text.element: ['ChgName']
     //@UI.hidden: true
     uname as chunm,
     @EndUserText.label: 'Changed By'
     _UserInfoChg.UserName as ChgName,
     
-    dates as chdat
+    dates as chdat,
     
     
 //    // Nested SH
-//    _Status,
-//    _ActivityType,
-//    _Country,
-//    _UserInfoCrt,
-//    _UserInfoChg
+    _Status,
+    _ActivityType,
+    _Country,
+    _UserInfoCrt,
+    _UserInfoChg
 } where requestvrs = '99' and plan_request = 'R' and zz_status <> ' '

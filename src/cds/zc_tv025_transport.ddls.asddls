@@ -32,7 +32,7 @@ association [0..1] to ZC_TV025_CheckPoint as _Arrrival   on _Arrrival.id   = _Tr
     @UI.identification: [{ position: 10 }]    
     @UI.lineItem: [{ position: 50 }]
 //    @ObjectModel.text.element: ['ChkText']
-//    @Consumption.valueHelp: '_CheckPoint'
+    @Consumption.valueHelp: '_CheckPoint'
     check_point,    
     @ObjectModel:{ readOnly: true }
     _CheckPoint.kurztext as ChkText,
@@ -40,7 +40,7 @@ association [0..1] to ZC_TV025_CheckPoint as _Arrrival   on _Arrrival.id   = _Tr
     @UI.identification: [{ position: 20 }]
     @UI.lineItem: [{ position: 60 }]
 //    @ObjectModel.text.element: ['ArrText']
-//    @Consumption.valueHelp: '_Arrrival'
+    @Consumption.valueHelp: '_Arrrival'
     @EndUserText.label: 'Arrrival' 
     arrival,    
     @ObjectModel:{ readOnly: true }

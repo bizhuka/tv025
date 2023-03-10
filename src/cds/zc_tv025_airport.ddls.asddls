@@ -60,6 +60,7 @@ association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.tow
     airport_name,
     
     @ObjectModel:{ readOnly: true }
+    @UI.hidden: true
     concat_with_space(iata_code, airport_name, 1) as airport_with_code,
     
     _Country,
