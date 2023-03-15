@@ -17,6 +17,8 @@ CLASS lcl_editor DEFINITION INHERITING FROM lcl_tab FINAL FRIENDS zcl_eui_event_
       mo_tree  TYPE REF TO lcl_tree       READ-ONLY.
 
   PROTECTED SECTION.
+    DATA:
+       mo_odata_ext TYPE REF TO zcl_v_tv025_root.
     METHODS:
       _make_tree,
       _do_open      IMPORTING is_db_key       TYPE ts_db_key
@@ -39,6 +41,7 @@ CLASS lcl_editor IMPLEMENTATION.
                        ).
     init_date_checker( it_low  = VALUE #( ( REF #( zss_tv025_head-date_beg ) ) )
                        it_high = VALUE #( ( REF #( zss_tv025_head-date_end ) ) ) ).
+    mo_odata_ext = NEW #( ).
   ENDMETHOD.
 
   METHOD start_of_selection.
@@ -104,9 +107,9 @@ CLASS lcl_editor IMPLEMENTATION.
     DATA(lt_passport) = VALUE zcl_v_tv025_root=>tt_passport(
                         ( pernr = zss_tv025_head-pernr
                           reinr = zss_tv025_head-reinr ) ).
-    DATA(lo_odata_ext) = CAST zif_sadl_read_runtime( zcl_sadl_annotation_ext=>create( 'ZCL_V_TV025_ROOT' ) ).
+    DATA(lo) = CAST zif_sadl_read_runtime( zcl_sadl_annotation_ext=>create( '' ) ).
 
-    lo_odata_ext->execute( CHANGING ct_data_rows = lt_passport ).
+    mo_odata_ext->fill_alv( CHANGING ct_alv = lt_passport ).
     zss_tv025_head_ui-passp_expiry = lt_passport[ 1 ]-passp_expiry.
     zss_tv025_head_ui-passp_number = lt_passport[ 1 ]-passp_number.
   ENDMETHOD.

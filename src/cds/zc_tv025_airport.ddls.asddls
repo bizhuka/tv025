@@ -23,7 +23,7 @@
 
 define view ZC_TV025_Airport as select from zdtv025_airport as _Airport
 
-association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _Airport.country_id
+association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = _Airport.country_id
 association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.town
 
 
@@ -48,10 +48,10 @@ association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.tow
     @Consumption.valueHelp: '_Town'
     town,
     
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }    
-    @UI.lineItem: [{ position: 40 }]  
-    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 40 }]
-    iata_code,
+//    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }    
+//    @UI.lineItem: [{ position: 40 }]  
+//    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 40 }]
+//    iata_code,
     
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
     @UI.lineItem: [{ position: 50 }]  
@@ -59,10 +59,19 @@ association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.tow
     @Semantics.text: true
     airport_name,
     
-    @ObjectModel:{ readOnly: true }
-    @UI.hidden: true
-    concat_with_space(iata_code, airport_name, 1) as airport_with_code,
-    
+//    @ObjectModel:{ readOnly: true }
+//    @UI.hidden: true
+//    concat_with_space(iata_code, airport_name, 1) as airport_with_code,
+
+  
+    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 60 }]
+    @ObjectModel: { mandatory: true }
+    latitude,    
+   
+    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 70 }]
+    @ObjectModel: { mandatory: true }
+    longitude,
+     
     _Country,
     _Town
 }

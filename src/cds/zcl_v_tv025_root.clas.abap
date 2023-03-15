@@ -1,17 +1,16 @@
-CLASS zcl_v_tv025_root DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_V_TV025_ROOT definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    INTERFACES:
-      zif_sadl_exit,
-      zif_sadl_read_runtime,
-      zif_sadl_mpc.
+  interfaces ZIF_SADL_EXIT .
+  interfaces ZIF_SADL_READ_RUNTIME .
+  interfaces ZIF_SADL_MPC .
 
-    TYPES:
-      BEGIN OF ts_passport,
+  types:
+    BEGIN OF ts_passport,
         " Importing
         pernr        TYPE pernr-pernr,
         reinr        TYPE reinr,
@@ -19,8 +18,8 @@ CLASS zcl_v_tv025_root DEFINITION
         passp_expiry TYPE ptk99-zz_passp_expiry,
         passp_number TYPE ptk99-zz_passp_number,
       END OF ts_passport .
-    TYPES:
-      BEGIN OF ts_total,
+  types:
+    BEGIN OF ts_total,
         " Importing
         pernr       TYPE ftpt_req_head-pernr,
         reinr       TYPE ftpt_req_head-reinr,
@@ -28,16 +27,28 @@ CLASS zcl_v_tv025_root DEFINITION
         " Exporting
         total_price TYPE decfloat34,
       END OF ts_total .
-    TYPES:
-      tt_passport TYPE STANDARD TABLE OF ts_passport WITH DEFAULT KEY .
+  types:
+    tt_passport TYPE STANDARD TABLE OF ts_passport WITH DEFAULT KEY .
+
+  methods FILL_ALV
+    importing
+      !IV_FILL_TOTAL type ABAP_BOOL optional
+    changing
+      !CT_ALV type STANDARD TABLE .
   PROTECTED SECTION.
-  PRIVATE SECTION.
-    METHODS: _calculate_total CHANGING cs_total TYPE ts_total,
-      _currency_conversion IMPORTING iv_date          TYPE d
-                                     iv_target_curr   TYPE waers
-                                     iv_source_curr   TYPE waers
-                                     iv_amount        TYPE pad_amt7s
-                           RETURNING VALUE(rv_amount) TYPE pad_amt7s.
+private section.
+
+  methods _CALCULATE_TOTAL
+    changing
+      !CS_TOTAL type TS_TOTAL .
+  methods _CURRENCY_CONVERSION
+    importing
+      !IV_DATE type D
+      !IV_TARGET_CURR type WAERS
+      !IV_SOURCE_CURR type WAERS
+      !IV_AMOUNT type PAD_AMT7S
+    returning
+      value(RV_AMOUNT) type PAD_AMT7S .
 ENDCLASS.
 
 
@@ -45,37 +56,9 @@ ENDCLASS.
 CLASS ZCL_V_TV025_ROOT IMPLEMENTATION.
 
 
-  METHOD zif_sadl_mpc~define.
-    zcl_tv025_odata_model=>define_model( io_model ).
-  ENDMETHOD.
-
-
-  METHOD zif_sadl_read_runtime~execute.
+  METHOD fill_alv.
     DATA(lv_datum) = sy-datum.
-
-    IF iv_node_name = 'ZC_TV025_ROOT'.
-      CASE lines( ct_data_rows[] ).
-        WHEN 0.
-          IF zcl_d_tv025_root_save=>created_root IS NOT INITIAL.
-            APPEND INITIAL LINE TO ct_data_rows ASSIGNING FIELD-SYMBOL(<ls_row>).
-            MOVE-CORRESPONDING zcl_d_tv025_root_save=>created_root TO <ls_row>.
-          ENDIF.
-
-        WHEN 1.
-          ASSIGN COMPONENT 'ERROR_MESSAGE' OF STRUCTURE ct_data_rows[ 1 ] TO FIELD-SYMBOL(<lv_error_message>).
-          IF sy-subrc = 0 AND zcl_a_tv025_lock=>mv_error_message IS NOT INITIAL.
-            <lv_error_message> = zcl_a_tv025_lock=>mv_error_message.
-          ENDIF.
-      ENDCASE.
-    ENDIF.
-
-    cl_http_server=>if_http_server~get_location(
-      IMPORTING host         = DATA(lv_host)
-                port         = DATA(lv_port)
-                out_protocol = DATA(lv_protocol) ).
-    DATA(lv_fill_total) = xsdbool( line_exists( is_requested-elements[ table_line = |TOTAL_PRICE| ] ) ).
-
-    LOOP AT ct_data_rows ASSIGNING <ls_row>.
+    LOOP AT ct_alv ASSIGNING FIELD-SYMBOL(<ls_row>).
 
       DATA(ls_passport) = CORRESPONDING ts_passport( <ls_row> ).
       DO 1 TIMES.
@@ -116,13 +99,40 @@ CLASS ZCL_V_TV025_ROOT IMPLEMENTATION.
       ENDIF.
 
       DATA(ls_total) = CORRESPONDING ts_total( <ls_row> ).
-      IF lv_fill_total = abap_true.
+      IF iv_fill_total = abap_true.
         _calculate_total( CHANGING cs_total = ls_total ).
       ENDIF.
 
       MOVE-CORRESPONDING: ls_passport TO <ls_row>,
                           ls_total    TO <ls_row>.
     ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD zif_sadl_mpc~define.
+    zcl_tv025_odata_model=>define_model( io_model ).
+  ENDMETHOD.
+
+
+  METHOD zif_sadl_read_runtime~execute.
+    IF iv_node_name = 'ZC_TV025_ROOT'.
+      CASE lines( ct_data_rows[] ).
+        WHEN 0.
+          IF zcl_d_tv025_root_save=>created_root IS NOT INITIAL.
+            APPEND INITIAL LINE TO ct_data_rows ASSIGNING FIELD-SYMBOL(<ls_row>).
+            MOVE-CORRESPONDING zcl_d_tv025_root_save=>created_root TO <ls_row>.
+          ENDIF.
+
+        WHEN 1.
+          ASSIGN COMPONENT 'ERROR_MESSAGE' OF STRUCTURE ct_data_rows[ 1 ] TO FIELD-SYMBOL(<lv_error_message>).
+          IF sy-subrc = 0 AND zcl_a_tv025_lock=>mv_error_message IS NOT INITIAL.
+            <lv_error_message> = zcl_a_tv025_lock=>mv_error_message.
+          ENDIF.
+      ENDCASE.
+    ENDIF.
+
+    fill_alv( EXPORTING iv_fill_total = xsdbool( line_exists( is_requested-elements[ table_line = |TOTAL_PRICE| ] ) )
+              CHANGING  ct_alv        = ct_data_rows ).
   ENDMETHOD.
 
 

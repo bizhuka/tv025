@@ -30,7 +30,7 @@ left outer join pa0290 as Passport on Passport.pernr = Employee.pernr
                   and Passport.begda <= Employee.datum
                   and Passport.endda >= Employee.datum 
                   
-left outer join ZC_TV025_Country as _Country on _Country.land1 = p2.gblnd
+left outer join ZC_PY000_Country as _Country on _Country.land1 = p2.gblnd
  
 {
   @UI.identification: [{ position: 10 }] 

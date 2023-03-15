@@ -7,7 +7,7 @@
 @Search.searchable
 
 define view ZC_TV025_HotelTown as select distinct from zdtv025_hotel_ca
-  association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = country_id
+  association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = country_id
 {
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 1 }
     @Consumption.valueHelp: '_Country'

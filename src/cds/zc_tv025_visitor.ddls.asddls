@@ -8,7 +8,7 @@
 @Search.searchable: true 
 define view ZC_TV025_VISITOR as select from zi_tv025_visitor as _main
 
-association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _main.citizenship
+association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = _main.citizenship
  
 {      
       @ObjectModel:{ mandatory: true, readOnly: true, text.element: ['ename'] }

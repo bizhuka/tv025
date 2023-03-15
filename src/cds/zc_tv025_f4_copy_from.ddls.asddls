@@ -22,10 +22,10 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
 
   association [0..1] to ZC_TV025_Status as _Status on _Status.Status = root.zz_status
   association [0..1] to ZC_TV025_ActivityType as _ActivityType on _ActivityType.Activity = root.activity_type 
-  association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = root.country_end
+  association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = root.country_end
   
-  association [0..1] to ZC_TV025_UserInfo as _UserInfoCrt on _UserInfoCrt.uname = root.createdby
-  association [0..1] to ZC_TV025_UserInfo as _UserInfoChg on _UserInfoChg.uname = root.uname
+  association [0..1] to ZC_PY000_UserInfo as _UserInfoCrt on _UserInfoCrt.uname = root.createdby
+  association [0..1] to ZC_PY000_UserInfo as _UserInfoChg on _UserInfoChg.uname = root.uname
 {
 
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }

@@ -267,15 +267,11 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
   METHOD zif_sadl_read_runtime~execute.
     CLEAR ct_data_rows[].
 
-    IF it_range[] IS NOT INITIAL.
-      DATA(ls_attach) = VALUE zdtv025_attach_d( ).
-      LOOP AT it_range ASSIGNING FIELD-SYMBOL(<ls_range>).
-        ASSIGN COMPONENT <ls_range>-column_name OF STRUCTURE ls_attach TO FIELD-SYMBOL(<lv_value>).
-        <lv_value> = <ls_range>-t_selopt[ 1 ]-low.
-      ENDLOOP.
+    ASSIGN ir_key->* TO FIELD-SYMBOL(<ls_key>).
+*    DATA(ls_attach) = CORRESPONDING zdtv025_attach_d( <ls_key> ).  " <---- TODO check  ls_attach-doc_id
+    DATA(ls_key)    = CORRESPONDING zcl_tv025_model=>ts_db_key( <ls_key> ).
 
-      DATA(ls_key) = CORRESPONDING zcl_tv025_model=>ts_db_key( ls_attach ).
-    ELSEIF iv_where IS NOT INITIAL.
+    IF ls_key-reinr IS INITIAL AND iv_where IS NOT INITIAL.
       SELECT SINGLE pernr, reinr INTO CORRESPONDING FIELDS OF @ls_key
       FROM zi_tv025_root
       WHERE (iv_where).
@@ -293,11 +289,11 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
     ENDLOOP.
 
 
-    IF ls_attach-doc_id IS NOT INITIAL.
-      DELETE lt_alv WHERE doc_id <> ls_attach-doc_id.
-      " Select SINGLE by key fields
-      cv_number_all_hits = lines( lt_alv ).
-    ENDIF.
+****    IF ls_attach-doc_id IS NOT INITIAL.
+****      DELETE lt_alv WHERE doc_id <> ls_attach-doc_id.
+****      " Select SINGLE by key fields
+****      cv_number_all_hits = lines( lt_alv ).
+****    ENDIF.
 
     MOVE-CORRESPONDING lt_alv TO ct_data_rows[].
   ENDMETHOD.

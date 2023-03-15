@@ -25,9 +25,9 @@ association [0..1] to ZC_TV025_Basis        as _Basis        on _Basis.basis_id 
 association [0..1] to ZC_TV025_HotelCatalog as _HotelCatalog on _HotelCatalog.hotel_id = _Hotel.hotel_end
 association [0..1] to ZC_TV025_TypeCar      as _TypeCar      on _TypeCar.id            = _Hotel.type_car
 
-association [0..1] to ZC_TV025_Currency as _Currency      on _Currency.waers      = _Hotel.waers
-association [0..1] to ZC_TV025_Currency as _CurrencyPen   on _CurrencyPen.waers   = _Hotel.penalty_waers
-association [0..1] to ZC_TV025_Currency as _CurrencyTrans on _CurrencyTrans.waers = _Hotel.transport_waers
+association [0..1] to ZC_PY000_Currency as _Currency      on _Currency.waers      = _Hotel.waers
+association [0..1] to ZC_PY000_Currency as _CurrencyPen   on _CurrencyPen.waers   = _Hotel.penalty_waers
+association [0..1] to ZC_PY000_Currency as _CurrencyTrans on _CurrencyTrans.waers = _Hotel.transport_waers
 
 {
     key employee_number,

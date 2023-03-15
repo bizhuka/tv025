@@ -203,7 +203,7 @@ sap.ui.controller("ztv025.ext.controller.ListReportExtension", {
     //_filterBar.fireSearch()
 
     if (userName)
-      _view.getModel().read("/ZC_TV025_UserInfo('" + userName + "')", {
+      _view.getModel().read("/ZC_PY000_UserInfo('" + userName + "')", {
         success: function (userInfo) {
           const userInfoText = userInfo.UserName  //+ " (" + userName + ")"
           const token = _view.byId(_this._prefix + 'listReportFilter-filterItemControl_BASIC-crunm').getTokens()[0]

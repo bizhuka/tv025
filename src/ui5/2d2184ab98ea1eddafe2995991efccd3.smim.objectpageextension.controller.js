@@ -29,7 +29,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 	check_ui_state: function (currContext) {
 		if (currContext)
 			this._currContext = currContext
-
+		this._prepare_flightMap()
 		this.setIcons()
 		this._prepare_attach()
 		this._check_lock_before_press()
@@ -41,7 +41,7 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 	_check_lock_before_press: function () {
 		const editButtons = ['ZC_TV025_ROOT--edit',
 			'ZC_TV025_FLIGHT--edit',
-			'ZC_TV025_FLIGHT--delete',			
+			'ZC_TV025_FLIGHT--delete',
 			'ZC_TV025_ROOT--FlightInfo::addEntry',
 			'ZC_TV025_ROOT--FlightInfo::deleteEntry',
 			'ZC_TV025_ROOT--FlightInfo::action::ZC_TV025_ROOT_CDS.ZC_TV025_ROOT_CDS_Entities::ZC_TV025_FLIGHTInverse_copy',
@@ -287,6 +287,15 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			},
 		})
 		toolbar.insertContent(uploadButton, 2);
+	},
+
+	_prepare_flightMap: function () {
+		const _this = this
+		sap.ui.require(["ztv025/ext/controller/FlightMap"], function (FlightMap) {
+			if (!_this.flightMap)
+				_this.flightMap = new FlightMap()
+			_this.flightMap.init(_this)
+		})
 	},
 
 	_onCopyFromPress: function () {

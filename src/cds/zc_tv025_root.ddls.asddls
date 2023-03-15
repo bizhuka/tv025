@@ -46,15 +46,17 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
   association [0..*] to ZC_TV025_Attach as _Attach on _Attach.pernr           = root.pernr
                                                   and _Attach.reinr           = root.reinr                                                  
   association [0..*] to ZC_TV025_F4_Copy_From as _CopyFrom on _CopyFrom.pernr = root.pernr
-                                                          and _CopyFrom.reinr = root.reinr
-                                                          
-  association [0..1] to ZC_TV025_Currency as _Currency on _Currency.waers      = root.currency
+                                                          and _CopyFrom.reinr = root.reinr                    
+  association [0..*] to ZC_TV025_History  as _History on _History.pernr = root.pernr
+                                                     and _History.reinr = root.reinr                 
+                                     
+  association [0..1] to ZC_PY000_Currency as _Currency on _Currency.waers      = root.currency
   association [0..1] to ZC_TV025_Status as _Status on _Status.Status = root.zz_status
   association [0..1] to ZC_TV025_ActivityType as _ActivityType on _ActivityType.Activity = root.activity_type 
-  association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = root.country_end
+  association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = root.country_end
   
-  association [0..1] to ZC_TV025_UserInfo as _UserInfoCrt on _UserInfoCrt.uname = root.createdby
-  association [0..1] to ZC_TV025_UserInfo as _UserInfoChg on _UserInfoChg.uname = root.uname
+  association [0..1] to ZC_PY000_UserInfo as _UserInfoCrt on _UserInfoCrt.uname = root.createdby
+  association [0..1] to ZC_PY000_UserInfo as _UserInfoChg on _UserInfoChg.uname = root.uname
   
   // Employee Cost Info
   association [0..1] to ZC_TV025_CostCenter as CostCenter on CostCenter.pernr      = root.pernr      and CostCenter.reinr        = root.reinr
@@ -263,7 +265,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     times     as chtime,
     
     @ObjectModel:{ readOnly: true }
-    concat( concat('../../../../../opu/odata/sap/ZC_PY000_ORGASSIGNMENT_CDS/ZC_PY000_PernrPhoto(pernr=''', pernr),
+    concat( concat('../../../../../opu/odata/sap/ZC_PY000_REPORT_CDS/ZC_PY000_PernrPhoto(pernr=''', pernr),
                    ''')/$value')  as photo_path,
 
     @ObjectModel:{ readOnly: true }
@@ -336,6 +338,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     _Transport,
     _Attach,
     _CopyFrom,
+    _History,
     _Currency,
     
     _Status,

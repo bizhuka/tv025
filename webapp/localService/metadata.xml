@@ -365,7 +365,7 @@
                 <Property Name="land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CountryText" sap:label="Country"/>
                 <Property Name="CountryText" Type="Edm.String" MaxLength="15" sap:label="Name"/>
             </EntityType>
-            <EntityType Name="ZC_TV025_UserInfoType" sap:label="User info" sap:content-version="1">
+            <EntityType Name="ZC_PY000_UserInfoType" sap:label="User info" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="uname"/>
                 </Key>
@@ -456,11 +456,11 @@
             </Association>
             <Association Name="assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" sap:content-version="1">
                 <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
-                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_UserInfoType" Multiplicity="0..1" Role="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_PY000_UserInfoType" Multiplicity="0..1" Role="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
             </Association>
             <Association Name="assoc_241D266DEF753E60CFD0933BAB14EB14" sap:content-version="1">
                 <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
-                <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_UserInfoType" Multiplicity="0..1" Role="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+                <End Type="ZC_TV025_ROOT_CDS.ZC_PY000_UserInfoType" Multiplicity="0..1" Role="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
             </Association>
             <Association Name="assoc_254C4473E3754AF37D173EA6B7306251" sap:content-version="1">
                 <End Type="ZC_TV025_ROOT_CDS.ZC_TV025_ROOTType" Multiplicity="1" Role="FromRole_assoc_254C4473E3754AF37D173EA6B7306251"/>
@@ -555,7 +555,7 @@
                 <EntitySet Name="ZC_TV025_Status" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_StatusType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZC_TV025_Transport" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_TransportType" sap:content-version="1"/>
                 <EntitySet Name="ZC_TV025_Country" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_CountryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZC_TV025_UserInfo" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_UserInfoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_PY000_UserInfo" EntityType="ZC_TV025_ROOT_CDS.ZC_PY000_UserInfoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZC_TV025_VISITOR" EntityType="ZC_TV025_ROOT_CDS.ZC_TV025_VISITORType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <AssociationSet Name="assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" Association="ZC_TV025_ROOT_CDS.assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZC_TV025_Transport" Role="FromRole_assoc_4BFF18D1B82FB9B6AE0ABC0B8C4E05EF"/>
@@ -587,7 +587,7 @@
                 </AssociationSet>
                 <AssociationSet Name="assoc_241D266DEF753E60CFD0933BAB14EB14" Association="ZC_TV025_ROOT_CDS.assoc_241D266DEF753E60CFD0933BAB14EB14" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
-                    <End EntitySet="ZC_TV025_UserInfo" Role="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
+                    <End EntitySet="ZC_PY000_UserInfo" Role="ToRole_assoc_241D266DEF753E60CFD0933BAB14EB14"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_333DB1F3EA8A6284FC97EFE04D6860B2" Association="ZC_TV025_ROOT_CDS.assoc_333DB1F3EA8A6284FC97EFE04D6860B2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZC_TV025_HotelCatalog" Role="FromRole_assoc_333DB1F3EA8A6284FC97EFE04D6860B2"/>
@@ -627,7 +627,7 @@
                 </AssociationSet>
                 <AssociationSet Name="assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" Association="ZC_TV025_ROOT_CDS.assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZC_TV025_ROOT" Role="FromRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
-                    <End EntitySet="ZC_TV025_UserInfo" Role="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
+                    <End EntitySet="ZC_PY000_UserInfo" Role="ToRole_assoc_23A41DDEFDA57D8D29FA9A31B9B5FC92"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_8002FC0260142D7A0469B98746BE164D" Association="ZC_TV025_ROOT_CDS.assoc_8002FC0260142D7A0469B98746BE164D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZC_TV025_HOTEL" Role="FromRole_assoc_8002FC0260142D7A0469B98746BE164D"/>
@@ -1134,7 +1134,7 @@
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="User info"/>
-                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_PY000_UserInfo"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
@@ -1154,7 +1154,7 @@
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="User info"/>
-                        <PropertyValue Property="CollectionPath" String="ZC_TV025_UserInfo"/>
+                        <PropertyValue Property="CollectionPath" String="ZC_PY000_UserInfo"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">
                             <Collection>

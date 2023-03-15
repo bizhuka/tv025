@@ -21,7 +21,7 @@
 
 define view ZC_TV025_HotelCatalog as select from ZI_TV025_HotelCatalog as _cat
 
-association [0..1] to ZC_TV025_Country as _Country on _Country.land1 = _cat.country_id
+association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = _cat.country_id
 association [0..1] to ZC_TV025_HotelTown as _Town on _Town.town_id = _cat.town_id
 
 {   

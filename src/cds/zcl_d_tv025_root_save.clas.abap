@@ -12,9 +12,9 @@ CLASS zcl_d_tv025_root_save DEFINITION
   PROTECTED SECTION.
   PRIVATE SECTION.
 
-    METHODS _set_key
-      CHANGING
-        !cs_root TYPE zsitv025_root .
+    METHODS:
+      _set_key       CHANGING cs_root TYPE zsitv025_root,
+      _update_history IMPORTING is_root TYPE zsitv025_root.
 ENDCLASS.
 
 
@@ -66,6 +66,8 @@ CLASS ZCL_D_TV025_ROOT_SAVE IMPLEMENTATION.
 
       " Status
       <ls_root>-zz_status = COND #( WHEN <ls_root>-zz_status IS NOT INITIAL THEN <ls_root>-zz_status ELSE zcl_tv025_model=>mc_status-open ).
+      _update_history( <ls_root> ).
+
       _set_key( CHANGING cs_root = <ls_root> ).
 *      ENDIF.
 
@@ -96,5 +98,27 @@ CLASS ZCL_D_TV025_ROOT_SAVE IMPLEMENTATION.
     WHERE pernr = @cs_root-pernr.
 
     cs_root-reinr = lv_max_reinr + 1.
+  ENDMETHOD.
+
+
+  METHOD _update_history.
+    SELECT SINGLE status INTO @DATA(lv_prev_status)
+    FROM zdtv025_history
+    WHERE pernr      EQ @is_root-pernr
+      AND reinr      EQ @is_root-reinr
+      AND time_stamp EQ ( SELECT MAX( time_stamp )
+                          FROM zdtv025_history
+                          WHERE pernr = @is_root-pernr
+                            AND reinr = @is_root-reinr ).
+    CHECK lv_prev_status <> is_root-zz_status.
+
+    DATA(ls_history) = VALUE zdtv025_history(
+      pernr  = is_root-pernr
+      reinr  = is_root-reinr
+      status = is_root-zz_status
+      uname  = sy-uname ).
+    GET TIME STAMP FIELD ls_history-time_stamp.
+
+    INSERT zdtv025_history FROM ls_history.
   ENDMETHOD.
 ENDCLASS.

@@ -1,0 +1,30 @@
+<core:FragmentDefinition  xmlns="sap.m"
+                          xmlns:l="sap.ui.layout"
+						  xmlns:unified="sap.ui.unified"
+						  xmlns:core="sap.ui.core"
+                          xmlns:vbm="sap.ui.vbm"
+                          displayBlock="true"
+	 >
+    <l:VerticalLayout width="100%">
+			<vbm:AnalyticMap id="idVbmMap" width="100%" xmlns:l="sap.ui.layout" height="600px" initialZoom="4" class="sapUiMediumMarginTop">
+				<vbm:vos>
+					<vbm:Routes items="{Inputless>/Routes}">
+						<vbm:Route
+                            position="{Inputless>pos}"
+							color="{Inputless>color}"
+                            colorBorder="rgb(255,255,255)"
+                            linewidth="3"
+							routetype="Geodesic"/>
+					</vbm:Routes>
+					<vbm:Spots items="{Inputless>/Spots}">
+						<vbm:Spot
+                            position="{Inputless>pos}"
+                            tooltip="{Inputless>tooltip}"
+                            type="{Inputless>type}"
+							text="{Inputless>text}"
+                         />
+					</vbm:Spots>
+				</vbm:vos>
+			</vbm:AnalyticMap>
+    </l:VerticalLayout>
+</core:FragmentDefinition>

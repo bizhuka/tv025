@@ -27,8 +27,8 @@ association [0..1] to ZC_TV025_Agency as _Agency on _Agency.agency_id = _Flight.
 association [0..1] to ZC_TV025_Airport as _AirportBeg on _AirportBeg.airport_id = _Flight.airport_beg
 association [0..1] to ZC_TV025_Airport as _AirportEnd on _AirportEnd.airport_id = _Flight.airport_end
 
-association [0..1] to ZC_TV025_Currency as _Currency    on _Currency.waers = _Flight.waers
-association [0..1] to ZC_TV025_Currency as _CurrencyPen on _CurrencyPen.waers = _Flight.penalty_waers
+association [0..1] to ZC_PY000_Currency as _Currency    on _Currency.waers = _Flight.waers
+association [0..1] to ZC_PY000_Currency as _CurrencyPen on _CurrencyPen.waers = _Flight.penalty_waers
 
 association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Flight.approved_by
 
@@ -44,18 +44,27 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     @UI.hidden 
     time_beg,
     
+    
+/////////////////////////////////////////////////////////////////////////////////
     @UI.lineItem: [{ position: 20, label: 'From' }]
     @UI.fieldGroup: [{ qualifier: 'Departure', position: 10 }]
-    @EndUserText.label: 'Departure'    
-    @ObjectModel.text.element: ['AirportNameBeg']
-//    @ObjectModel.text.association: 'AirportNameBeg'  
+    @EndUserText.label: 'Departure'   
+    @ObjectModel.text.element: ['AirportNameBeg']  
     @Consumption.valueHelp: '_AirportBeg'
-//    @UI.textArrangement: #TEXT_LAST //TEXT_SEPARATE
     airport_beg,      
     @ObjectModel:{ readOnly: true }
     @UI.hidden 
-    _AirportBeg.airport_with_code as AirportNameBeg,
+    _AirportBeg.airport_name as AirportNameBeg,
     
+    @ObjectModel:{ readOnly: true }
+    @UI.hidden 
+    _AirportBeg.latitude as beg_latitude,
+    
+    @ObjectModel:{ readOnly: true }
+    @UI.hidden 
+    _AirportBeg.longitude as beg_longitude,
+    
+/////////////////////////////////////////////////////////////////////////////////
     @UI.lineItem: [{ position: 30, label: 'To' }]
     @UI.fieldGroup: [{ qualifier: 'Arrival', position: 10 }]
     @EndUserText.label: 'Arrival'    
@@ -64,8 +73,16 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     airport_end,  
     @ObjectModel:{ readOnly: true }
     @UI.hidden 
-    _AirportEnd.airport_with_code as AirportNameEnd,
+    _AirportEnd.airport_name as AirportNameEnd,
     
+    @ObjectModel:{ readOnly: true }
+    @UI.hidden 
+    _AirportEnd.latitude as end_latitude,
+    
+    @ObjectModel:{ readOnly: true }
+    @UI.hidden 
+    _AirportEnd.longitude as end_longitude,
+/////////////////////////////////////////////////////////////////////////////////
     @UI.lineItem: [{ position: 40, label: 'End Date' }]
     @UI.fieldGroup: [{ qualifier: 'Arrival', position: 20 }]
     date_end,    
@@ -104,7 +121,8 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     @ObjectModel:{ readOnly: true }
     _FlightType.FlightType,
     
-//    @UI.identification: [{ position: 5 }]
+    @UI.fieldGroup: [{ qualifier: 'Other' }]
+    @UI: {lineItem: [{ position: 100} ] }
     cancelled,     
     
     

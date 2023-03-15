@@ -177,11 +177,38 @@
                                 </Collection>
                             </PropertyValue>
                         </Record>
-                        <Record Type="UI.ReferenceFacet">
+
+                        <Record Type="UI.CollectionFacet">
                             <PropertyValue Property="ID" String="FlightInfo" />
                             <PropertyValue Property="Label" String="Flights" />
-                            <PropertyValue Property="Target" AnnotationPath="to_Flight/@UI.LineItem" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="FlightInfoTab" />
+                                        <PropertyValue Property="Label" String="Flights" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_Flight/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="FlightInfoMap" />
+                                        <PropertyValue Property="Label" String="Map" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Ok" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
                         </Record>
+
                         <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="ID" String="HotelInfo" />
                             <PropertyValue Property="Label" String="Hotels" />
@@ -197,32 +224,54 @@
                             <PropertyValue Property="Label" String="Attachments" />
                             <PropertyValue Property="Target" AnnotationPath="to_Attach/@UI.LineItem" />
                         </Record>
+
+
                         <Record Type="UI.CollectionFacet">
                             <PropertyValue Property="ID" String="TechInfo" />
                             <PropertyValue Property="Label" String="Tech. Info" />
                             <PropertyValue Property="Facets">
                                 <Collection>
-                                    <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="ID" String="techCreated" />
-                                        <PropertyValue Property="Label" String="Created" />
-                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechCreated" />
-                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="TechInfoMain" />
+                                        <PropertyValue Property="Label" String="Main" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                        <PropertyValue Property="ID" String="techCreated" />
+                                                        <PropertyValue Property="Label" String="Created" />
+                                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechCreated" />
+                                                    </Record>
 
-                                    <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="ID" String="techChanged" />
-                                        <PropertyValue Property="Label" String="Changed" />
-                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechChanged" />
+                                                    <Record Type="UI.ReferenceFacet">
+                                                        <PropertyValue Property="ID" String="techChanged" />
+                                                        <PropertyValue Property="Label" String="Changed" />
+                                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechChanged" />
+                                                    </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idHistoryAlv" />
+                                        <PropertyValue Property="Label" String="Change history" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_History/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
                                     </Record>
                                 </Collection>
                             </PropertyValue>
                         </Record>
-
+                        
                         <Record Type="UI.CollectionFacet">
                             <PropertyValue Property="ID" String="DictInfo" />
                             <PropertyValue Property="Label" String="Dictionaries" />
                             <PropertyValue Property="Facets">
                                 <Collection>
                                     <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeVisitor" />
                                         <PropertyValue Property="Label" String="Visitor" />
                                         <PropertyValue Property="Facets">
                                             <Collection>
@@ -233,6 +282,7 @@
                                         </PropertyValue>
                                     </Record>
                                     <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeAgency" />
                                         <PropertyValue Property="Label" String="Agency" />
                                         <PropertyValue Property="Facets">
                                             <Collection>
@@ -243,6 +293,7 @@
                                         </PropertyValue>
                                     </Record>
                                     <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeHotelCat" />
                                         <PropertyValue Property="Label" String="Hotel catalog" />
                                         <PropertyValue Property="Facets">
                                             <Collection>
@@ -253,6 +304,7 @@
                                         </PropertyValue>
                                     </Record>
                                     <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeBasis" />
                                         <PropertyValue Property="Label" String="Basis" />
                                         <PropertyValue Property="Facets">
                                             <Collection>
@@ -263,6 +315,7 @@
                                         </PropertyValue>
                                     </Record>
                                     <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeAirport" />
                                         <PropertyValue Property="Label" String="Airport" />
                                         <PropertyValue Property="Facets">
                                             <Collection>
@@ -273,6 +326,7 @@
                                         </PropertyValue>
                                     </Record>
                                     <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeCheckPoint" />
                                         <PropertyValue Property="Label" String="CheckPoint" />
                                         <PropertyValue Property="Facets">
                                             <Collection>

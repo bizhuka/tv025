@@ -96,8 +96,9 @@ interface ZIF_C_TV025_AIRPORT_C
   AIRPORT_ID                     TYPE STRING VALUE 'AIRPORT_ID',
   TOWN                           TYPE STRING VALUE 'TOWN',
   COUNTRY_ID                     TYPE STRING VALUE 'COUNTRY_ID',
-  IATA_CODE                      TYPE STRING VALUE 'IATA_CODE',
   AIRPORT_NAME                   TYPE STRING VALUE 'AIRPORT_NAME',
+  LATITUDE                       TYPE STRING VALUE 'LATITUDE',
+  LONGITUDE                      TYPE STRING VALUE 'LONGITUDE',
       END OF ZC_TV025_AIRPORT,
     END OF SC_NODE_ATTRIBUTE .
   constants:
