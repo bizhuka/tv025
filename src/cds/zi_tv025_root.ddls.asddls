@@ -143,13 +143,7 @@ define view ZI_TV025_ROOT as select from ftpt_req_head as root
     addr_depar,
     @ObjectModel: { readOnly: true }
     addr_arrvl,
-    
-    '########' as fake_visitor,
-    '###'      as fake_agency,      
-    '#####'    as fake_hotel_id,
-    '###'      as fake_basis_id,
-    '#####'    as fake_airport_id,
-    '####'     as fake_ch_id,
+     
     
     @ObjectModel.association: {
       type: [ #TO_COMPOSITION_CHILD ]

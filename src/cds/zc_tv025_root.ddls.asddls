@@ -62,13 +62,12 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
   association [0..1] to ZC_TV025_CostCenter as CostCenter on CostCenter.pernr      = root.pernr      and CostCenter.reinr        = root.reinr
                                                          and CostCenter.requestvrs = root.requestvrs and CostCenter.plan_request = root.plan_request
                                                          
-  association [0..*] to ZC_TV025_FakeVisitor  as _FakeVisitor      on _FakeVisitor.pernr         = root.fake_visitor
-  association [0..*] to ZC_TV025_Agency       as _FakeAgency       on _FakeAgency.agency_id      = root.fake_agency
-  association [0..*] to ZC_TV025_HotelCatalog as _FakeHotelCatalog on _FakeHotelCatalog.hotel_id = root.fake_hotel_id
-  association [0..*] to ZC_TV025_Basis        as _FakeBasis        on _FakeBasis.basis_id        = root.fake_basis_id
-  association [0..*] to ZC_TV025_Airport      as _FakeAirport      on _FakeAirport.airport_id    = root.fake_airport_id
-  association [0..*] to ZC_TV025_CheckPoint   as _FakeCheckPoint   on _FakeCheckPoint.id         = root.fake_ch_id
-      
+  association [0..*] to ZC_TV025_FakeVisitor  as _FakeVisitor      on _FakeVisitor.pernr         = $projection.fake_visitor
+  association [0..*] to ZC_TV025_Agency       as _FakeAgency       on _FakeAgency.agency_id      = $projection.fake_agency
+  association [0..*] to ZC_TV025_HotelCatalog as _FakeHotelCatalog on _FakeHotelCatalog.hotel_id = $projection.fake_hotel_id
+  association [0..*] to ZC_TV025_Basis        as _FakeBasis        on _FakeBasis.basis_id        = $projection.fake_basis_id
+  association [0..*] to ZC_TV025_Airport      as _FakeAirport      on _FakeAirport.airport_id    = $projection.fake_airport_id
+  association [0..*] to ZC_TV025_CheckPoint   as _FakeCheckPoint   on _FakeCheckPoint.id         = $projection.fake_ch_id
                                                      
 {    
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
@@ -269,7 +268,20 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
                    ''')/$value')  as photo_path,
 
     @ObjectModel:{ readOnly: true }
-    cast( ' ' as abap.char( 255 ) ) as error_message,    
+    cast( ' ' as abap.char( 255 ) ) as error_message,  
+    
+    @ObjectModel:{ readOnly: true }
+    '########' as fake_visitor,
+    @ObjectModel:{ readOnly: true }
+    '###'      as fake_agency,     
+    @ObjectModel:{ readOnly: true } 
+    '#####'    as fake_hotel_id,
+    @ObjectModel:{ readOnly: true }
+    '###'      as fake_basis_id,
+    @ObjectModel:{ readOnly: true }
+    '#####'    as fake_airport_id,
+    @ObjectModel:{ readOnly: true }
+    '####'     as fake_ch_id,  
     
 ///////////////////////////////////////////////////////////////
 //    /* Locks */    
@@ -348,21 +360,10 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     _UserInfoChg,
     
     /* For SH editing */
-    fake_visitor,
     _FakeVisitor,
-    
-    fake_agency, 
     _FakeAgency,
-    
-    fake_hotel_id,
     _FakeHotelCatalog,
-    
-    fake_basis_id,
     _FakeBasis,
-    
-    fake_airport_id,
     _FakeAirport,
-    
-    fake_ch_id,
     _FakeCheckPoint
 }
