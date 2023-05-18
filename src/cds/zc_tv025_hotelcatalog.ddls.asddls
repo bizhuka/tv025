@@ -37,7 +37,7 @@ association [0..1] to ZC_TV025_HotelTown as _Town on _Town.town_id = _cat.town_i
         @Consumption.valueHelp: '_Country'
         country_id,
         
-        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
         @ObjectModel:{ readOnly: true }
         _Country.CountryText,        
 
@@ -51,22 +51,22 @@ association [0..1] to ZC_TV025_HotelTown as _Town on _Town.town_id = _cat.town_i
         @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
         hotel_class,        
         
-        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
         @UI.lineItem: [{ position: 50 }]  
         @UI.fieldGroup: [{ qualifier: 'Grp0', position: 50 }]
         hotel_name,        
         
-        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
         @UI.lineItem: [{ position: 60 }]  
         @UI.fieldGroup: [{ qualifier: 'Grp0', position: 60 }]
         hotel_address,        
         
-        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
         @UI.lineItem: [{ position: 70 }]  
         @UI.fieldGroup: [{ qualifier: 'Grp0', position: 70 }]
         hotel_phone,        
         
-        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+        @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
         @UI.lineItem: [{ position: 80 }]  
         @UI.fieldGroup: [{ qualifier: 'Grp0', position: 80 }]
         @UI.multiLineText: true

@@ -48,12 +48,12 @@ association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.tow
     @Consumption.valueHelp: '_Town'
     town,
     
-//    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }    
+//    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }    
 //    @UI.lineItem: [{ position: 40 }]  
 //    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 40 }]
 //    iata_code,
     
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.9 }
     @UI.lineItem: [{ position: 50 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 50 }]
     @Semantics.text: true

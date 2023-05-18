@@ -12,7 +12,7 @@ association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = _main.cit
  
 {      
       @ObjectModel:{ mandatory: true, readOnly: true, text.element: ['ename'] }
-      @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7, ranking:#HIGH }  
+      @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8, ranking:#HIGH }  
       @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 05 }]
       key pernr,
       

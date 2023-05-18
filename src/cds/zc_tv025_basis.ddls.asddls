@@ -32,7 +32,7 @@ define view ZC_TV025_Basis as select from zdtv025_basis {
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
         hotel_basis,
         
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 30 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 30 }]
         hotel_basis_txt

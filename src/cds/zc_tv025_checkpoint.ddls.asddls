@@ -41,7 +41,7 @@ define view ZC_TV025_CheckPoint as select from zdtv025_checkp
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 30 }]
         code,        
     
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 40 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 40 }]
         kurztext

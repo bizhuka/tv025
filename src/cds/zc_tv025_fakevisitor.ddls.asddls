@@ -26,7 +26,7 @@ define view ZC_TV025_FakeVisitor as select from zi_tv025_visitor as _main
 association [0..1] to ZC_PY000_Country as _Country on _Country.land1 = _main.citizenship
 
 {
-      @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7, ranking:#HIGH }
+      @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8, ranking:#HIGH }
       @ObjectModel:{ readOnly: true, text.element: ['ename'] }        
       @UI.lineItem: [{ position: 10, importance: #HIGH }] // , label: 'Visitor ID'
       @UI.fieldGroup: [{ qualifier: 'VisitorGroup', position: 05 }]

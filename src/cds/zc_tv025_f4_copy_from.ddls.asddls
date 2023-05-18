@@ -28,7 +28,7 @@ define view ZC_TV025_F4_Copy_From as select from ftpt_req_head as root
   association [0..1] to ZC_PY000_UserInfo as _UserInfoChg on _UserInfoChg.uname = root.uname
 {
 
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'Employee / Visitor' }]
     @ObjectModel.text.element: ['ename']
     key pernr,  

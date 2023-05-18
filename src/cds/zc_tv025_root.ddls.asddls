@@ -70,7 +70,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
   association [0..*] to ZC_TV025_CheckPoint   as _FakeCheckPoint   on _FakeCheckPoint.id         = $projection.fake_ch_id
                                                      
 {    
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 10, importance: #HIGH, label: 'Employee / Visitor' }]
     @ObjectModel.text.element: ['ename']
     

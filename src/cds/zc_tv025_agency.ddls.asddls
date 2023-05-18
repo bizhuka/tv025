@@ -28,7 +28,7 @@ define view ZC_TV025_Agency as select from zdtv025_agency as _Agency
     @ObjectModel.text.element: ['agency_name']
     key agency_id,
     
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.7 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
     @UI.lineItem: [{ position: 20 }]
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
     agency_name

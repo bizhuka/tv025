@@ -6,7 +6,7 @@
                           displayBlock="true"
 	 >
     <l:VerticalLayout width="100%">
-			<vbm:AnalyticMap id="idVbmMap" width="100%" xmlns:l="sap.ui.layout" height="600px" initialZoom="4" class="sapUiMediumMarginTop">
+			<!-- <vbm:AnalyticMap id="idVbmMap" width="100%" xmlns:l="sap.ui.layout" height="600px" initialZoom="4" class="sapUiMediumMarginTop">
 				<vbm:vos>
 					<vbm:Routes items="{Inputless>/Routes}">
 						<vbm:Route
@@ -25,6 +25,6 @@
                          />
 					</vbm:Spots>
 				</vbm:vos>
-			</vbm:AnalyticMap>
+			</vbm:AnalyticMap> -->
     </l:VerticalLayout>
 </core:FragmentDefinition>
