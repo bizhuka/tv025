@@ -68,6 +68,9 @@ CLASS ZCL_A_TV025_COPY_FROM IMPLEMENTATION.
 **********************************************************************
 **********************************************************************
     LOOP AT lt_root ASSIGNING FIELD-SYMBOL(<ls_root>).
+      zcl_tv025_odata_model=>check_status( is_root    = <ls_root>
+                                           io_message = mo_message ).
+
       " №1
       IF ls_param->copy_flight = abap_true.
         _do_copy( iv_src_key       = lt_src_key[ 1 ]-key

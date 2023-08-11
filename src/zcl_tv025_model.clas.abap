@@ -389,22 +389,26 @@ CLASS ZCL_TV025_MODEL IMPLEMENTATION.
     DATA(l_pernr) = COND #( WHEN iv_pernr IS NOT INITIAL THEN iv_pernr ELSE ms_cache-_key-employee_number ).
     DATA(l_reinr) = COND #( WHEN iv_reinr IS NOT INITIAL THEN iv_reinr ELSE ms_cache-_key-trip_number ).
 
+    IF l_pernr IS INITIAL OR l_reinr IS INITIAL.
+      zcx_eui_no_check=>raise_sys_error( iv_message = |Cannot lock item with empty key!| ).
+    ENDIF.
+
     " Locks
     IF iv_unlock = abap_true.
-      CALL FUNCTION 'DEQUEUE_EZDTV025_ROOT'
+      CALL FUNCTION 'DEQUEUE_EPTRV' " 'DEQUEUE_EZDTV025_ROOT'
         EXPORTING
           pernr  = l_pernr
           reinr  = l_reinr
         EXCEPTIONS
           OTHERS = 3.
     ELSE.
-      CALL FUNCTION 'ENQUEUE_EZDTV025_ROOT'
+      CALL FUNCTION 'ENQUEUE_EPTRV' "'ENQUEUE_EZDTV025_ROOT'
         EXPORTING
           "mode_ftpt_req_head = 'X'
-          pernr              = l_pernr
-          reinr              = l_reinr
+          pernr  = l_pernr
+          reinr  = l_reinr
         EXCEPTIONS
-          OTHERS             = 3.
+          OTHERS = 3.
     ENDIF.
 
     " Show message in caller

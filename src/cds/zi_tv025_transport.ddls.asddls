@@ -22,6 +22,9 @@ define view ZI_TV025_Transport as select from zdtv025_transp as _Transport
                                               and _root.requestvrs   = _Transport.requestvrs
                                               and _root.plan_request = _Transport.plan_request
 {
+
+    @UI: { lineItem: [  //Action Button
+                       { type: #FOR_ACTION, position: 0, dataAction: 'BOPF:INVERSE_COPY',  label: 'Inverse copy' }] }
     key employee_number,
     key trip_number,
     key s_index,

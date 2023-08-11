@@ -5,6 +5,7 @@
 @EndUserText.label: 'Request ROOT'
 @VDM.viewType: #TRANSACTIONAL
 
+
 @ObjectModel: {
     transactionalProcessingEnabled: true,
     writeActivePersistence: 'FTPT_REQ_HEAD',

@@ -35,7 +35,6 @@ define view ZI_TV025_HOTEL as select from zdtv025_hotel as _Hotel
     date_beg,
     date_end,
     
-    @ObjectModel:{ mandatory: true }
     hotel_end,
     
     assigned_car,
@@ -46,11 +45,10 @@ define view ZI_TV025_HOTEL as select from zdtv025_hotel as _Hotel
     transport_hotel,
     comment1,
     
-    @ObjectModel:{ mandatory: true }
+
     price,
-    
-    @ObjectModel:{ mandatory: true }
     waers,
+    
     penalty,
     penalty_waers,
     booked_nights,

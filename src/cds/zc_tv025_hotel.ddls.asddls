@@ -17,6 +17,7 @@
     deleteEnabled: true,
     updateEnabled: true
 }
+@ZABAP.virtualEntity: 'ZCL_I_ROOT_CHILD_CHECK'
 
 define view ZC_TV025_HOTEL as select from ZI_TV025_HOTEL as _Hotel
 association [0..1] to ZC_TV025_Agency       as _Agency       on _Agency.agency_id      = _Hotel.agency

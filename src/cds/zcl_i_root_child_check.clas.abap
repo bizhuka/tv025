@@ -6,10 +6,21 @@ CLASS zcl_i_root_child_check DEFINITION
 
   PUBLIC SECTION.
 
-    METHODS:
-      /bobf/if_frw_validation~execute REDEFINITION.
+    INTERFACES zif_sadl_exit .
+    INTERFACES zif_sadl_prepare_batch .
+
+    METHODS /bobf/if_frw_validation~execute
+        REDEFINITION .
   PROTECTED SECTION.
   PRIVATE SECTION.
+    TYPES: BEGIN OF ts_ind_key,
+             employee_number TYPE pernr_d,
+             trip_number     TYPE reinr,
+             s_index         TYPE index,
+           END OF ts_ind_key,
+           tt_ind_key TYPE STANDARD TABLE OF ts_ind_key WITH DEFAULT KEY.
+    DATA ms_ind_key TYPE ts_ind_key.
+
     METHODS:
       _check_flight IMPORTING is_flight     TYPE zsitv025_flight
                               io_message    TYPE REF TO /bobf/if_frw_message
@@ -48,11 +59,16 @@ CLASS ZCL_I_ROOT_CHILD_CHECK IMPLEMENTATION.
     DATA(lt_required) = zcl_i_tv025_root_check=>get_required_fields(
       iv_cds       = SWITCH #( is_ctx-node_key WHEN zif_i_tv025_root_c=>sc_node-zi_tv025_flight    THEN 'ZI_TV025_FLIGHT'
                                                WHEN zif_i_tv025_root_c=>sc_node-zi_tv025_hotel     THEN 'ZI_TV025_HOTEL'
-                                               WHEN zif_i_tv025_root_c=>sc_node-zi_tv025_transport THEN 'ZI_TV025_TRANSPORT' )
-      " Problem with format
-      it_fieldname = VALUE #( ( |DATE_BEG| ) ( |DATE_END| ) ) ).
+                                               WHEN zif_i_tv025_root_c=>sc_node-zi_tv025_transport THEN 'ZI_TV025_Transport' )
+*      " Problem with format it_fieldname = VALUE #( ( |DATE_BEG| ) ( |DATE_END| ) )
+      ).
 
     LOOP AT <lt_current_items> ASSIGNING FIELD-SYMBOL(<ls_current_item>).
+      DATA(ls_ind_key) = CAST zcl_i_root_child_check( zcl_sadl_annotation_ext=>create( 'ZCL_I_ROOT_CHILD_CHECK' ) )->ms_ind_key.
+      IF ls_ind_key IS NOT INITIAL.
+        CHECK ls_ind_key = CORRESPONDING ts_ind_key( <ls_current_item> ).
+      ENDIF.
+
       DATA(ls_key) = CORRESPONDING /bobf/s_frw_key_incl( <ls_current_item> ).
 
       zcl_i_tv025_root_check=>check_required_fields(
@@ -77,6 +93,20 @@ CLASS ZCL_I_ROOT_CHILD_CHECK IMPLEMENTATION.
                             CHANGING  ct_failed_key = et_failed_key ).
       ENDCASE.
     ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD zif_sadl_prepare_batch~prepare.
+    CHECK lines( ct_update[] ) = 1
+      AND lines( ct_create[] ) = 0
+      AND lines( ct_delete[] ) = 0
+      AND lines( ct_action[] ) = 0.
+
+    DATA(lr_update_item) = ct_update[ 1 ]-rs_entity_data.
+    CHECK lr_update_item IS NOT INITIAL.
+    ASSIGN lr_update_item->* TO FIELD-SYMBOL(<ls_update_item>).
+
+    ms_ind_key = CORRESPONDING #( <ls_update_item> ).
   ENDMETHOD.
 
 

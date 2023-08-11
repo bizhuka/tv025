@@ -17,7 +17,7 @@
     deleteEnabled: true,
     updateEnabled: true
 }
-
+@ZABAP.virtualEntity: 'ZCL_I_ROOT_CHILD_CHECK'
 
 define view ZC_TV025_FLIGHT as select from ZI_TV025_FLIGHT as _Flight
 
@@ -30,7 +30,7 @@ association [0..1] to ZC_TV025_Airport as _AirportEnd on _AirportEnd.airport_id 
 association [0..1] to ZC_PY000_Currency as _Currency    on _Currency.waers = _Flight.waers
 association [0..1] to ZC_PY000_Currency as _CurrencyPen on _CurrencyPen.waers = _Flight.penalty_waers
 
-association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Flight.approved_by
+association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.appr_by = _Flight.approved_by
 
 {    
     key employee_number,
@@ -144,12 +144,12 @@ association [0..1] to ZC_TV025_ApprovedBy as _ApprovedBy on _ApprovedBy.id = _Fl
     transport,
     
     //@UI.lineItem: [{ position: 100 }]
-    @UI.fieldGroup: [{ qualifier: 'Ticket', position: 50 }]
+    @UI.fieldGroup: [{ qualifier: 'FlightGroup', position: 50 }]
     @ObjectModel.text.element: [ 'ApprovedByText' ]
     @Consumption.valueHelp: '_ApprovedBy'
     approved_by,
     @ObjectModel.readOnly: true
-    _ApprovedBy.text as ApprovedByText,
+    _ApprovedBy.appr_by_txt as ApprovedByText,
     
     _FlightType,    
     _AirportBeg,

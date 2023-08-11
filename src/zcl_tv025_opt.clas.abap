@@ -1,65 +1,77 @@
-class ZCL_TV025_OPT definition
-  public
-  final
-  create private
+CLASS zcl_tv025_opt DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PRIVATE
 
-  global friends ZCL_AQO_OPTION .
+  GLOBAL FRIENDS zcl_aqo_option .
 
-public section.
+  PUBLIC SECTION.
 
-  interfaces ZIF_AQO_EXT .
+    INTERFACES zif_aqo_ext .
 
-  types:
-    begin of ts_dynnr,
-        dynnr type sydynnr,
-        text  type text100,
-      end of ts_dynnr .
-  types:
-    begin of ts_screen,
-        on          type xsdboolean,
-        dynnr       type ts_dynnr-dynnr,
-        name        type zcl_eui_screen=>ts_customize-name,
-        group1      type zcl_eui_screen=>ts_customize-group1,
-        req_typ     type range of zss_tv025_head_ui-req_type,
-        label       type zcl_eui_screen=>ts_customize-label,
-        input       type zcl_eui_screen=>ts_customize-input,
-        active      type zcl_eui_screen=>ts_customize-active,
-        required    type zcl_eui_screen=>ts_customize-required,
-        intensified type zcl_eui_screen=>ts_customize-intensified,
-        command     type zcl_eui_screen=>ts_customize-command,
-        desc        type text100,
-      end of ts_screen .
-  types:
-    begin of ts_file_opt,
-        icon type icon_d,
-        ext  type range of char4,
-      end of ts_file_opt .
+    TYPES:
+      BEGIN OF ts_dynnr,
+        dynnr TYPE sydynnr,
+        text  TYPE text100,
+      END OF ts_dynnr .
+    TYPES:
+      BEGIN OF ts_screen,
+        on          TYPE xsdboolean,
+        dynnr       TYPE ts_dynnr-dynnr,
+        name        TYPE zcl_eui_screen=>ts_customize-name,
+        group1      TYPE zcl_eui_screen=>ts_customize-group1,
+        req_typ     TYPE RANGE OF zss_tv025_head_ui-req_type,
+        label       TYPE zcl_eui_screen=>ts_customize-label,
+        input       TYPE zcl_eui_screen=>ts_customize-input,
+        active      TYPE zcl_eui_screen=>ts_customize-active,
+        required    TYPE zcl_eui_screen=>ts_customize-required,
+        intensified TYPE zcl_eui_screen=>ts_customize-intensified,
+        command     TYPE zcl_eui_screen=>ts_customize-command,
+        desc        TYPE text100,
+      END OF ts_screen.
+    TYPES:
+      BEGIN OF ts_file_opt,
+        icon TYPE icon_d,
+        ext  TYPE RANGE OF char4,
+      END OF ts_file_opt .
 
-  constants:
-    begin of mc_req_type,
-        employee type zss_tv025_head_ui-req_type value 'E',
-        visitor  type zss_tv025_head_ui-req_type value 'V',
-      end of mc_req_type .
-  class-data:
-    r_super_user type range of suid_st_bname-bname read-only .
-  class-data:
-    t_dynnr      type hashed table of ts_dynnr with unique key dynnr read-only .
-  class-data:
-    t_screen     type sorted table of ts_screen with non-unique key dynnr name read-only .
-  class-data:
-    t_file_opt   type standard table of ts_file_opt with default key read-only .
+    TYPES:
+      BEGIN OF ts_cds_field,
+        cds       TYPE ddlname,
+        fieldname TYPE dd03l-fieldname,
+        ddtext    TYPE dd04t-ddtext,
+        required  TYPE xsdboolean,
+      END OF ts_cds_field,
+      tt_cds_field TYPE STANDARD TABLE OF ts_cds_field WITH EMPTY KEY.
 
-  class-methods CLASS_CONSTRUCTOR .
-  class-methods GET_CUSTOMIZE
-    importing
-      !IV_DYNNR type SYDYNNR
-    returning
-      value(RT_CUSTOMIZE) type ZCL_EUI_SCREEN=>TT_CUSTOMIZE .
-  class-methods IS_SUPER
-    importing
-      !IV_UNAME type UNAME
-    returning
-      value(RV_OK) type ABAP_BOOL .
+    CONSTANTS:
+      BEGIN OF mc_req_type,
+        employee TYPE zss_tv025_head_ui-req_type VALUE 'E',
+        visitor  TYPE zss_tv025_head_ui-req_type VALUE 'V',
+      END OF mc_req_type .
+    CLASS-DATA:
+      r_super_user TYPE RANGE OF suid_st_bname-bname READ-ONLY .
+    CLASS-DATA:
+      t_dynnr      TYPE HASHED TABLE OF ts_dynnr WITH UNIQUE KEY dynnr READ-ONLY .
+    CLASS-DATA:
+      t_screen     TYPE SORTED TABLE OF ts_screen WITH NON-UNIQUE KEY dynnr name READ-ONLY .
+    CLASS-DATA:
+      t_file_opt   TYPE STANDARD TABLE OF ts_file_opt WITH DEFAULT KEY READ-ONLY .
+
+    CLASS-DATA:
+      t_cds_field   TYPE SORTED TABLE OF ts_cds_field WITH UNIQUE KEY cds fieldname READ-ONLY .
+
+    CLASS-METHODS class_constructor .
+    CLASS-METHODS get_customize
+      IMPORTING
+        !iv_dynnr           TYPE sydynnr
+      RETURNING
+        VALUE(rt_customize) TYPE zcl_eui_screen=>tt_customize .
+    CLASS-METHODS is_super
+      IMPORTING
+        !iv_uname    TYPE uname
+      RETURNING
+        VALUE(rv_ok) TYPE abap_bool .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -117,7 +129,7 @@ CLASS ZCL_TV025_OPT IMPLEMENTATION.
     DATA lt_screen LIKE REF TO t_screen.
     lt_screen ?= io_option->get_field_value( 'T_SCREEN' ).
 
-    LOOP AT lt_screen->* ASSIGNING FIELD-SYMBOL(<ls_screen>) WHERE dynnr IS NOT INITIAL   "#EC CI_SORTSEQ
+    LOOP AT lt_screen->* ASSIGNING FIELD-SYMBOL(<ls_screen>) WHERE dynnr IS NOT INITIAL "#EC CI_SORTSEQ
                                                                AND name  NS '*'
                                                                AND label IS NOT INITIAL.
       CHECK line_exists( lt_d020s[ dnum = <ls_screen>-dynnr ] ).

@@ -33,9 +33,32 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 		this.setIcons()
 		this._prepare_attach()
 		this._check_lock_before_press()
-
-		this._check_lock_before_press()
 		this._toggle_by_checkbox()
+		this._set_booked_nights_interval()
+	},
+
+	_set_booked_nights_interval: function () {
+		const date_prefix = 'ztv025::sap.suite.ui.generic.template.ObjectPage.view.Details::ZC_TV025_HOTEL--com.sap.vocabularies.UI.v1.FieldGroup::Dates::'
+		const arrIds = ['date_beg::Field', 'date_end::Field']
+		for (let id of arrIds) {
+			const control = sap.ui.getCore().byId(date_prefix + id)
+			if (!control || control._on_change_is_set) continue
+			control._on_change_is_set = true
+
+			control.attachInnerControlsCreated(function (oEvent) {
+				const datePicker = oEvent.getParameter('0')
+				datePicker.attachChange(function () {
+					const begda = new Date(sap.ui.getCore().byId(date_prefix + 'date_beg::Field-datePicker').getValue())
+					const endda = new Date(sap.ui.getCore().byId(date_prefix + 'date_end::Field-datePicker').getValue())
+
+					const diffDays = Math.ceil((endda - begda) / (1000 * 60 * 60 * 24))
+					if (diffDays >= 0) {
+						sap.ui.getCore().byId(date_prefix + 'booked_nights::Field').setValue(diffDays)
+						sap.ui.getCore().byId(date_prefix + 'booked_nights::Field-input').setValue(diffDays)
+					}
+				})
+			})
+		}
 	},
 
 	_check_lock_before_press: function () {
@@ -45,6 +68,10 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			'ZC_TV025_ROOT--FlightInfo::addEntry',
 			'ZC_TV025_ROOT--FlightInfo::deleteEntry',
 			'ZC_TV025_ROOT--FlightInfo::action::ZC_TV025_ROOT_CDS.ZC_TV025_ROOT_CDS_Entities::ZC_TV025_FLIGHTInverse_copy',
+			// TODO check new names
+			'ZC_TV025_ROOT--to_Flight::com.sap.vocabularies.UI.v1.LineItem::addEntry',
+			'ZC_TV025_ROOT--to_Flight::com.sap.vocabularies.UI.v1.LineItem::deleteEntry',
+			'ZC_TV025_ROOT--to_Flight::com.sap.vocabularies.UI.v1.LineItem::action::ZC_TV025_ROOT_CDS.ZC_TV025_ROOT_CDS_Entities::ZC_TV025_FLIGHTInverse_copy',
 
 			'ZC_TV025_HOTEL--edit',
 			'ZC_TV025_HOTEL--delete',
@@ -55,6 +82,8 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 			'ZC_TV025_Transport--delete',
 			'ZC_TV025_ROOT--TransportInfo::addEntry',
 			'ZC_TV025_ROOT--TransportInfo::deleteEntry',
+			// TODO check new names
+			'ZC_TV025_ROOT--TransportInfo::action::ZC_TV025_ROOT_CDS.ZC_TV025_ROOT_CDS_Entities::ZC_TV025_TRANSPORTInverse_copy',
 
 			'ZC_TV025_ROOT--AttachmentInfo::uploadFile',
 			'ZC_TV025_ROOT--AttachmentInfo::deleteEntry'
@@ -63,6 +92,9 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 		for (const id of editButtons) {
 			const editButton = _byId(this._details + id)
 			if (!editButton || editButton._std_fm) continue
+
+			if (window.location.hostname === 'localhost')
+				console.log(`Set button handler for ${id}`)
 
 			editButton._std_fm = editButton.mEventRegistry.press[0]
 			editButton.detachPress(editButton._std_fm.fFunction, editButton._std_fm.oListener)
@@ -167,7 +199,8 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 	_set_mandatory_editable: function (editButton) {
 		const _this = this
 		const _byId = sap.ui.getCore().byId
-		const buttonInfo = editButton.getId().split('::')[2].split('--')
+		const fullId = editButton.getId()
+		const buttonInfo = fullId.split('::')[2].split('--')
 
 		const entityName = buttonInfo[0]
 		const pref2 = _this._template + 'ObjectPage.view.Details::' + entityName + '--com.sap.vocabularies.UI.v1.FieldGroup::'
@@ -180,6 +213,8 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 				field_grp_end = 'Arrival'
 				//_this._addInverseButton()
 				break
+			case "ZC_TV025_HOTEL":
+				break
 			case "ZC_TV025_ROOT":
 				const visitor = window.location.href.indexOf("pernr='9") !== -1
 				const editable = visitor // _this._createMode || 
@@ -188,8 +223,20 @@ sap.ui.controller("ztv025.ext.controller.ObjectPageExtension", {
 				break
 		}
 
-		_byId(pref2 + field_grp_beg + '::date_beg::Field').setMandatory(true)
-		_byId(pref2 + field_grp_end + '::date_end::Field').setMandatory(true)
+		this._safe_set(pref2 + field_grp_beg + '::date_beg::Field', 'setMandatory', true)
+		this._safe_set(pref2 + field_grp_end + '::date_end::Field', 'setMandatory', true)
+	},
+
+	_safe_set: function (id, method, value) {
+		const obj = sap.ui.getCore().byId(id)
+		if (!obj) {
+			console.warn(`${id} - is not found`)
+			return
+		}
+
+		if (window.location.hostname === 'localhost')
+			console.log(`${id} - is found !!!!!`)
+		obj[method](value)
 	},
 
 	_toggle_by_checkbox: function () {

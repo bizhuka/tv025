@@ -1,16 +1,38 @@
 @AbapCatalog.sqlViewName: 'zvctv025_apprby'
-//@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.compiler.compareFilter: true
 @AbapCatalog.preserveKey: true
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Approved By'
 @VDM.viewType: #CONSUMPTION
+@Search.searchable
 
-define view ZC_TV025_ApprovedBy as select from dd07t as t {
-    @ObjectModel.text.element: [ 'Text' ]
-    @UI.textArrangement: #TEXT_ONLY  
-    @EndUserText.label: 'Approved By'
-    key domvalue_l as id,
+@ZABAP.virtualEntity: 'ZCL_V_TV025_GET_ALL'
+
+@ObjectModel: {
+    writeActivePersistence: 'ZDTV025_APPR_BY',
+    transactionalProcessingEnabled: true,
+    compositionRoot: true,
     
+    createEnabled: true,
+    updateEnabled: true,
+//    deleteEnabled: true,
+    
+    semanticKey: ['appr_by']
+}
+
+define view ZC_TV025_ApprovedBy as select from zdtv025_appr_by {
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.9 }
+    @UI.lineItem: [{ position: 10, importance: #HIGH }]  
+    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 10 }] 
+    
+    @ObjectModel.text.element: [ 'appr_by_txt' ]
+//    @UI.textArrangement: #TEXT_ONLY  
+//    @EndUserText.label: 'Approved By'
+    key appr_by,
+    
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.9 }
+    @UI.lineItem: [{ position: 20 }]  
+    @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
     @EndUserText.label: 'Text'
-    ddtext as text    
-} where t.domname = 'ZDD_TV022_APPROVED_BY' and t.ddlanguage = $session.system_language and t.as4local = 'A' and t.as4vers = '0000'
+    appr_by_txt   
+}

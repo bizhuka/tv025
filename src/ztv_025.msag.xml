@@ -32,6 +32,12 @@
      <MSGNR>004</MSGNR>
      <TEXT>The request &amp;1-&amp;2 by &amp;3 &amp;4</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZTV_025</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Only requests with &quot;Open&quot; status can be editable. &amp;1-&amp;2</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

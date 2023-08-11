@@ -17,6 +17,7 @@
     deleteEnabled: true,
     updateEnabled: true
 }
+@ZABAP.virtualEntity: 'ZCL_I_ROOT_CHILD_CHECK'
 
 define view ZC_TV025_Transport as select from ZI_TV025_Transport as _Transport
 

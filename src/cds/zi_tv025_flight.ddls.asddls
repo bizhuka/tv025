@@ -32,33 +32,23 @@ define view ZI_TV025_FLIGHT as select from zdtv025_flight as _Flight
     key requestvrs,
     key plan_request,
     
-    @ObjectModel:{ mandatory: true }
-    type,
-    
+    type,    
     agency,
-//    @ObjectModel:{ mandatory: true }
-    date_beg,
     
+    date_beg,    
     time_beg,
-//    @ObjectModel:{ mandatory: true }
-    date_end,
     
+    date_end,    
     time_end,
     
-    @ObjectModel:{ mandatory: true }
     airport_beg,
-    
-    @ObjectModel:{ mandatory: true }
     airport_end,
+    
+    price,    
+    waers,
     
     comment1,
     approved_by,
-    
-    @ObjectModel:{ mandatory: true }
-    price,
-    
-    @ObjectModel:{ mandatory: true }
-    waers,
     
     penalty,
     penalty_waers,

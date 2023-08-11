@@ -13,7 +13,7 @@ CLASS zcl_i_tv025_root_check DEFINITION
       tt_required_field TYPE STANDARD TABLE OF ts_required_field WITH DEFAULT KEY.
 
     CLASS-METHODS get_required_fields IMPORTING iv_cds                   TYPE ddlname
-                                                it_fieldname             TYPE fieldname_t OPTIONAL
+                                                "it_fieldname             TYPE fieldname_t OPTIONAL
                                       RETURNING VALUE(rt_required_field) TYPE tt_required_field.
 
     CLASS-METHODS check_required_fields
@@ -84,13 +84,30 @@ CLASS ZCL_I_TV025_ROOT_CHECK IMPLEMENTATION.
 
       APPEND VALUE #( key = <lv_key> ) TO ct_failed_key.
 
-      MESSAGE e001(ztv_025) WITH <ls_field>-ddtext INTO sy-msgli.
+      MESSAGE e001(ztv_025) WITH <ls_field>-ddtext INTO sy-msgli. "DATA(lv_message_txt).
+
       io_message->add_message(
         is_msg       = CORRESPONDING #( sy )
         iv_node      = is_ctx-node_key
-        "iv_key       = is_root-key
+        "iv_key       = <lv_key>
         iv_attribute = CONV #( <ls_field>-fieldname )
       ).
+
+*      io_message->add_cm( NEW /bobf/cm_frw_symsg(
+*        severity                = /bobf/cm_frw_symsg=>co_severity_error
+*        lifetime                = /bobf/cm_frw_symsg=>co_lifetime_transition
+*        ms_origin_location      = VALUE #(
+*               bo_key   = is_ctx-bo_key
+*               key      = <lv_key>
+*               node_key = is_ctx-node_key
+*        )
+*        mv_attr1                = CONV #( <ls_field>-fieldname )
+*        mv_act_key              = is_ctx-act_key
+*        mv_bopf_location        = is_ctx-bo_key
+*        message_text            = lv_message_txt
+*      ) ).
+
+
     ENDLOOP.
   ENDMETHOD.
 
@@ -109,36 +126,41 @@ CLASS ZCL_I_TV025_ROOT_CHECK IMPLEMENTATION.
 
 
   METHOD get_required_fields.
-    DATA(lt_fieldname) = it_fieldname[].
-    SELECT attribute_name APPENDING TABLE @lt_fieldname
-    FROM /bobf/obm_propty
-    WHERE name           EQ @iv_cds
-      AND property_name  EQ 'M' AND property_value EQ 'X' " Mandatory
-      AND extension      EQ ''
-      AND version        EQ 00000.
-    IF sy-subrc <> 0.
-      " Read annotations
-      SELECT lfieldname APPENDING TABLE @lt_fieldname
-      FROM ddfieldanno
-      WHERE strucobjn EQ @iv_cds
-        AND name      EQ 'OBJECTMODEL.MANDATORY'
-        AND value     EQ 'true'.
-    ENDIF.
+    rt_required_field = VALUE #( FOR <ls_field> IN zcl_tv025_opt=>t_cds_field[]
+     WHERE ( cds = iv_cds AND required = abap_true )
+     ( fieldname = to_upper( <ls_field>-fieldname )
+       ddtext    = <ls_field>-ddtext ) ).
 
-    SELECT SINGLE objectname INTO @DATA(lv_table_name)
-    FROM ddldependency
-    WHERE ddlname    = @iv_cds
-      AND state      = 'A'
-      AND objecttype = 'VIEW'.
-    CHECK sy-subrc = 0.
-
-    SELECT d~fieldname, t~ddtext INTO TABLE @rt_required_field
-    FROM dd03l AS d INNER JOIN dd04t AS t ON t~rollname   EQ d~rollname
-                                         AND t~ddlanguage EQ @sy-langu
-                                         AND t~as4local   EQ 'A'
-                                         AND t~as4vers    EQ '0000'
-    FOR ALL ENTRIES IN @lt_fieldname
-    WHERE d~tabname    EQ @lv_table_name
-      AND d~fieldname  EQ @lt_fieldname-table_line.
+*    DATA(lt_fieldname) = it_fieldname[].
+*    SELECT attribute_name APPENDING TABLE @lt_fieldname
+*    FROM /bobf/obm_propty
+*    WHERE name           EQ @iv_cds
+*      AND property_name  EQ 'M' AND property_value EQ 'X' " Mandatory
+*      AND extension      EQ ''
+*      AND version        EQ 00000.
+*    IF sy-subrc <> 0.
+*      " Read annotations
+*      SELECT lfieldname APPENDING TABLE @lt_fieldname
+*      FROM ddfieldanno
+*      WHERE strucobjn EQ @iv_cds
+*        AND name      EQ 'OBJECTMODEL.MANDATORY'
+*        AND value     EQ 'true'.
+*    ENDIF.
+*
+*    SELECT SINGLE objectname INTO @DATA(lv_table_name)
+*    FROM ddldependency
+*    WHERE ddlname    = @iv_cds
+*      AND state      = 'A'
+*      AND objecttype = 'VIEW'.
+*    CHECK sy-subrc = 0.
+*
+*    SELECT d~fieldname, t~ddtext INTO TABLE @rt_required_field
+*    FROM dd03l AS d INNER JOIN dd04t AS t ON t~rollname   EQ d~rollname
+*                                         AND t~ddlanguage EQ @sy-langu
+*                                         AND t~as4local   EQ 'A'
+*                                         AND t~as4vers    EQ '0000'
+*    FOR ALL ENTRIES IN @lt_fieldname
+*    WHERE d~tabname    EQ @lv_table_name
+*      AND d~fieldname  EQ @lt_fieldname-table_line.
   ENDMETHOD.
 ENDCLASS.

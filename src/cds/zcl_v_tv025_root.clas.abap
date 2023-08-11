@@ -77,7 +77,11 @@ CLASS ZCL_V_TV025_ROOT IMPLEMENTATION.
                                        perio = lt_ptrv_perio[ 1 ]-perio
                                        pdvrs = lt_ptrv_perio[ 1 ]-pdvrs ).
         DATA(lt_ptk99) = VALUE ptk99_t( ).
-        IMPORT user TO lt_ptk99 FROM DATABASE pcl1(te) ID ls_te_key.
+        TRY.
+            IMPORT user TO lt_ptk99 FROM DATABASE pcl1(te) ID ls_te_key.
+          CATCH cx_sy_import_mismatch_error.
+            CLEAR lt_ptk99[].
+        ENDTRY.
         CHECK lt_ptk99[] IS NOT INITIAL.
 
         ls_passport-passp_number = lt_ptk99[ 1 ]-zz_passp_number.

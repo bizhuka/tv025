@@ -266,10 +266,8 @@ CLASS ZCL_V_TV025_ATTACH IMPLEMENTATION.
 
   METHOD zif_sadl_read_runtime~execute.
     CLEAR ct_data_rows[].
-
-    ASSIGN ir_key->* TO FIELD-SYMBOL(<ls_key>).
 *    DATA(ls_attach) = CORRESPONDING zdtv025_attach_d( <ls_key> ).  " <---- TODO check  ls_attach-doc_id
-    DATA(ls_key)    = CORRESPONDING zcl_tv025_model=>ts_db_key( <ls_key> ).
+    DATA(ls_key)    = CORRESPONDING zcl_tv025_model=>ts_db_key( is_filter ).
 
     IF ls_key-reinr IS INITIAL AND iv_where IS NOT INITIAL.
       SELECT SINGLE pernr, reinr INTO CORRESPONDING FIELDS OF @ls_key

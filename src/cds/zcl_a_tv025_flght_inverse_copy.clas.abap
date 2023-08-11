@@ -42,6 +42,9 @@ CLASS ZCL_A_TV025_FLGHT_INVERSE_COPY IMPLEMENTATION.
            et_data                 = lt_root ).
       CHECK lt_root[] IS NOT INITIAL.
 
+      zcl_tv025_odata_model=>check_status( is_root    = lt_root[ 1 ]
+                                           io_message = eo_message ).
+
       " Get end of inverse copy
       DATA(lv_root_end)   = lt_root[ 1 ]-date_end && lt_root[ 1 ]-time_end.
       DATA(lv_flight_end) = <ls_flight>-date_end  && <ls_flight>-time_end.

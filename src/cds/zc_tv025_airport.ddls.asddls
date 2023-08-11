@@ -28,7 +28,7 @@ association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.tow
 
 
 {
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 1 }
     @UI.lineItem: [{ position: 10 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 10 }]   
     @ObjectModel.text.element: ['airport_name']
@@ -42,7 +42,7 @@ association [0..1] to ZC_TV025_AirportTown as _Town on _Town.town = _Airport.tow
     country_id,    
     _Country.CountryText,
     
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.9 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 1 }
     @UI.lineItem: [{ position: 30 }]  
     @UI.fieldGroup: [{ qualifier: 'Grp0', position: 20 }]
     @Consumption.valueHelp: '_Town'

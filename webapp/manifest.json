@@ -312,6 +312,14 @@
                 "component": {
                   "name": "sap.suite.ui.generic.template.ObjectPage"
                 }
+              },
+              "ObjectPage|to_FakeApprovedBy": {
+                "navigationProperty": "to_FakeApprovedBy",
+                "entitySet": "ZC_TV025_ApprovedBy",
+                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
               }
 
             }

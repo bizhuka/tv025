@@ -336,6 +336,17 @@
                                             </Collection>
                                         </PropertyValue>
                                     </Record>
+                                    <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="ID" String="idFakeApprovedBy" />
+                                        <PropertyValue Property="Label" String="Approved By" />
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Target" AnnotationPath="to_FakeApprovedBy/@UI.LineItem" />
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
                                 </Collection>
                             </PropertyValue>
                         </Record>
@@ -438,11 +449,11 @@
                             <PropertyValue Property="Facets">
                                 <Collection>
                                     <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Departure date and time" />
+                                        <PropertyValue Property="Label" String="Transport date and time" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Departure" />
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
-                                        <PropertyValue Property="Label" String="Arrival date and time" />
+                                        <PropertyValue Property="Label" String="Plane date and time" />
                                         <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Arrival" />
                                     </Record>
                                     <Record Type="UI.ReferenceFacet">
@@ -543,6 +554,19 @@
                         <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="ID" String="CheckPointInfo" />
                             <PropertyValue Property="Label" String="CheckPoint" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+            <!-- ApprovedBy -->
+            <Annotations Target="ZC_TV025_ROOT_CDS.ZC_TV025_ApprovedByType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="ApprovedByInfo" />
+                            <PropertyValue Property="Label" String="Approved By" />
                             <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Grp0" />
                         </Record>
                     </Collection>

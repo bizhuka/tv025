@@ -68,6 +68,7 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
   association [0..*] to ZC_TV025_Basis        as _FakeBasis        on _FakeBasis.basis_id        = $projection.fake_basis_id
   association [0..*] to ZC_TV025_Airport      as _FakeAirport      on _FakeAirport.airport_id    = $projection.fake_airport_id
   association [0..*] to ZC_TV025_CheckPoint   as _FakeCheckPoint   on _FakeCheckPoint.id         = $projection.fake_ch_id
+  association [0..*] to ZC_TV025_ApprovedBy   as _FakeApprovedBy   on _FakeApprovedBy.appr_by    = $projection.fake_appr_by
                                                      
 {    
     @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
@@ -281,7 +282,9 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     @ObjectModel:{ readOnly: true }
     '#####'    as fake_airport_id,
     @ObjectModel:{ readOnly: true }
-    '####'     as fake_ch_id,  
+    '####'     as fake_ch_id,
+    @ObjectModel:{ readOnly: true }
+    '##'       as fake_appr_by,   
     
 ///////////////////////////////////////////////////////////////
 //    /* Locks */    
@@ -365,5 +368,6 @@ define view ZC_TV025_ROOT as select from ZI_TV025_ROOT as root
     _FakeHotelCatalog,
     _FakeBasis,
     _FakeAirport,
-    _FakeCheckPoint
+    _FakeCheckPoint,
+    _FakeApprovedBy
 }

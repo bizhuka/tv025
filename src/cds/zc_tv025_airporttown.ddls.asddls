@@ -13,7 +13,7 @@ define view ZC_TV025_AirportTown as select distinct from zdtv025_airport
     @Consumption.valueHelp: '_Country'
     key country_id,
     
-    @Search: { defaultSearchElement: true, fuzzinessThreshold: 0.8 }
+    @Search: { defaultSearchElement: true, fuzzinessThreshold: 1 }
     key town,
     
         _Country
